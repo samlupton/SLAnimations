@@ -7,30 +7,22 @@
 
 import UIKit
 
-class Confetti: UIViewController {
+class Confetti: UIView {
     
     private var cannon: Layer
     
     init(trailingCannon: Layer) {
         self.cannon = trailingCannon
-        super.init(nibName: nil, bundle: nil)
+        super.init(frame: .zero)
+        layer.addSublayer(cannon)
     }
     
     required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        configure()
-    }
-    
-    func configure() {
-        cannon.frame = view.bounds
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        cannon.frame = bounds
         cannon.configure()
-        view.layer.addSublayer(cannon)
-    }
-    
-    func launch() {
-        cannon.launch()
     }
 }
 
@@ -59,7 +51,7 @@ final class Layer: CAEmitterLayer {
 }
 
 extension Layer {
-    func makeCell<Content: CGImage>(content: Content, angle: Double) -> CAEmitterCell {
+    func makeCell(content: CGImage, angle: Double) -> CAEmitterCell {
         let cell = CAEmitterCell()
         cell.birthRate = 20
         cell.lifetime = 5

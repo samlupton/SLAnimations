@@ -8,17 +8,17 @@
 
 import SwiftUI
 
-struct ViewAdaptor: UIViewControllerRepresentable {
+struct ViewAdaptor: UIViewRepresentable {
     
-    let viewController: UIViewController
+    let view: UIView
     
-    init(_ viewController: UIViewController) {
-        self.viewController = viewController
+    init(_ view: UIView) {
+        self.view = view
     }
 
-    func makeUIViewController(context: Context) -> UIViewController {
-        viewController
+    func makeUIView(context: Context) -> UIView {
+        view
     }
 
-    func updateUIViewController(_ uiViewController: UIViewController, context: Context) {}
+    func updateUIView(_ uiView: UIView, context: Context) {}
 }
