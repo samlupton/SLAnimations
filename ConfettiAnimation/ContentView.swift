@@ -13,19 +13,11 @@ struct ContentView: View {
     var body: some View {
         Button {
             l2.launch()
-            l1.launch()
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.75) {
+                l1.launch()
+            }
         } label: {
             Text("Press me")
-        }
-        .onTapGesture {
-            print("l1.birthRate = \(l1.birthRate)")
-            print("l2.birthRate = \(l2.birthRate)")
-        }
-        .onChange(of: l2.birthRate) { oldValue, newValue in
-            print("l2.birthRate = \(l2.birthRate)")
-        }
-        .onChange(of: l1.birthRate) { oldValue, newValue in
-            print("l1.birthRate = \(l1.birthRate)")
         }
 
         ViewAdaptor(Confetti(trailingCannon: l1))

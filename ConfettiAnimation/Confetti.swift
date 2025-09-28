@@ -16,8 +16,6 @@ class Confetti: UIViewController {
         super.init(nibName: nil, bundle: nil)
     }
     
-    deinit { print("UIView deinit") }
-    
     required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
     
     override func viewDidLoad() {
@@ -26,8 +24,6 @@ class Confetti: UIViewController {
     }
     
     func configure() {
-        cannon.removeAllAnimations()
-        cannon.removeFromSuperlayer()
         cannon.frame = view.bounds
         cannon.configure()
         view.layer.addSublayer(cannon)
@@ -40,7 +36,6 @@ class Confetti: UIViewController {
 
 final class Layer: CAEmitterLayer {
     func configure() {
-        beginTime = CACurrentMediaTime()
         emitterPosition = CGPoint(x: bounds.width, y: bounds.height / 2)
         frame = bounds
         birthRate = 0
@@ -52,6 +47,7 @@ final class Layer: CAEmitterLayer {
     }
     
     func launch() {
+        beginTime = CACurrentMediaTime()
         let animation = CABasicAnimation(keyPath: #keyPath(birthRate))
         animation.fromValue = 1
         animation.toValue = 0
