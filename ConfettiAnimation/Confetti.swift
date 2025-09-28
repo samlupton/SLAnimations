@@ -39,6 +39,11 @@ final class Layer: CAEmitterLayer {
     }
     
     func launch() {
+        CATransaction.begin()
+        CATransaction.setCompletionBlock {
+            self.birthRate = 0
+        }
+        birthRate = 1
         beginTime = CACurrentMediaTime()
         let animation = CABasicAnimation(keyPath: #keyPath(birthRate))
         animation.fromValue = 1
@@ -46,7 +51,8 @@ final class Layer: CAEmitterLayer {
         animation.duration = 1
         animation.fillMode = .forwards
         animation.isRemovedOnCompletion = false
-        add(animation, forKey: nil)
+        add(animation, forKey: "confettiBirthRate")
+        CATransaction.commit()
     }
 }
 
