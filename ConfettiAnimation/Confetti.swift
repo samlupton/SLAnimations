@@ -59,14 +59,14 @@ final class Layer: CAEmitterLayer {
 extension Layer {
     func makeCell(content: CGImage, angle: Double) -> CAEmitterCell {
         let cell = CAEmitterCell()
-        cell.birthRate = 20
+        cell.birthRate = 25
         cell.lifetime = 5
         cell.velocity = 200
         cell.velocityRange = cell.velocity / 2
         cell.emissionLongitude = angle
         cell.emissionRange = .pi / 8
-        cell.spin = 0
-        cell.spinRange = .pi
+        cell.spin = .pi / 2
+        cell.spinRange = 2 * .pi
         cell.yAcceleration = 200
         cell.scaleRange = 0.75
         cell.scale = 1.0 - cell.scaleRange

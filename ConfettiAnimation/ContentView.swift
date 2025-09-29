@@ -8,8 +8,10 @@
 import SwiftUI
 
 struct ContentView: View {
+    
     let l1 = Layer()
     let l2 = Layer()
+    
     var body: some View {
         Button {
             l2.launch()
@@ -26,10 +28,4 @@ struct ContentView: View {
                     .scaleEffect(x: -1, y: 1)
             }
     }
-}
-
-
-
-#Preview {
-    ContentView()
 }

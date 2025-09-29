@@ -7,13 +7,6 @@
 
 import SwiftUI
 
-enum Content {
-    enum Shape {
-        case peice
-    }
-    case shape(Shape, UIColor)
-}
-
 struct ConfettiPiece: View {
     
     let confettiColors: [Color] = [
@@ -28,7 +21,9 @@ struct ConfettiPiece: View {
     ]
 
     let scale = 30.0
+    
     static let scatterRange: ClosedRange<Double> = 0.90...1.10
+    
     let scatter1 = Double.random(in: scatterRange)
     let scatter2 = Double.random(in: scatterRange)
     let scatter3 = Double.random(in: scatterRange)
