@@ -9,16 +9,7 @@ import SwiftUI
 
 struct ConfettiPiece: View {
     
-    let confettiColors: [Color] = [
-        Color(red: 1.00, green: 0.42, blue: 0.42),
-        Color(red: 1.00, green: 0.85, blue: 0.24),
-        Color(red: 0.42, green: 0.80, blue: 0.47),
-        Color(red: 0.30, green: 0.59, blue: 1.00),
-        Color(red: 0.62, green: 0.30, blue: 0.87),
-        Color(red: 1.00, green: 0.62, blue: 0.11),
-        Color(red: 1.00, green: 0.71, blue: 0.91),
-        Color(red: 0.22, green: 0.69, blue: 0.00)
-    ]
+    let color: Color
 
     let scale = 30.0
     
@@ -50,6 +41,7 @@ struct ConfettiPiece: View {
                 control: CGPoint(x: 2.1 * scale, y: 2.1 * scale)
             )
         }
-        .fill(confettiColors.randomElement() ?? .black)
+        .fill(color)
     }
 }
+

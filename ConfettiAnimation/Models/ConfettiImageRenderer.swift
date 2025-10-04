@@ -1,0 +1,39 @@
+//
+//  ConfettiImageRenderer.swift
+//  ConfettiAnimation
+//
+//  Created by Samuel Lupton on 9/30/25.
+//
+
+import CoreGraphics
+import SwiftUI
+
+struct ConfettiImageRenderer {
+    private let colors: [Color] = [
+        Color(red: 1.00, green: 0.42, blue: 0.42),
+        Color(red: 1.00, green: 0.85, blue: 0.24),
+        Color(red: 0.42, green: 0.80, blue: 0.47),
+        Color(red: 0.30, green: 0.59, blue: 1.00),
+        Color(red: 0.62, green: 0.30, blue: 0.87),
+        Color(red: 1.00, green: 0.62, blue: 0.11),
+        Color(red: 1.00, green: 0.71, blue: 0.91),
+        Color(red: 0.22, green: 0.69, blue: 0.00)
+    ]
+
+    func getConfettiParticles() -> [CGImage] {
+        var res = [CGImage]()
+        
+        for color in colors {
+            let particle = ConfettiPiece(color: color).frame(width: 20, height: 20)
+            let renderer = ImageRenderer(content: particle)
+            renderer.scale = UIScreen.main.scale
+            
+            if let particle = renderer.cgImage {
+                print("Rendered size:", particle.width, particle.height)
+                res.append(particle)
+            }
+        }
+        
+        return res
+    }
+}
