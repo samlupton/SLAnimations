@@ -28,7 +28,7 @@ final class ConfettiLayer: CAEmitterLayer {
     }
     
     /// Creates a CABasicAnimation
-    func getAnimation() -> CABasicAnimation {
+    private func getAnimation() -> CABasicAnimation {
         let animation = CABasicAnimation(keyPath: #keyPath(birthRate))
         animation.fromValue = 1
         animation.toValue = 0
