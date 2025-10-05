@@ -11,15 +11,14 @@ import FJComponents
 struct ContentView: View {
     var body: some View {
         Button {
-            UIApplication.shared.emitConfetti()
+            emitConfetti(configuration: .cannon)
         } label: {
             Text("Activate Confetti Cannon")
         }
-        
         Button {
-            UIApplication.shared.emitConfetti(configuration: .shower)
+            emitConfetti(configuration: .shower)
         } label: {
-            Text("Activate Confetti Shower")
+            Text("Activate Confetti Shower 2")
         }
     }
 }

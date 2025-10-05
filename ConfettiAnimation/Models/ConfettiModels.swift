@@ -36,7 +36,7 @@ struct ConfettiCannons: EmitterLayerConfiguration {
 struct ConfettiShower: EmitterLayerConfiguration {
     var emitterPosition: CGPoint = CGPoint(x: UIScreen.main.bounds.width / 2, y: 0)
     var emitterShape: CAEmitterLayerEmitterShape = .line
-    var emitterMode: CAEmitterLayerEmitterMode = .outline
+    var emitterMode: CAEmitterLayerEmitterMode = .surface
     var emitterSize = CGSize(width: UIScreen.main.bounds.width, height: 1)
     var birthRate: Float = 0
     var lifetime: Float = 5

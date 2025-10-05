@@ -5,50 +5,27 @@
 //  Created by Samuel Lupton on 10/2/25.
 //
 
-import UIKit
-
-// MARK: Top View Controller
-extension UIApplication {
-    func topViewController(
-        base: UIViewController? = UIApplication.shared
-            .connectedScenes
-            .compactMap { $0 as? UIWindowScene }
-            .flatMap { $0.windows }
-            .first { $0.isKeyWindow }?.rootViewController
-    ) -> UIViewController? {
-        if let nav = base as? UINavigationController {
-            return topViewController(base: nav.visibleViewController)
-        }
-        if let tab = base as? UITabBarController {
-            if let selected = tab.selectedViewController {
-                return topViewController(base: selected)
-            }
-        }
-        if let presented = base?.presentedViewController {
-            return topViewController(base: presented)
-        }
-        return base
-    }
-}
+import SwiftUI
 
 // MARK: Emitter function
-extension UIApplication {
+extension View {
+    func getTopWindow() -> UIWindow? {
+        let windowScene = UIApplication
+            .shared
+            .connectedScenes
+            .first(where: { $0.activationState == .foregroundActive }) as? UIWindowScene
+        let window = windowScene?.keyWindow
+        return window
+    }
+    
     func emitConfetti(configuration: ConfettiConfiguration = .cannon) {
-        guard
-            let topViewController = topViewController()?.view.superview
-        else {
+        guard let window = getTopWindow() else {
             return
         }
 
         let layer = ConfettiLayer(configuration: configuration.model)
-        let confettiView = ConfettiView(confettiLayer: layer)
-        
-        confettiView.isUserInteractionEnabled = false
-        topViewController.addSubview(confettiView)
+        layer.frame = window.bounds
+        window.layer.addSublayer(layer)
         layer.emit()
-
-        DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
-            confettiView.removeFromSuperview()
-        }
     }
 }
