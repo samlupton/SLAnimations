@@ -9,16 +9,32 @@ import SwiftUI
 import FJComponents
 
 struct ContentView: View {
+    @State private var logs: [String] = []
+    @State private var count = 0
     var body: some View {
+        Spacer()
+        ScrollView {
+            ForEach(logs, id: \.self) { log in
+                Text(log)
+            }
+        }
         Button {
             emitConfetti(configuration: .cannon)
+            count += 1
+            logs.append("\(count). cannon")
         } label: {
             Text("Activate Confetti Cannon")
+                .padding()
         }
+        .buttonStyle(.bordered)
         Button {
             emitConfetti(configuration: .shower)
+            count += 1
+            logs.append("\(count). shower")
         } label: {
-            Text("Activate Confetti Shower 2")
+            Text("Activate Confetti Shower")
+                .padding()
         }
+        .buttonStyle(.bordered)
     }
 }
