@@ -9,9 +9,11 @@ import QuartzCore
 import UIKit
 
 final class ConfettiLayer: CAEmitterLayer {
-
+    private var content: [CGImage] = []
+    
     init(configuration: EmitterLayerConfiguration) {
         super.init()
+        self.content = getContent()
         configure(with: configuration)
     }
     
@@ -28,7 +30,7 @@ final class ConfettiLayer: CAEmitterLayer {
         lifetime = configuration.lifetime
         emitterSize = configuration.emitterSize
         needsDisplayOnBoundsChange = configuration.needsDisplayOnBoundsChange
-        emitterCells = getContent().map { content in
+        emitterCells = content.map { content in
             makeCell(content: content, with: configuration.cellConfiguration)
         }
     }
