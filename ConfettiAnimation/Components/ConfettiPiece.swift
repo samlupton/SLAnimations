@@ -1,5 +1,5 @@
 //
-//  Content.swift
+//  ConfettiPiece.swift
 //  ConfettiAnimation
 //
 //  Created by Samuel Lupton on 9/25/25.

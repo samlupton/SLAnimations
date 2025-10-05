@@ -41,7 +41,7 @@ extension UIApplication {
         }
 
         let layer = ConfettiLayer()
-        let confettiView = Confetti(confettiLayer: layer, configuration: configuration)
+        let confettiView = ConfettiView(confettiLayer: layer, configuration: configuration)
         
         confettiView.frame = topViewController.bounds
         confettiView.isUserInteractionEnabled = false

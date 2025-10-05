@@ -1,5 +1,5 @@
 //
-//  ConfettiAnimation.swift
+//  ConfettiView.swift
 //  ConfettiAnimation
 //
 //  Created by Samuel Lupton on 9/28/25.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class Confetti: UIView {
+class ConfettiView: UIView {
 
     var confettiLayer: ConfettiLayer
     private var configuration: EmitterLayerConfiguration
