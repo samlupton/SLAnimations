@@ -6,6 +6,7 @@
 //
 
 import QuartzCore
+import UIKit
 
 extension ConfettiLayer: ContentRenderer {
     /// Creates and configures a `CAEmitterCell`.
