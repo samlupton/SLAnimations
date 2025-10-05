@@ -9,8 +9,20 @@ import QuartzCore
 import UIKit
 
 final class ConfettiLayer: CAEmitterLayer {
+
+    init(configuration: EmitterLayerConfiguration) {
+        super.init()
+        configure(with: configuration)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     /// Configured the emitter layer
-    func configure(with configuration: EmitterLayerConfiguration) {
+    /// - Parameters
+    ///     - configuration: The configuration model used to set up the emitter layer
+    private func configure(with configuration: EmitterLayerConfiguration) {
         emitterPosition = configuration.emitterPosition
         birthRate = configuration.birthRate
         lifetime = configuration.lifetime

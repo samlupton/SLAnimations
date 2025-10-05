@@ -40,13 +40,12 @@ extension UIApplication {
             return
         }
 
-        let layer = ConfettiLayer()
-        let confettiView = ConfettiView(confettiLayer: layer, configuration: configuration)
+        let layer = ConfettiLayer(configuration: configuration.model)
+        let confettiView = ConfettiView(confettiLayer: layer)
         
-        confettiView.frame = topViewController.bounds
         confettiView.isUserInteractionEnabled = false
         topViewController.addSubview(confettiView)
-        confettiView.confettiLayer.emit()
+        layer.emit()
 
         DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
             confettiView.removeFromSuperview()
