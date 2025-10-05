@@ -15,5 +15,11 @@ struct ContentView: View {
         } label: {
             Text("Activate Confetti Cannon")
         }
+        
+        Button {
+            UIApplication.shared.emitConfetti(configuration: .shower)
+        } label: {
+            Text("Activate Confetti Shower")
+        }
     }
 }
