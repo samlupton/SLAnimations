@@ -10,7 +10,6 @@ import UIKit
 
 final class ConfettiLayer: CAEmitterLayer {
     private var content: [CGImage] = []
-    private weak var timer: Timer? = nil
     private var shouldAllowAnimation: Bool = true
     
     init(configuration: EmitterLayerConfiguration) {
@@ -43,21 +42,29 @@ final class ConfettiLayer: CAEmitterLayer {
         
         beginTime = CACurrentMediaTime()
         add(getAnimation(), forKey: "confettiBirthRate")
-        
-        shouldAllowAnimation = false
-        timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: false, block: { [weak self] _ in
-            self?.shouldAllowAnimation = true
-        })
     }
     
     /// Creates a CABasicAnimation
     private func getAnimation() -> CABasicAnimation {
         let animation = CABasicAnimation(keyPath: #keyPath(birthRate))
+        animation.delegate = self
         animation.fromValue = 1
         animation.toValue = 0
         animation.duration = 1
         animation.fillMode = .forwards
         animation.isRemovedOnCompletion = false
         return animation
+    }
+}
+
+// MARK: Animation Delegate
+extension ConfettiLayer: CAAnimationDelegate {
+    func animationDidStart(_ anim: CAAnimation) {
+        shouldAllowAnimation = false
+    }
+    
+    func animationDidStop(_ anim: CAAnimation, finished flag: Bool) {
+        removeAllAnimations()
+        shouldAllowAnimation = true
     }
 }

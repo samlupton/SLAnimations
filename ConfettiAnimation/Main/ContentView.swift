@@ -11,7 +11,9 @@ import FJComponents
 struct ContentView: View {
     @State private var logs: [String] = []
     @State private var count = 0
-    let layer = ConfettiLayer(configuration: ConfettiCannons())
+    let cannonLayer = ConfettiLayer(configuration: ConfettiCannons())
+    let showerLayer = ConfettiLayer(configuration: ConfettiShower())
+    
     var body: some View {
         Spacer()
         ScrollView {
@@ -20,7 +22,7 @@ struct ContentView: View {
             }
         }
         Button {
-            emitConfetti(layer: layer)
+            emitConfetti(layer: cannonLayer)
             count += 1
             logs.append("\(count). cannon")
         } label: {
@@ -28,14 +30,14 @@ struct ContentView: View {
                 .padding()
         }
         .buttonStyle(.bordered)
-//        Button {
-//            emitConfetti(configuration: .shower)
-//            count += 1
-//            logs.append("\(count). shower")
-//        } label: {
-//            Text("Activate Confetti Shower")
-//                .padding()
-//        }
-//        .buttonStyle(.bordered)
+        Button {
+            emitConfetti(layer: showerLayer)
+            count += 1
+            logs.append("\(count). shower")
+        } label: {
+            Text("Activate Confetti Shower")
+                .padding()
+        }
+        .buttonStyle(.bordered)
     }
 }

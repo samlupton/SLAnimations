@@ -17,7 +17,7 @@ extension View {
         let window = windowScene?.keyWindow
         return window
     }
-    
+
     func emitConfetti(layer: ConfettiLayer) {
         guard let window = getTopWindow() else {
             return
