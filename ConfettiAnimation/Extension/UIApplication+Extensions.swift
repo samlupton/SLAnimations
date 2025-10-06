@@ -18,12 +18,11 @@ extension View {
         return window
     }
     
-    func emitConfetti(configuration: ConfettiConfiguration = .cannon) {
+    func emitConfetti(layer: ConfettiLayer) {
         guard let window = getTopWindow() else {
             return
         }
-
-        let layer = ConfettiLayer(configuration: configuration.model)
+        
         layer.frame = window.bounds
         window.layer.addSublayer(layer)
         layer.emit()

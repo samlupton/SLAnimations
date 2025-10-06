@@ -10,6 +10,8 @@ import UIKit
 
 final class ConfettiLayer: CAEmitterLayer {
     private var content: [CGImage] = []
+    private weak var timer: Timer? = nil
+    private var shouldAllowAnimation: Bool = true
     
     init(configuration: EmitterLayerConfiguration) {
         super.init()
@@ -37,8 +39,15 @@ final class ConfettiLayer: CAEmitterLayer {
     
     /// Begins the process of emitting particles by adding an animation
     func emit() {
+        guard shouldAllowAnimation else { return }
+        
         beginTime = CACurrentMediaTime()
         add(getAnimation(), forKey: "confettiBirthRate")
+        
+        shouldAllowAnimation = false
+        timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: false, block: { [weak self] _ in
+            self?.shouldAllowAnimation = true
+        })
     }
     
     /// Creates a CABasicAnimation

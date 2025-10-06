@@ -13,7 +13,7 @@ extension ConfettiLayer: ContentRenderer {
     ///
     /// - Parameters:
     ///   - content: The image used as the particle content of the cell.
-    ///   - angle: The emission angle (in radians) that determines the direction of particle travel.
+    ///   - configuration: The configuration model used to set up the emitter layer cell
     /// - Returns: A configured `CAEmitterCell` instance.
     func makeCell(content: CGImage, with configuration: ParticleCell) -> CAEmitterCell {
         let cell = CAEmitterCell()
