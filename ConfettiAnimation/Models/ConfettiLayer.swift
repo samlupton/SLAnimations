@@ -9,20 +9,22 @@ import QuartzCore
 import UIKit
 
 final class ConfettiLayer: CAEmitterLayer {
-    private var content: [CGImage] = []
-    private var shouldAllowAnimation: Bool = true
-    
-    init(configuration: EmitterLayerConfiguration) {
+
+    /// Configures a ConfettiLayer
+    ///
+    /// - Parameters:
+    ///     - configuration: The configuration model used to set up the emitter layer
+    init(configuration: ConfettiConfiguration) {
         super.init()
-        self.content = getContent()
-        configure(with: configuration)
+        configure(with: configuration.model)
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    /// Configured the emitter layer
+    /// Configures the emitter layer
+    /// 
     /// - Parameters
     ///     - configuration: The configuration model used to set up the emitter layer
     private func configure(with configuration: EmitterLayerConfiguration) {
@@ -30,24 +32,22 @@ final class ConfettiLayer: CAEmitterLayer {
         birthRate = configuration.birthRate
         lifetime = configuration.lifetime
         emitterSize = configuration.emitterSize
+        emitterShape = configuration.emitterShape
+        emitterMode = configuration.emitterMode
         needsDisplayOnBoundsChange = configuration.needsDisplayOnBoundsChange
-        emitterCells = content.map { content in
+        emitterCells = getContent().map { content in
             makeCell(content: content, with: configuration.cellConfiguration)
         }
     }
     
-    /// Begins the process of emitting particles by adding an animation
+    /// Begins the process of emitting particles by adding an animation to the layer
     func emit() {
-        guard shouldAllowAnimation else { return }
-        
-        beginTime = CACurrentMediaTime()
-        add(getAnimation(), forKey: "confettiBirthRate")
+        add(getAnimation(), forKey: UUID().uuidString)
     }
     
     /// Creates a CABasicAnimation
     private func getAnimation() -> CABasicAnimation {
         let animation = CABasicAnimation(keyPath: #keyPath(birthRate))
-        animation.delegate = self
         animation.fromValue = 1
         animation.toValue = 0
         animation.duration = 1
@@ -57,14 +57,3 @@ final class ConfettiLayer: CAEmitterLayer {
     }
 }
 
-// MARK: Animation Delegate
-extension ConfettiLayer: CAAnimationDelegate {
-    func animationDidStart(_ anim: CAAnimation) {
-        shouldAllowAnimation = false
-    }
-    
-    func animationDidStop(_ anim: CAAnimation, finished flag: Bool) {
-        removeAllAnimations()
-        shouldAllowAnimation = true
-    }
-}

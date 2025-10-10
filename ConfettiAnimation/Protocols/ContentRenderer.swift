@@ -6,8 +6,9 @@
 //
 
 import QuartzCore
+import UIKit
 
 protocol ContentRenderer {
-    func makeCell(content: CGImage, with configuration: ParticleCell) -> CAEmitterCell
-    func getContent() -> [CGImage]
+    func makeCell(content: UIImage, with configuration: ParticleCell) -> CAEmitterCell
+    func getContent() -> [UIImage]
 }

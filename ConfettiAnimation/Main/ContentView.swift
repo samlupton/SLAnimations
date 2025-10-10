@@ -9,31 +9,30 @@ import SwiftUI
 import FJComponents
 
 struct ContentView: View {
-    @State private var logs: [String] = []
-    @State private var count = 0
-    let cannonLayer = ConfettiLayer(configuration: ConfettiCannons())
-    let showerLayer = ConfettiLayer(configuration: ConfettiShower())
+    let confettiCannonView = ConfettiView(configuration: .cannon)
+    let confettiShowerView = ConfettiView(configuration: .shower)
     
     var body: some View {
+        ConfettiViewRepresentable(confettiView: confettiCannonView)
+        ConfettiViewRepresentable(confettiView: confettiShowerView)
         Spacer()
-        ScrollView {
-            ForEach(logs, id: \.self) { log in
-                Text(log)
-            }
-        }
         Button {
-            emitConfetti(layer: cannonLayer)
-            count += 1
-            logs.append("\(count). cannon")
+            Task {
+                let impactEngine = UIImpactFeedbackGenerator(style: .heavy)
+                impactEngine.impactOccurred()
+                confettiCannonView.emit()
+                
+            }
         } label: {
             Text("Activate Confetti Cannon")
                 .padding()
         }
         .buttonStyle(.bordered)
+        
         Button {
-            emitConfetti(layer: showerLayer)
-            count += 1
-            logs.append("\(count). shower")
+            let impactEngine = UIImpactFeedbackGenerator(style: .heavy)
+            impactEngine.impactOccurred()
+            confettiShowerView.emit()
         } label: {
             Text("Activate Confetti Shower")
                 .padding()
@@ -41,3 +40,4 @@ struct ContentView: View {
         .buttonStyle(.bordered)
     }
 }
+

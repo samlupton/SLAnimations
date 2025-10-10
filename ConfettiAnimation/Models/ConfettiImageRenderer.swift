@@ -29,7 +29,6 @@ struct ConfettiImageRenderer {
             renderer.scale = UIScreen.main.scale
             
             if let particle = renderer.cgImage {
-                print("Rendered size:", particle.width, particle.height)
                 res.append(particle)
             }
         }
@@ -37,3 +36,4 @@ struct ConfettiImageRenderer {
         return res
     }
 }
+
