@@ -16,5 +16,6 @@ protocol ParticleCell {
     var spin: CGFloat { get }
     var spinRange: CGFloat { get }
     var yAcceleration: CGFloat { get }
+    var scale: CGFloat { get }
     var scaleRange: CGFloat { get }
 }

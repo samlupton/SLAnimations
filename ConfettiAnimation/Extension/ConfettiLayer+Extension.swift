@@ -10,7 +10,6 @@ import UIKit
  
 extension ConfettiLayer: ContentRenderer {
     /// Creates and configures a `CAEmitterCell`.
-    ///
     /// - Parameters:
     ///   - content: The image used as the particle content of the cell.
     ///   - configuration: The configuration model used to set up the emitter layer cell
@@ -29,24 +28,8 @@ extension ConfettiLayer: ContentRenderer {
         cell.spinRange = configuration.spinRange
         cell.yAcceleration = configuration.yAcceleration
         cell.scaleRange = configuration.scaleRange
-        cell.scale = 1.0 - configuration.scaleRange
+        cell.scale = configuration.scale
         return cell
-    }
-    
-    /// Creates an array of confetti peice images and returns it
-    func getContent() -> [UIImage] {
-        return [.confetti1, .confetti2, .confetti3, .confetti4, .confetti5, .confetti6, .confetti7, .confetti8]
-            .compactMap { image in
-            UIImage(resource: image)
-        }
-    }
-    
-    /// Creates an array of confetti peice images and returns it
-    func getContentFire() -> [UIImage] {
-        return [.fire2, .fire3, .fire4]
-            .compactMap { image in
-            UIImage(resource: image)
-        }
     }
 }
 

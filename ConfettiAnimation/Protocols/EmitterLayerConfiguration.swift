@@ -19,7 +19,10 @@ protocol EmitterLayerConfiguration {
     var cellConfiguration: ParticleCell { get set }
     
     /// Creates array of images to be used as content for CAEmitterLayer
-    ///
     /// - Returns: The array of images to be used for content of CAEmitterLayer
     func getContent() -> [UIImage]
+    
+    /// Creates a CABasicAnimation
+    /// - Returns: An animation to be applied to a CAEmitterLayer
+    func getAnimation() -> CABasicAnimation
 }

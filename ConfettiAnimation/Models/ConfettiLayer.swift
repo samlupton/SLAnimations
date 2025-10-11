@@ -10,13 +10,14 @@ import UIKit
 
 final class ConfettiLayer: CAEmitterLayer {
 
+    private let configuration: ConfettiConfiguration
+    
     /// Configures a ConfettiLayer
-    ///
     /// - Parameters:
     ///     - configuration: The configuration model used to set up the emitter layer
     init(configuration: ConfettiConfiguration) {
+        self.configuration = configuration
         super.init()
-        configure(with: configuration.model)
     }
     
     required init?(coder: NSCoder) {
@@ -24,10 +25,10 @@ final class ConfettiLayer: CAEmitterLayer {
     }
     
     /// Configures the emitter layer
-    /// 
     /// - Parameters
     ///     - configuration: The configuration model used to set up the emitter layer
     private func configure(with configuration: EmitterLayerConfiguration) {
+        
         emitterPosition = configuration.emitterPosition
         birthRate = configuration.birthRate
         lifetime = configuration.lifetime
@@ -40,22 +41,10 @@ final class ConfettiLayer: CAEmitterLayer {
         }
     }
     
-    /// Begins the process of emitting particles by adding an animation to the layer
+    /// Begins the process of emitting particles by configuring the layer and adding an animation to the layer
     func emit() {
-        add(getAnimation(), forKey: UUID().uuidString)
-    }
-    
-    /// Creates a CABasicAnimation
-    ///
-    /// - Returns: An animation to be applied to a CAEmitterLayer
-    private func getAnimation() -> CABasicAnimation {
-        let animation = CABasicAnimation(keyPath: #keyPath(birthRate))
-        animation.fromValue = 1
-        animation.toValue = 0
-        animation.duration = 1
-        animation.fillMode = .forwards
-        animation.isRemovedOnCompletion = false
-        return animation
+        configure(with: configuration.model)
+        add(configuration.model.getAnimation(), forKey: UUID().uuidString)
     }
 }
 

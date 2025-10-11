@@ -9,7 +9,8 @@ import SwiftUI
 import FJComponents
 
 struct ContentView: View {
-    let confettiCannonView = ConfettiView(configuration: .cannon)
+    let rightConfettiCannonView = ConfettiView(configuration: .rightCannon)
+    let leftConfettiCannonView = ConfettiView(configuration: .leftCannon)
     let confettiShowerView = ConfettiView(configuration: .shower)
     let rocketView = ConfettiView(configuration: .rocket)
     
@@ -19,11 +20,12 @@ struct ContentView: View {
             Task {
                 let impactEngine = UIImpactFeedbackGenerator(style: .heavy)
                 impactEngine.impactOccurred()
-                emitConfetti(with: confettiCannonView)
+                emitConfetti(with: rightConfettiCannonView)
+                try? await Task.sleep(nanoseconds: 500_000_000)
+                emitConfetti(with: leftConfettiCannonView)
             }
         } label: {
             Text("Activate Confetti Cannon")
-                .padding()
         }
         .buttonStyle(.bordered)
         
@@ -33,7 +35,6 @@ struct ContentView: View {
             emitConfetti(with: confettiShowerView)
         } label: {
             Text("Activate Confetti Shower")
-                .padding()
         }
         .buttonStyle(.bordered)
         
@@ -43,7 +44,6 @@ struct ContentView: View {
             emitConfetti(with: rocketView)
         } label: {
             Text("Activate RocketView")
-                .padding()
         }
         .buttonStyle(.bordered)
     }
@@ -59,7 +59,7 @@ func getTopWindow() -> UIWindow? {
     return window
 }
 
-func emitConfetti(with confettiView: ConfettiView = ConfettiView(configuration: .cannon)) {
+func emitConfetti(with confettiView: ConfettiView) {
     guard let window = getTopWindow() else {
         return
     }

@@ -10,5 +10,4 @@ import UIKit
 
 protocol ContentRenderer {
     func makeCell(content: UIImage, with configuration: ParticleCell) -> CAEmitterCell
-    func getContent() -> [UIImage]
 }
