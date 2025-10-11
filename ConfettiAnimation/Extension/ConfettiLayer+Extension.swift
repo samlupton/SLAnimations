@@ -40,5 +40,13 @@ extension ConfettiLayer: ContentRenderer {
             UIImage(resource: image)
         }
     }
+    
+    /// Creates an array of confetti peice images and returns it
+    func getContentFire() -> [UIImage] {
+        return [.fire2, .fire3, .fire4]
+            .compactMap { image in
+            UIImage(resource: image)
+        }
+    }
 }
 

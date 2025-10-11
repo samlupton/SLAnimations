@@ -6,6 +6,7 @@
 //
 
 import QuartzCore
+import UIKit
 
 protocol EmitterLayerConfiguration {
     var emitterPosition: CGPoint { get set }
@@ -16,4 +17,9 @@ protocol EmitterLayerConfiguration {
     var lifetime: Float { get set }
     var needsDisplayOnBoundsChange: Bool { get set }
     var cellConfiguration: ParticleCell { get set }
+    
+    /// Creates array of images to be used as content for CAEmitterLayer
+    ///
+    /// - Returns: The array of images to be used for content of CAEmitterLayer
+    func getContent() -> [UIImage]
 }

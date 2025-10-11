@@ -35,7 +35,7 @@ final class ConfettiLayer: CAEmitterLayer {
         emitterShape = configuration.emitterShape
         emitterMode = configuration.emitterMode
         needsDisplayOnBoundsChange = configuration.needsDisplayOnBoundsChange
-        emitterCells = getContent().map { content in
+        emitterCells = configuration.getContent().map { content in
             makeCell(content: content, with: configuration.cellConfiguration)
         }
     }
@@ -46,6 +46,8 @@ final class ConfettiLayer: CAEmitterLayer {
     }
     
     /// Creates a CABasicAnimation
+    ///
+    /// - Returns: An animation to be applied to a CAEmitterLayer
     private func getAnimation() -> CABasicAnimation {
         let animation = CABasicAnimation(keyPath: #keyPath(birthRate))
         animation.fromValue = 1
