@@ -9,7 +9,7 @@ import QuartzCore
 import UIKit
 
 protocol EmitterLayerConfiguration {
-    var emitterPosition: CGPoint { get set }
+    var emitterPosition: EmitterPosition { get set }
     var emitterShape: CAEmitterLayerEmitterShape { get set }
     var emitterMode: CAEmitterLayerEmitterMode { get set }
     var emitterSize: CGSize { get set }
@@ -17,10 +17,11 @@ protocol EmitterLayerConfiguration {
     var lifetime: Float { get set }
     var needsDisplayOnBoundsChange: Bool { get set }
     var cellConfiguration: ParticleCell { get set }
+    var content: [UIImage] { get }
     
     /// Creates array of images to be used as content for CAEmitterLayer
     /// - Returns: The array of images to be used for content of CAEmitterLayer
-    func getContent() -> [UIImage]
+//    func getContent() -> [UIImage]
     
     /// Creates a CABasicAnimation
     /// - Returns: An animation to be applied to a CAEmitterLayer

@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class ConfettiView: UIView {
+class ConfettiView: UIView {
     
     private let configuration: ConfettiConfiguration
     
@@ -20,10 +20,10 @@ final class ConfettiView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    /// Creates and emits confetti
+    /// Creates and emits confetti particles
     func emit() {
-        let confettiLayer = ConfettiLayer(configuration: configuration)
+        let confettiLayer = ConfettiLayer(configuration: configuration.model)
         self.layer.addSublayer(confettiLayer)
-        confettiLayer.emit()
+        confettiLayer.emit(in: window)
     }
 }

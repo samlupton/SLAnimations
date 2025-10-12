@@ -5,7 +5,6 @@
 //  Created by Samuel Lupton on 9/30/25.
 //
 
-import CoreGraphics
 import SwiftUI
 
 struct ConfettiImageRenderer {
@@ -20,15 +19,14 @@ struct ConfettiImageRenderer {
         Color(red: 0.22, green: 0.69, blue: 0.00)
     ]
 
-    func getConfettiParticles() -> [CGImage] {
-        var res = [CGImage]()
+    func getConfettiParticles(scale: Double = 10.0) -> [UIImage] {
+        var res = [UIImage]()
         
         for color in colors {
-            let particle = ConfettiPiece(color: color).frame(width: 20, height: 20)
+            let particle = ConfettiPiece(color: color, scale: scale)
             let renderer = ImageRenderer(content: particle)
-            renderer.scale = UIScreen.main.scale
             
-            if let particle = renderer.cgImage {
+            if let particle = renderer.uiImage {
                 res.append(particle)
             }
         }
@@ -36,4 +34,3 @@ struct ConfettiImageRenderer {
         return res
     }
 }
-

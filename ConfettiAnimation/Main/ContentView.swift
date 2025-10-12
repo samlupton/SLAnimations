@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import FJComponents
 
 struct ContentView: View {
     let rightConfettiCannonView = ConfettiView(configuration: .rightCannon)
@@ -48,7 +47,6 @@ struct ContentView: View {
         .buttonStyle(.bordered)
     }
 }
-
 
 func getTopWindow() -> UIWindow? {
     let windowScene = UIApplication
