@@ -47,20 +47,3 @@ struct ContentView: View {
         .buttonStyle(.bordered)
     }
 }
-
-func getTopWindow() -> UIWindow? {
-    let windowScene = UIApplication
-        .shared
-        .connectedScenes
-        .first(where: { $0.activationState == .foregroundActive }) as? UIWindowScene
-    let window = windowScene?.keyWindow
-    return window
-}
-
-func emitConfetti(with confettiView: ConfettiView) {
-    guard let window = getTopWindow() else {
-        return
-    }
-    window.rootViewController?.view.superview?.addSubview(confettiView)
-    confettiView.emit()
-}

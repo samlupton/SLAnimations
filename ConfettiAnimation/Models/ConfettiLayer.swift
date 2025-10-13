@@ -27,6 +27,7 @@ final class ConfettiLayer: CAEmitterLayer {
     /// Configures the emitter layer
     /// - Parameters
     ///     - configuration: The configuration model used to set up the emitter layer
+    ///     - window: The window in which the confetti should launch.
     private func configure(with configuration: EmitterLayerConfiguration, for window: UIWindow?) {
         emitterPosition = getPosition(for: configuration.emitterPosition, with: window)
         birthRate = configuration.birthRate

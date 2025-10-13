@@ -17,7 +17,7 @@ struct RocketPropulsion: EmitterLayerConfiguration {
     var needsDisplayOnBoundsChange: Bool = true
     var cellConfiguration: ParticleCell = RocketPropulsionCell()
     var content: [UIImage] {
-        ConfettiImageRenderer().getFireParticles(scale: 1)
+        ConfettiImageRenderer().getFireParticles(scale: 1.0)
     }
     
     func getAnimation() -> CABasicAnimation {
@@ -32,7 +32,7 @@ struct RocketPropulsion: EmitterLayerConfiguration {
 }
 
 private struct RocketPropulsionCell: ParticleCell {
-    var birthRate: Float = 10000
+    var birthRate: Float = 1000
     var lifetime: Float = 0.025
     var velocity: CGFloat = 600
     var emissionLongitude: CGFloat = .pi / 2
