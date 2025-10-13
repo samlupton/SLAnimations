@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SLAnimations
 
 struct ContentView: View {
     let rightConfettiCannonView = ConfettiView(configuration: .rightCannon)

@@ -7,14 +7,14 @@
 
 import UIKit
 
-class ConfettiView: UIView {
+public class ConfettiView: UIView {
     
     private let configuration: ConfettiConfiguration
     
     /// Creates a instance of ConfettiView
     /// - Parameters:
     ///     - configuration: Configures the ConfettiView instance
-    init(configuration: ConfettiConfiguration) {
+    public init(configuration: ConfettiConfiguration) {
         self.configuration = configuration
         super.init(frame: .zero)
     }

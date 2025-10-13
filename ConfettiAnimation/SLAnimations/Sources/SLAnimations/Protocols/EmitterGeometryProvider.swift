@@ -7,6 +7,7 @@
 
 import UIKit
 
+@MainActor
 protocol EmitterGeometryProvider {
     /// Returns the position for the emitter layer based the window context
     /// - Parameters:

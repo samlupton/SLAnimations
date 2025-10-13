@@ -7,7 +7,7 @@
 
 import CoreFoundation
 
-protocol ParticleCell {
+public protocol ParticleCell {
     var birthRate: Float { get }
     var lifetime: Float { get }
     var velocity: CGFloat { get }

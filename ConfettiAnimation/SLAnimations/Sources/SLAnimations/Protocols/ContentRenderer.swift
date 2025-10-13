@@ -8,6 +8,7 @@
 import QuartzCore
 import UIKit
 
+@MainActor
 protocol ContentRenderer {
     func makeCell(content: UIImage, with configuration: ParticleCell) -> CAEmitterCell
 }

@@ -5,13 +5,14 @@
 //  Created by Samuel Lupton on 10/1/25.
 //
 
-enum ConfettiConfiguration {
+@MainActor
+public enum ConfettiConfiguration {
     case rightCannon
     case leftCannon
     case shower
     case rocket
     
-    var model: EmitterLayerConfiguration {
+    public var model: EmitterLayerConfiguration {
         switch self {
         case .rightCannon:
             RightConfettiCannons()

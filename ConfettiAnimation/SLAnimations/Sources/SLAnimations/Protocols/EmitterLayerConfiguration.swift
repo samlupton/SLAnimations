@@ -8,7 +8,8 @@
 import QuartzCore
 import UIKit
 
-protocol EmitterLayerConfiguration {
+@MainActor
+public protocol EmitterLayerConfiguration {
     /// The position of the emitter layer in its parent coordinate space.
     var emitterPosition: EmitterPosition { get set }
     

@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct FirePeice: View {
+    
     let color: Color
     let scale: Double
 

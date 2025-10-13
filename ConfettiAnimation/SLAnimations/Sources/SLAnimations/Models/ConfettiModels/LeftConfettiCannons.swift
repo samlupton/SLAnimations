@@ -1,5 +1,5 @@
 //
-//  RightConfettiCannons.swift
+//  LeftConfettiCannons.swift
 //  ConfettiAnimation
 //
 //  Created by Samuel Lupton on 10/11/25.
@@ -7,15 +7,16 @@
 
 import SwiftUI
 
-struct RightConfettiCannons: EmitterLayerConfiguration {
-    var emitterPosition: EmitterPosition = .trailing
+@MainActor
+struct LeftConfettiCannons: EmitterLayerConfiguration {
+    var emitterPosition: EmitterPosition = .leading
     var emitterShape: CAEmitterLayerEmitterShape = .point
     var emitterMode: CAEmitterLayerEmitterMode = .points
     var emitterSize: CGSize = .zero
     var birthRate: Float = 1
     var lifetime: Float = 5
     var needsDisplayOnBoundsChange: Bool = true
-    var cellConfiguration: ParticleCell = RightCannonCell()
+    var cellConfiguration: ParticleCell = LeftCannonCell()
     var content: [UIImage] {
         ConfettiImageRenderer().getConfettiParticles(scale: 15.0)
     }
@@ -31,11 +32,11 @@ struct RightConfettiCannons: EmitterLayerConfiguration {
     }
 }
 
-private struct RightCannonCell: ParticleCell {
+private struct LeftCannonCell: ParticleCell {
     var birthRate: Float = 10
     var lifetime: Float = 5
     var velocity: CGFloat = 200
-    var emissionLongitude: CGFloat = 5 * .pi / 4
+    var emissionLongitude: CGFloat = -1 * .pi / 4
     var emissionRange: CGFloat = .pi / 8
     var spin: CGFloat = .pi
     var spinRange: CGFloat = 4 * .pi

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CF0C85402E9C90700056CD18 /* SLAnimations in Frameworks */ = {isa = PBXBuildFile; productRef = CF0C853F2E9C90700056CD18 /* SLAnimations */; };
 		CF1B867F2E8DF1D700513756 /* FJComponents in Frameworks */ = {isa = PBXBuildFile; productRef = CF1B867E2E8DF1D700513756 /* FJComponents */; };
 		CF1B86AF2E919F2400513756 /* AsyncAlgorithms in Frameworks */ = {isa = PBXBuildFile; productRef = CF1B86AE2E919F2400513756 /* AsyncAlgorithms */; };
 /* End PBXBuildFile section */
@@ -15,9 +16,22 @@
 		CF0039422E85666E00E30FCB /* ConfettiAnimation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ConfettiAnimation.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		CF0C853D2E9C8FDC0056CD18 /* Exceptions for "ConfettiAnimation" folder in "ConfettiAnimation" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				SLAnimations,
+			);
+			target = CF0039412E85666E00E30FCB /* ConfettiAnimation */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		CF0039442E85666E00E30FCB /* ConfettiAnimation */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				CF0C853D2E9C8FDC0056CD18 /* Exceptions for "ConfettiAnimation" folder in "ConfettiAnimation" target */,
+			);
 			path = ConfettiAnimation;
 			sourceTree = "<group>";
 		};
@@ -30,6 +44,7 @@
 			files = (
 				CF1B867F2E8DF1D700513756 /* FJComponents in Frameworks */,
 				CF1B86AF2E919F2400513756 /* AsyncAlgorithms in Frameworks */,
+				CF0C85402E9C90700056CD18 /* SLAnimations in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -40,6 +55,7 @@
 			isa = PBXGroup;
 			children = (
 				CF0039442E85666E00E30FCB /* ConfettiAnimation */,
+				CF0C853E2E9C90700056CD18 /* Frameworks */,
 				CF0039432E85666E00E30FCB /* Products */,
 			);
 			sourceTree = "<group>";
@@ -50,6 +66,13 @@
 				CF0039422E85666E00E30FCB /* ConfettiAnimation.app */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		CF0C853E2E9C90700056CD18 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -74,6 +97,7 @@
 			packageProductDependencies = (
 				CF1B867E2E8DF1D700513756 /* FJComponents */,
 				CF1B86AE2E919F2400513756 /* AsyncAlgorithms */,
+				CF0C853F2E9C90700056CD18 /* SLAnimations */,
 			);
 			productName = ConfettiAnimation;
 			productReference = CF0039422E85666E00E30FCB /* ConfettiAnimation.app */;
@@ -274,6 +298,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -306,6 +331,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -365,6 +391,10 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		CF0C853F2E9C90700056CD18 /* SLAnimations */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = SLAnimations;
+		};
 		CF1B867E2E8DF1D700513756 /* FJComponents */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = FJComponents;

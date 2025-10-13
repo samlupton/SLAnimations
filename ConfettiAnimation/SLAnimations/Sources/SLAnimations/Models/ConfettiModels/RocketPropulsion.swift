@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+@MainActor
 struct RocketPropulsion: EmitterLayerConfiguration {
     var emitterPosition: EmitterPosition = .center
     var emitterShape: CAEmitterLayerEmitterShape = .point

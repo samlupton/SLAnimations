@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+@MainActor
 struct ConfettiImageRenderer {
     private let confettiColors: [Color] = [
         Color(red: 1.00, green: 0.42, blue: 0.42),

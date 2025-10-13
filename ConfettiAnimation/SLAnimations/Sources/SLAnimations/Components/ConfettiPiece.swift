@@ -10,7 +10,6 @@ import SwiftUI
 struct ConfettiPiece: View {
     
     let color: Color
-
     let scale: Double
     
     init(color: Color, scale: Double) {

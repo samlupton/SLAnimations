@@ -7,7 +7,8 @@
 
 import UIKit
 
-func getTopWindow() -> UIWindow? {
+@MainActor
+private func getTopWindow() -> UIWindow? {
     let windowScene = UIApplication
         .shared
         .connectedScenes
@@ -16,7 +17,8 @@ func getTopWindow() -> UIWindow? {
     return window
 }
 
-func emitConfetti(with confettiView: ConfettiView) {
+@MainActor
+public func emitConfetti(with confettiView: ConfettiView) {
     guard let window = getTopWindow() else {
         return
     }

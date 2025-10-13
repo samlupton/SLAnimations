@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+@MainActor
 struct ConfettiShower: EmitterLayerConfiguration {
     var emitterPosition: EmitterPosition = .top
     var emitterShape: CAEmitterLayerEmitterShape = .line

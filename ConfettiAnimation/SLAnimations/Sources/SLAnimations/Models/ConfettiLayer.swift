@@ -8,6 +8,7 @@
 import QuartzCore
 import UIKit
 
+@MainActor
 final class ConfettiLayer: CAEmitterLayer {
 
     private let configuration: EmitterLayerConfiguration
