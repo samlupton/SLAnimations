@@ -17,10 +17,7 @@ struct RocketPropulsion: EmitterLayerConfiguration {
     var needsDisplayOnBoundsChange: Bool = true
     var cellConfiguration: ParticleCell = RocketPropulsionCell()
     var content: [UIImage] {
-        [.fire2, .fire3, .fire4]
-            .compactMap { image in
-                UIImage(resource: image)
-            }
+        ConfettiImageRenderer().getFireParticles(scale: 1)
     }
     
     func getAnimation() -> CABasicAnimation {
