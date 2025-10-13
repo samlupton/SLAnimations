@@ -7,7 +7,8 @@
 
 import QuartzCore
 import UIKit
- 
+
+// MARK: Emitter layer content renderer
 extension ConfettiLayer: ContentRenderer {
     /// Creates and configures a `CAEmitterCell`.
     /// - Parameters:
@@ -33,3 +34,27 @@ extension ConfettiLayer: ContentRenderer {
     }
 }
 
+// MARK: Position handling function
+extension ConfettiLayer: EmitterGeometryProvider {
+    func getPosition(for position: EmitterPosition, with window: UIWindow?) -> CGPoint {
+        guard
+            let window = window,
+            let windowScene = window.windowScene
+        else {
+            return CGPoint(x: 0, y: 0)
+        }
+        
+        switch position {
+        case .top:
+            return CGPoint(x: windowScene.screen.bounds.width / 2, y: 0)
+        case .leading:
+            return CGPoint(x: 0, y: windowScene.screen.bounds.height / 2)
+        case .trailing:
+            return CGPoint(x: windowScene.screen.bounds.width, y: windowScene.screen.bounds.height / 2)
+        case .bottom:
+            return CGPoint(x: windowScene.screen.bounds.width, y: windowScene.screen.bounds.height)
+        case .center:
+            return CGPoint(x: windowScene.screen.bounds.width / 2, y: windowScene.screen.bounds.height / 2)
+        }
+    }
+}
