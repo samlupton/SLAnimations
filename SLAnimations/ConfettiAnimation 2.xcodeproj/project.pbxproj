@@ -6,8 +6,15 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		CF0C85402E9C90700056CD18 /* SLAnimations in Frameworks */ = {isa = PBXBuildFile; productRef = CF0C853F2E9C90700056CD18 /* SLAnimations */; };
+		CF1B867F2E8DF1D700513756 /* FJComponents in Frameworks */ = {isa = PBXBuildFile; productRef = CF1B867E2E8DF1D700513756 /* FJComponents */; };
+		CF1B86AF2E919F2400513756 /* AsyncAlgorithms in Frameworks */ = {isa = PBXBuildFile; productRef = CF1B86AE2E919F2400513756 /* AsyncAlgorithms */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		CF0039422E85666E00E30FCB /* ConfettiAnimation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ConfettiAnimation.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		CF9BC5282EA08EE500F58DFC /* SLAnimations */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = SLAnimations; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -23,6 +30,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CF1B867F2E8DF1D700513756 /* FJComponents in Frameworks */,
+				CF1B86AF2E919F2400513756 /* AsyncAlgorithms in Frameworks */,
+				CF0C85402E9C90700056CD18 /* SLAnimations in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -32,6 +42,7 @@
 		CF0039392E85666E00E30FCB = {
 			isa = PBXGroup;
 			children = (
+				CF9BC5282EA08EE500F58DFC /* SLAnimations */,
 				CF0039442E85666E00E30FCB /* ConfettiAnimation */,
 				CF0C853E2E9C90700056CD18 /* Frameworks */,
 				CF0039432E85666E00E30FCB /* Products */,
@@ -73,6 +84,9 @@
 			);
 			name = ConfettiAnimation;
 			packageProductDependencies = (
+				CF1B867E2E8DF1D700513756 /* FJComponents */,
+				CF1B86AE2E919F2400513756 /* AsyncAlgorithms */,
+				CF0C853F2E9C90700056CD18 /* SLAnimations */,
 			);
 			productName = ConfettiAnimation;
 			productReference = CF0039422E85666E00E30FCB /* ConfettiAnimation.app */;
@@ -104,6 +118,7 @@
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
 				CF1B867D2E8DF1D700513756 /* XCLocalSwiftPackageReference "../../Desktop/FJComponents" */,
+				CF1B86AD2E919F2400513756 /* XCRemoteSwiftPackageReference "swift-async-algorithms" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = CF0039432E85666E00E30FCB /* Products */;
@@ -352,6 +367,33 @@
 			relativePath = ../../Desktop/FJComponents;
 		};
 /* End XCLocalSwiftPackageReference section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		CF1B86AD2E919F2400513756 /* XCRemoteSwiftPackageReference "swift-async-algorithms" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/apple/swift-async-algorithms.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.4;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		CF0C853F2E9C90700056CD18 /* SLAnimations */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = SLAnimations;
+		};
+		CF1B867E2E8DF1D700513756 /* FJComponents */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = FJComponents;
+		};
+		CF1B86AE2E919F2400513756 /* AsyncAlgorithms */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CF1B86AD2E919F2400513756 /* XCRemoteSwiftPackageReference "swift-async-algorithms" */;
+			productName = AsyncAlgorithms;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = CF00393A2E85666E00E30FCB /* Project object */;
 }
