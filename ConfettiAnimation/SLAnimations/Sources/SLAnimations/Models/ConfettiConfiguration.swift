@@ -11,6 +11,8 @@ public enum ConfettiConfiguration {
     case leftCannon
     case shower
     case rocket
+    case stars
+    case snow
     
     public var model: EmitterLayerConfiguration {
         switch self {
@@ -22,6 +24,10 @@ public enum ConfettiConfiguration {
             ConfettiShower()
         case .rocket:
             RocketPropulsion()
+        case .stars:
+            StarShower()
+        case .snow:
+            SnowyNight()
         }
     }
 }

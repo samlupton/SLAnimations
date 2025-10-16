@@ -13,7 +13,8 @@ struct ContentView: View {
     let leftConfettiCannonView = ConfettiView(configuration: .leftCannon)
     let confettiShowerView = ConfettiView(configuration: .shower)
     let rocketView = ConfettiView(configuration: .rocket)
-    
+    let starsView = ConfettiView(configuration: .stars)
+    let snowView = ConfettiView(configuration: .snow)
     var body: some View {
         Spacer()
         Button {
@@ -42,9 +43,27 @@ struct ContentView: View {
             let impactEngine = UIImpactFeedbackGenerator(style: .heavy)
             impactEngine.impactOccurred()
             emitConfetti(with: rocketView)
+            emitConfetti(with: starsView)
         } label: {
-            Text("Activate RocketView")
+            Text("Activate Stary Night")
         }
         .buttonStyle(.bordered)
+        
+        Button {
+            let impactEngine = UIImpactFeedbackGenerator(style: .heavy)
+            impactEngine.impactOccurred()
+            emitConfetti(with: snowView)
+        } label: {
+            Text("Activate Snowy Night")
+        }
+        .buttonStyle(.bordered)
+//        Button {
+//            let impactEngine = UIImpactFeedbackGenerator(style: .heavy)
+//            impactEngine.impactOccurred()
+//            emitConfetti(with: starsView)
+//        } label: {
+//            Text("Activate Stars View")
+//        }
+//        .buttonStyle(.bordered)
     }
 }

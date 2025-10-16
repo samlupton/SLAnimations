@@ -37,7 +37,17 @@ public protocol EmitterLayerConfiguration {
     /// Array of images used as the visual content for the particles.
     var content: [UIImage] { get }
     
+    /// Creates an array of subview to be added to the layers parent view
+    /// - Returns: An array of `UIView`
+    func getSubViews() -> [UIView]
+    
     /// Generates a basic animation to be applied to the emitter layer.
     /// - Returns: A `CABasicAnimation` configured for the emitter's properties.
     func getAnimation() -> CABasicAnimation
+}
+
+extension EmitterLayerConfiguration {
+    func getSubViews() -> [UIView] {
+        []
+    }
 }

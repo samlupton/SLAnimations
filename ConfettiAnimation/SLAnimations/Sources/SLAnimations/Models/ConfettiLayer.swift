@@ -19,6 +19,7 @@ final class ConfettiLayer: CAEmitterLayer {
     init(configuration: EmitterLayerConfiguration) {
         self.configuration = configuration
         super.init()
+        seed = UInt32.random(in: 0...UInt32.max)
     }
     
     required init?(coder: NSCoder) {

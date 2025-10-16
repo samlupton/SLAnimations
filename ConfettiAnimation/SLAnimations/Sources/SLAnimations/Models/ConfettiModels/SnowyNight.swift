@@ -1,5 +1,13 @@
 //
-//  RocketPropulsion.swift
+//  StarShower 2.swift
+//  SLAnimations
+//
+//  Created by Samuel Lupton on 10/14/25.
+//
+
+
+//
+//  StarShower.swift
 //  ConfettiAnimation
 //
 //  Created by Samuel Lupton on 10/11/25.
@@ -8,17 +16,17 @@
 import SwiftUI
 
 @MainActor
-struct RocketPropulsion: EmitterLayerConfiguration {
-    var emitterPosition: EmitterPosition = .center
+struct SnowyNight: EmitterLayerConfiguration {
+    var emitterPosition: EmitterPosition = .top
     var emitterShape: CAEmitterLayerEmitterShape = .line
     var emitterMode: CAEmitterLayerEmitterMode = .surface
-    var emitterSize = CGSize(width: 13, height: 0)
+    var emitterSize = CGSize(width: UIScreen.main.bounds.width, height: 0)
     var birthRate: Float = 0
-    var lifetime: Float = 5
+    var lifetime: Float = 20
     var needsDisplayOnBoundsChange: Bool = true
-    var cellConfiguration: ParticleCell = RocketPropulsionCell()
+    var cellConfiguration: ParticleCell = SnowCell()
     var content: [UIImage] {
-        ConfettiImageRenderer().getFireParticles(scale: 1.0)
+        [UIImage(resource: .snow)]
     }
     
     func getAnimation() -> CABasicAnimation {
@@ -32,15 +40,15 @@ struct RocketPropulsion: EmitterLayerConfiguration {
     }
 }
 
-private struct RocketPropulsionCell: ParticleCell {
-    var birthRate: Float = 10000
-    var lifetime: Float = 0.025
-    var velocity: CGFloat = 600
+private struct SnowCell: ParticleCell {
+    var birthRate: Float = 50
+    var lifetime: Float = 120
+    var velocity: CGFloat = 50
     var emissionLongitude: CGFloat = .pi
-    var emissionRange: CGFloat = .pi / 32
-    var spin: CGFloat = 0
-    var spinRange: CGFloat = 0
+    var emissionRange: CGFloat = 0
+    var spin: CGFloat = .pi / 2
+    var spinRange: CGFloat = .pi / 2
     var yAcceleration: CGFloat = 0
-    var scale: CGFloat = 0.5
-    var scaleRange: CGFloat = 0.999
+    var scale: CGFloat = 0.01
+    var scaleRange: CGFloat = 0.1
 }

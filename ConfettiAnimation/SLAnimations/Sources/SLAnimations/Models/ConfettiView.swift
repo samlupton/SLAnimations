@@ -26,7 +26,15 @@ public class ConfettiView: UIView {
     /// Creates and emits confetti particles
     func emit() {
         let confettiLayer = ConfettiLayer(configuration: configuration.model)
-        self.layer.addSublayer(confettiLayer)
+        layer.addSublayer(confettiLayer)
         confettiLayer.emit(in: window)
+        addSubViews()
+    }
+    
+    private func addSubViews() {
+        for uiView in configuration.model.getSubViews() {
+            addSubview(uiView)
+        }
     }
 }
+
