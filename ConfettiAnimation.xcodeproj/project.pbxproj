@@ -14,24 +14,12 @@
 
 /* Begin PBXFileReference section */
 		CF0039422E85666E00E30FCB /* ConfettiAnimation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ConfettiAnimation.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		CF9BC5282EA08EE500F58DFC /* SLAnimations */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = SLAnimations; sourceTree = "<group>"; };
 /* End PBXFileReference section */
-
-/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		CF0C853D2E9C8FDC0056CD18 /* Exceptions for "ConfettiAnimation" folder in "ConfettiAnimation" target */ = {
-			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
-			membershipExceptions = (
-				SLAnimations,
-			);
-			target = CF0039412E85666E00E30FCB /* ConfettiAnimation */;
-		};
-/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		CF0039442E85666E00E30FCB /* ConfettiAnimation */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			exceptions = (
-				CF0C853D2E9C8FDC0056CD18 /* Exceptions for "ConfettiAnimation" folder in "ConfettiAnimation" target */,
-			);
 			path = ConfettiAnimation;
 			sourceTree = "<group>";
 		};
@@ -54,6 +42,7 @@
 		CF0039392E85666E00E30FCB = {
 			isa = PBXGroup;
 			children = (
+				CF9BC5282EA08EE500F58DFC /* SLAnimations */,
 				CF0039442E85666E00E30FCB /* ConfettiAnimation */,
 				CF0C853E2E9C90700056CD18 /* Frameworks */,
 				CF0039432E85666E00E30FCB /* Products */,
