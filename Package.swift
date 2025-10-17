@@ -27,6 +27,41 @@ import PackageDescription
 //        ),
 //    ]
 //)
+//
+//// swift-tools-version: 6.2
+//import PackageDescription
+//
+//let package = Package(
+//    name: "SLAnimations",
+//    platforms: [
+//        .iOS(.v17)
+//    ],
+//    products: [
+//        .library(
+//            name: "SLAnimations",
+//            targets: ["SLAnimations"]
+//        ),
+//        .executable(
+//            name: "Example",
+//            targets: ["Example"]
+//        )
+//    ],
+//    targets: [
+//        .target(
+//            name: "SLAnimations",
+//            path: "SLAnimations/Sources"
+//        ),
+//        .executableTarget(
+//            name: "Example",
+//            dependencies: ["SLAnimations"]
+//        ),
+//        .testTarget(
+//            name: "SLAnimationsTests",
+//            dependencies: ["SLAnimations"],
+//            path: "SLAnimations/Tests"
+//        )
+//    ]
+//)
 
 // swift-tools-version: 6.2
 import PackageDescription
@@ -40,12 +75,21 @@ let package = Package(
         .library(
             name: "SLAnimations",
             targets: ["SLAnimations"]
+        ),
+        .executable(
+            name: "Example",
+            targets: ["Example"]
         )
     ],
     targets: [
         .target(
             name: "SLAnimations",
-            path: "SLAnimations/Sources"
+            path: "SLAnimations/Sources/SLAnimations"
+        ),
+        .executableTarget(
+            name: "Example",
+            dependencies: ["SLAnimations"],
+            path: "Example/"
         ),
         .testTarget(
             name: "SLAnimationsTests",

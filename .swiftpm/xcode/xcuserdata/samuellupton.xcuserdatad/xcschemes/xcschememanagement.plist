@@ -4,10 +4,49 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>SLAnimations.xcscheme_^#shared#^_</key>
+		<key>ConfettiAnimation.xcscheme_^#shared#^_</key>
 		<dict>
+			<key>isShown</key>
+			<true/>
+			<key>orderHint</key>
+			<integer>1</integer>
+		</dict>
+		<key>SLAnimations-Package.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>isShown</key>
+			<true/>
 			<key>orderHint</key>
 			<integer>0</integer>
+		</dict>
+		<key>SLAnimations.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>isShown</key>
+			<true/>
+			<key>orderHint</key>
+			<integer>3</integer>
+		</dict>
+	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict>
+		<key>ConfettiAnimation</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>Example</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>SLAnimations</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>SLAnimationsTests</key>
+		<dict>
+			<key>primary</key>
+			<true/>
 		</dict>
 	</dict>
 </dict>
