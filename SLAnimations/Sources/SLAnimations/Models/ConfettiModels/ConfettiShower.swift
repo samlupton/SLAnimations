@@ -33,14 +33,14 @@ struct ConfettiShower: EmitterLayerConfiguration {
 }
 
 private struct ShowerCell: ParticleCell {
-    var birthRate: Float = 100
-    var lifetime: Float = 5
+    var birthRate: Float = 50
+    var lifetime: Float = 10
     var velocity: CGFloat = 200
     var emissionLongitude: CGFloat = .pi
     var emissionRange: CGFloat = .pi / 4
     var spin: CGFloat = .pi
     var spinRange: CGFloat = 2 * .pi
     var yAcceleration: CGFloat = 400
-    var scale: CGFloat = 0.5
-    var scaleRange: CGFloat = 0.75
+    var scale: CGFloat = 1.0
+    var scaleRange: CGFloat = 0.25
 }
