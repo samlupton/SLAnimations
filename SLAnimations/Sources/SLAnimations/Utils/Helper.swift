@@ -43,6 +43,7 @@ public func emitConfetti(with confettiView: ConfettiView) {
     guard let window = getTopWindow() else {
         return
     }
+    confettiView.isUserInteractionEnabled = false
     window.rootViewController?.view.superview?.addSubview(confettiView)
     confettiView.emit()
 }
