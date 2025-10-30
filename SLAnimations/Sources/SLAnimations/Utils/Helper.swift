@@ -5,28 +5,29 @@
 //  Created by Samuel Lupton on 10/12/25.
 //
 
-//import UIKit
-//
+import UIKit
+
 @MainActor
-private func getTopWindow() -> UIWindow? {
-    let windowScenes = UIApplication.shared.connectedScenes
+private func getTopWindow(at level: UIWindow.Level = .normal) -> UIWindow? {
+    let windowScenes = UIApplication
+        .shared
+        .connectedScenes
         .compactMap { $0 as? UIWindowScene }
         .filter { $0.activationState == .foregroundActive }
 
     return windowScenes
         .flatMap { $0.windows }
-        .last { $0.isKeyWindow || $0.windowLevel == .normal }
+        .last { $0.isKeyWindow || $0.windowLevel == level }
 }
-//
-//@MainActor
-//public func emitConfetti(with confettiView: ConfettiView) {
-//    guard let window = getTopWindow() else { return }
-//    confettiView.frame = window.bounds
-//    window.addSubview(confettiView)
-//    confettiView.emit()
-//}
 
-import UIKit
+@MainActor
+public func emitConfetti(with confettiView: ConfettiView) {
+    guard let window = getTopWindow() else { return }
+    confettiView.frame = window.bounds
+    confettiView.isUserInteractionEnabled = false
+    window.addSubview(confettiView)
+    confettiView.emit()
+}
 
 //@MainActor
 //private func getTopWindow() -> UIWindow? {
@@ -38,12 +39,12 @@ import UIKit
 //    return window
 //}
 
-@MainActor
-public func emitConfetti(with confettiView: ConfettiView) {
-    guard let window = getTopWindow() else {
-        return
-    }
-    confettiView.isUserInteractionEnabled = false
-    window.rootViewController?.view.superview?.addSubview(confettiView)
-    confettiView.emit()
-}
+//@MainActor
+//public func emitConfetti(with confettiView: ConfettiView) {
+//    guard let window = getTopWindow() else {
+//        return
+//    }
+//    confettiView.isUserInteractionEnabled = false
+//    window.rootViewController?.view.superview?.addSubview(confettiView)
+//    confettiView.emit()
+//}

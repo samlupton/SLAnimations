@@ -6,17 +6,17 @@
 //
 import SwiftUI
 
-struct ConfettiViewRepresentable: UIViewRepresentable {
+public struct ConfettiViewRepresentable: UIViewRepresentable {
     
     let confettiView: ConfettiView
     
-    init(confettiView: ConfettiView) {
+    public init(confettiView: ConfettiView) {
         self.confettiView = confettiView
     }
     
-    func makeUIView(context: Context) -> ConfettiView {
+    public func makeUIView(context: Context) -> ConfettiView {
         confettiView
     }
     
-    func updateUIView(_ uiView: ConfettiView, context: Context) {}
+    public func updateUIView(_ uiView: ConfettiView, context: Context) {}
 }
