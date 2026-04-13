@@ -8,19 +8,12 @@
 import UIKit
 
 public class ConfettiView: UIView {
+
+    let configuration: EmitterLayerConfiguration
     
-    private let configuration: EmitterLayerConfiguration
-    
-    /// Creates a instance of ConfettiView
-    /// - Parameters:
-    ///     - configuration: Configures the ConfettiView instance
-    public init(configuration: EmitterLayerConfiguration) {
+    init(configuration: EmitterLayerConfiguration) {
         self.configuration = configuration
-        super.init(frame: .zero)
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        super.init()
     }
     
     /// Creates and emits confetti particles

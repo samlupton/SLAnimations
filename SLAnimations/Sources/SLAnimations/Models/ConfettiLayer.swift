@@ -36,6 +36,7 @@ final class ConfettiLayer: CAEmitterLayer {
         with configuration: EmitterLayerConfiguration,
         in window: UIWindow?
     ) {
+        seed = UInt32.random(in: 0...UInt32.max)
         emitterPosition = getPosition(for: configuration.emitterPosition, with: window)
         birthRate = configuration.birthRate
         lifetime = configuration.lifetime
