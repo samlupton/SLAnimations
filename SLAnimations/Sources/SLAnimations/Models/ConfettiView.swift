@@ -10,12 +10,16 @@ import UIKit
 public class ConfettiView: UIView {
 
     let configuration: EmitterLayerConfiguration
-    
+
     init(configuration: EmitterLayerConfiguration) {
         self.configuration = configuration
         super.init()
     }
-    
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
     /// Creates and emits confetti particles
     public func emit() {
         let confettiLayer = ConfettiLayer(configuration: configuration)
