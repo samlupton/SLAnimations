@@ -4,6 +4,7 @@
 //
 //  Created by Samuel Lupton on 10/9/25.
 //
+
 import SwiftUI
 
 public struct ConfettiViewRepresentable: UIViewRepresentable {
@@ -15,7 +16,7 @@ public struct ConfettiViewRepresentable: UIViewRepresentable {
     }
     
     public func makeUIView(context: Context) -> ConfettiView {
-        confettiView
+        return confettiView
     }
     
     public func updateUIView(_ uiView: ConfettiView, context: Context) {}

@@ -1,33 +1,24 @@
+////
+////  ConfettiModels.swift
+////  ConfettiAnimation
+////
+////  Created by Samuel Lupton on 10/1/25.
+////
 //
-//  ConfettiModels.swift
-//  ConfettiAnimation
-//
-//  Created by Samuel Lupton on 10/1/25.
-//
-
-@MainActor
-public enum ConfettiConfiguration {
-    case rightCannon
-    case leftCannon
-    case shower
-    case rocket
-    case stars
-    case snow
-    
-    public var model: EmitterLayerConfiguration {
-        switch self {
-        case .rightCannon:
-            RightConfettiCannons()
-        case .leftCannon:
-            LeftConfettiCannons()
-        case .shower:
-            ConfettiShower()
-        case .rocket:
-            RocketPropulsion()
-        case .stars:
-            StarShower()
-        case .snow:
-            SnowyNight()
-        }
-    }
-}
+//@MainActor
+//public enum ConfettiConfiguration {
+//    case rightCannon
+//    case leftCannon
+//    case shower
+//    
+//    public var model: EmitterLayerConfiguration {
+//        switch self {
+//        case .rightCannon:
+//            RightConfettiCannons()
+//        case .leftCannon:
+//            LeftConfettiCannons()
+//        case .shower:
+//            ConfettiShower()
+//        }
+//    }
+//}

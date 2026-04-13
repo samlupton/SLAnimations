@@ -12,21 +12,12 @@ let package = Package(
         .library(
             name: "SLAnimations",
             targets: ["SLAnimations"]
-        ),
-        .executable(
-            name: "Example",
-            targets: ["Example"]
         )
     ],
     targets: [
         .target(
             name: "SLAnimations",
             path: "SLAnimations/Sources/SLAnimations"
-        ),
-        .executableTarget(
-            name: "Example",
-            dependencies: ["SLAnimations"],
-            path: "Example/"
         ),
         .testTarget(
             name: "SLAnimationsTests",

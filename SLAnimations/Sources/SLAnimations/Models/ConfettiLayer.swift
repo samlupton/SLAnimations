@@ -15,7 +15,9 @@ final class ConfettiLayer: CAEmitterLayer {
     
     /// Configures a ConfettiLayer
     /// - Parameters:
-    ///     - configuration: The configuration model used to set up the emitter layer
+    ///     - configuration: The configuration model used to set up the emitter layer.
+    ///
+    /// - Note: Every instance has a unique seed. This randomizes the particles.
     init(configuration: EmitterLayerConfiguration) {
         self.configuration = configuration
         super.init()
@@ -30,7 +32,10 @@ final class ConfettiLayer: CAEmitterLayer {
     /// - Parameters
     ///     - configuration: The configuration model used to set up the emitter layer
     ///     - window: The window in which the confetti should launch.
-    private func configure(with configuration: EmitterLayerConfiguration, for window: UIWindow?) {
+    private func configure(
+        with configuration: EmitterLayerConfiguration,
+        in window: UIWindow?
+    ) {
         emitterPosition = getPosition(for: configuration.emitterPosition, with: window)
         birthRate = configuration.birthRate
         lifetime = configuration.lifetime
@@ -45,7 +50,7 @@ final class ConfettiLayer: CAEmitterLayer {
     
     /// Begins the process of emitting particles by configuring the layer and adding an animation to the layer
     func emit(in window: UIWindow?) {
-        configure(with: configuration, for: window)
+        configure(with: configuration, in: window)
         add(configuration.getAnimation(), forKey: UUID().uuidString)
     }
 }

@@ -13,5 +13,5 @@ protocol EmitterGeometryProvider {
     /// - Parameters:
     ///     - position: The postion of the emitter layer
     ///     - window: The window of which the emitter layer will be used in
-    func getPosition(for position: EmitterPosition, with window: UIWindow?) -> CGPoint
+//    func getPosition(for position: EmitterPosition, with window: UIWindow?) -> CGPoint
 }

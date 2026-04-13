@@ -8,8 +8,7 @@
 import SwiftUI
 
 // MARK: Confetti Particles
-@MainActor
-struct ConfettiImageRenderer {
+public struct ConfettiImageRenderer: Sendable {
     private let confettiColors: [Color] = [
         Color(red: 1.00, green: 0.42, blue: 0.42),
         Color(red: 1.00, green: 0.85, blue: 0.24),
@@ -20,45 +19,21 @@ struct ConfettiImageRenderer {
         Color(red: 1.00, green: 0.71, blue: 0.91),
         Color(red: 0.22, green: 0.69, blue: 0.00)
     ]
+    
+    public init() {}
 
-    func getConfettiParticles(scale: Double = 10.0) -> [UIImage] {
-        var res = [UIImage]()
+    @MainActor public func getConfettiParticles(scale: Double = 10.0) -> [UIImage] {
+        var result: [UIImage] = []
         
         for color in confettiColors {
-            let particle = ConfettiPiece(color: color, scale: scale)
+            let particle = ConfettiParticleView(color: color, scale: scale)
             let renderer = ImageRenderer(content: particle)
             
             if let particle = renderer.uiImage {
-                res.append(particle)
+                result.append(particle)
             }
         }
         
-        return res
-    }
-}
-
-// MARK: Fire Particles
-extension ConfettiImageRenderer {
-    private static let fireColors: [Color] = [
-        Color(red: 1.00, green: 0.80, blue: 0.00),
-        Color(red: 1.00, green: 0.55, blue: 0.00),
-        Color(red: 1.00, green: 0.30, blue: 0.00),
-        Color(red: 0.85, green: 0.10, blue: 0.00),
-        Color(red: 1.00, green: 0.95, blue: 0.00)
-    ]
-    
-    func getFireParticles(scale: Double = 10.0) -> [UIImage] {
-        var res = [UIImage]()
-        
-        for color in ConfettiImageRenderer.fireColors {
-            let particle = FirePeice(color: color, scale: scale)
-            let renderer = ImageRenderer(content: particle)
-            
-            if let particle = renderer.uiImage {
-                res.append(particle)
-            }
-        }
-        
-        return res
+        return result
     }
 }

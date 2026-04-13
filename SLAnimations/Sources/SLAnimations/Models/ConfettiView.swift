@@ -9,12 +9,12 @@ import UIKit
 
 public class ConfettiView: UIView {
     
-    private let configuration: ConfettiConfiguration
+    private let configuration: EmitterLayerConfiguration
     
     /// Creates a instance of ConfettiView
     /// - Parameters:
     ///     - configuration: Configures the ConfettiView instance
-    public init(configuration: ConfettiConfiguration) {
+    public init(configuration: EmitterLayerConfiguration) {
         self.configuration = configuration
         super.init(frame: .zero)
     }
@@ -25,16 +25,9 @@ public class ConfettiView: UIView {
     
     /// Creates and emits confetti particles
     public func emit() {
-        let confettiLayer = ConfettiLayer(configuration: configuration.model)
+        let confettiLayer = ConfettiLayer(configuration: configuration)
         layer.addSublayer(confettiLayer)
         confettiLayer.emit(in: window)
-        addSubViews()
-    }
-    
-    private func addSubViews() {
-        for uiView in configuration.model.getSubViews() {
-            addSubview(uiView)
-        }
     }
 }
 
