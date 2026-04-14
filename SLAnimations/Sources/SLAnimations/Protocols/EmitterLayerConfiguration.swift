@@ -8,7 +8,6 @@
 import QuartzCore
 import UIKit
 
-//@MainActor
 public protocol EmitterLayerConfiguration {
     /// The position of the emitter layer in its parent coordinate space.
     var emitterPosition: EmitterPosition { get set }
@@ -41,4 +40,6 @@ public protocol EmitterLayerConfiguration {
     ///
     /// - Returns: A `CABasicAnimation` configured for the emitter's properties.
     func getAnimation() -> CABasicAnimation
+    
+    func getConfettiParticles() -> [UIImage]
 }
