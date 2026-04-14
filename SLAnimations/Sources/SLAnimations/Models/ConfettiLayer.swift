@@ -8,7 +8,6 @@
 import QuartzCore
 import UIKit
 
-@MainActor
 final class ConfettiLayer: CAEmitterLayer {
 
     private let configuration: EmitterLayerConfiguration
@@ -44,7 +43,9 @@ final class ConfettiLayer: CAEmitterLayer {
         emitterShape = configuration.emitterShape
         emitterMode = configuration.emitterMode
         needsDisplayOnBoundsChange = configuration.needsDisplayOnBoundsChange
-        emitterCells = configuration.content.map { content in
+        
+        let particles = configuration.makeParticles()
+        emitterCells = particles.map { content in
             makeCell(content: content, with: configuration.cellConfiguration)
         }
     }
@@ -59,7 +60,7 @@ final class ConfettiLayer: CAEmitterLayer {
 
 // MARK: - Emitter layer content renderer
 
-extension ConfettiLayer: ContentRenderer {
+extension ConfettiLayer {
     /// Creates and configures a `CAEmitterCell`.
     /// - Parameters:
     ///   - content: The image used as the particle content of the cell.
