@@ -9,14 +9,16 @@ import SwiftUI
 
 public struct ConfettiViewRepresentable: UIViewRepresentable {
     
-    let confettiView: ConfettiView
+    private let configuration: EmitterLayerConfiguration
     
-    public init(confettiView: ConfettiView) {
-        self.confettiView = confettiView
+    public init(configuration: EmitterLayerConfiguration) {
+        self.configuration = configuration
     }
-    
+
     public func makeUIView(context: Context) -> ConfettiView {
-        return confettiView
+        return ConfettiView(
+            configuration: configuration
+        )
     }
     
     public func updateUIView(_ uiView: ConfettiView, context: Context) {}

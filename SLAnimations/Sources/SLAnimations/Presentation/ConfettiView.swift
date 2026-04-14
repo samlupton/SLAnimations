@@ -11,9 +11,10 @@ public class ConfettiView: UIView {
 
     let configuration: EmitterLayerConfiguration
 
-    init(configuration: EmitterLayerConfiguration) {
+    public init(configuration: EmitterLayerConfiguration) {
         self.configuration = configuration
-        super.init()
+        super.init(frame: .zero)
+        emit()
     }
 
     required init?(coder: NSCoder) {
