@@ -1,6 +1,6 @@
 //
 //  ConfettiView.swift
-//  ConfettiAnimation
+//  SharedConfetti
 //
 //  Created by Samuel Lupton on 10/7/25.
 //
@@ -28,7 +28,6 @@ public final class ConfettiView: UIView {
     public init(configuration: EmitterLayerConfiguration) {
         self.configuration = configuration
         super.init(frame: .zero)
-        emit()
     }
 
     @available(*, unavailable)

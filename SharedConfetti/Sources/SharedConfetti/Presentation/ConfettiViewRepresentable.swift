@@ -1,6 +1,6 @@
 //
 //  ConfettiViewRepresentable.swift
-//  ConfettiAnimation
+//  SharedConfetti
 //
 //  Created by Samuel Lupton on 10/9/25.
 //

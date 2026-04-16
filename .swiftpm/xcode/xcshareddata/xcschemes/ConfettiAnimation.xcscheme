@@ -24,9 +24,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "ConfettiAnimation"
-               BuildableName = "ConfettiAnimation"
-               BlueprintName = "ConfettiAnimation"
+               BlueprintIdentifier = "SharedConfetti"
+               BuildableName = "SharedConfetti"
+               BlueprintName = "SharedConfetti"
                ReferencedContainer = "container:">
             </BuildableReference>
          </BuildActionEntry>
@@ -59,9 +59,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "ConfettiAnimation"
-            BuildableName = "ConfettiAnimation"
-            BlueprintName = "ConfettiAnimation"
+            BlueprintIdentifier = "SharedConfetti"
+            BuildableName = "SharedConfetti"
+            BlueprintName = "SharedConfetti"
             ReferencedContainer = "container:">
          </BuildableReference>
       </MacroExpansion>

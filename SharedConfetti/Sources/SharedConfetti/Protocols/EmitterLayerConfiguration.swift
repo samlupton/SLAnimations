@@ -1,12 +1,13 @@
 //
 //  EmitterLayerConfiguration.swift
-//  ConfettiAnimation
+//  SharedConfetti
 //
 //  Created by Samuel Lupton on 10/1/25.
 //
 
 import QuartzCore
 import UIKit
+import SwiftUI
 
 /// A configuration that defines how a `CAEmitterLayer` produces and renders particles.
 ///
@@ -43,17 +44,14 @@ public protocol EmitterLayerConfiguration {
     
     /// Indicates whether the emitter should redraw when its bounds change.
     var needsDisplayOnBoundsChange: Bool { get set }
-    
-    /// Configuration describing the behavior of individual particles.
-    var cellConfiguration: ParticleCell { get set }
-    
-    /// Creates an animation applied to the emitter layer.
+//    a
+    /// Creates an animation that will be applied to a ``CAEmitterLayer``.
     ///
-    /// - Returns: A configured `CABasicAnimation` used to drive emitter behavior.
+    /// - Returns: A configured ``CABasicAnimation`` used to drive emitter behavior.
     func getAnimation() -> CABasicAnimation
     
-    /// Generates the particle images used during emission.
+    /// Creates the cells that will be emitted from a ``CAEmitterLayer``.
     ///
-    /// - Returns: An array of images representing particles.
-    func makeParticles() -> [UIImage]
+    /// - Returns: An array of ``CAEmitterCell``
+    func makeCells() -> [CAEmitterCell]
 }

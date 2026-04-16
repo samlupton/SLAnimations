@@ -15,9 +15,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "ConfettiAnimation"
-               BuildableName = "ConfettiAnimation"
-               BlueprintName = "ConfettiAnimation"
+               BlueprintIdentifier = "SharedConfetti"
+               BuildableName = "SharedConfetti"
+               BlueprintName = "SharedConfetti"
                ReferencedContainer = "container:">
             </BuildableReference>
          </BuildActionEntry>
@@ -29,9 +29,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "SLAnimations"
-               BuildableName = "SLAnimations"
-               BlueprintName = "SLAnimations"
+               BlueprintIdentifier = "SharedConfetti"
+               BuildableName = "SharedConfetti"
+               BlueprintName = "SharedConfetti"
                ReferencedContainer = "container:">
             </BuildableReference>
          </BuildActionEntry>
@@ -62,9 +62,9 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "SLAnimationsTests"
-               BuildableName = "SLAnimationsTests"
-               BlueprintName = "SLAnimationsTests"
+               BlueprintIdentifier = "SharedConfettiTests"
+               BuildableName = "SharedConfettiTests"
+               BlueprintName = "SharedConfettiTests"
                ReferencedContainer = "container:">
             </BuildableReference>
          </TestableReference>

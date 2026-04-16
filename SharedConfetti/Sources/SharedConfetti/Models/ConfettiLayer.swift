@@ -1,6 +1,6 @@
 //
 //  ConfettiLayer.swift
-//  ConfettiAnimation
+//  SharedConfetti
 //
 //  Created by Samuel Lupton on 10/1/25.
 //
@@ -35,7 +35,6 @@ final class ConfettiLayer: CAEmitterLayer {
         with configuration: EmitterLayerConfiguration,
         in window: UIWindow?
     ) {
-        seed = UInt32.random(in: 0...UInt32.max)
         emitterPosition = getPosition(for: configuration.emitterPosition, with: window)
         birthRate = configuration.birthRate
         lifetime = configuration.lifetime
@@ -44,10 +43,7 @@ final class ConfettiLayer: CAEmitterLayer {
         emitterMode = configuration.emitterMode
         needsDisplayOnBoundsChange = configuration.needsDisplayOnBoundsChange
         
-        let particles = configuration.makeParticles()
-        emitterCells = particles.map { content in
-            makeCell(content: content, with: configuration.cellConfiguration)
-        }
+        emitterCells = configuration.makeCells()
     }
     
     /// Begins the process of emitting particles by configuring the layer and adding an animation to the layer
@@ -58,56 +54,31 @@ final class ConfettiLayer: CAEmitterLayer {
     }
 }
 
-// MARK: - Emitter layer content renderer
-
-extension ConfettiLayer {
-    /// Creates and configures a `CAEmitterCell`.
-    /// - Parameters:
-    ///   - content: The image used as the particle content of the cell.
-    ///   - configuration: The configuration model used to set up the emitter layer cell
-    /// - Returns: A configured `CAEmitterCell` instance.
-    func makeCell(content: UIImage, with configuration: ParticleCell) -> CAEmitterCell {
-        let cell = CAEmitterCell()
-        cell.contents = content.cgImage
-        cell.beginTime = CACurrentMediaTime()
-        cell.birthRate = configuration.birthRate
-        cell.lifetime = configuration.lifetime
-        cell.velocity = configuration.velocity
-        cell.velocityRange = configuration.velocity / 2
-        cell.emissionLongitude = configuration.emissionLongitude
-        cell.emissionRange = configuration.emissionRange
-        cell.spin = configuration.spin
-        cell.spinRange = configuration.spinRange
-        cell.yAcceleration = configuration.yAcceleration
-        cell.scaleRange = configuration.scaleRange
-        cell.scale = configuration.scale
-        return cell
-    }
-}
-
 // MARK: - Position handling function
 
 extension ConfettiLayer {
     func getPosition(for position: EmitterPosition, with window: UIWindow?) -> CGPoint {
-        guard
-            let window = window,
-            let windowScene = window.windowScene
-        else {
+        guard let window = window else {
             return CGPoint(x: 0, y: 0)
         }
+
+        let bounds = window.bounds
+        let midX = bounds.midX
+        let midY = bounds.midY
+        let maxX = bounds.maxX
+        let maxY = bounds.maxY
         
         switch position {
         case .top:
-            return CGPoint(x: windowScene.screen.bounds.width / 2, y: 0)
+            return CGPoint(x: midX, y: bounds.minY)
         case .leading:
-            return CGPoint(x: 0, y: windowScene.screen.bounds.height / 2)
+            return CGPoint(x: bounds.minX, y: midY)
         case .trailing:
-            return CGPoint(x: windowScene.screen.bounds.width, y: windowScene.screen.bounds.height / 2)
+            return CGPoint(x: maxX, y: midY)
         case .bottom:
-            return CGPoint(x: windowScene.screen.bounds.width, y: windowScene.screen.bounds.height)
+            return CGPoint(x: midX, y: maxY)
         case .center:
-            return CGPoint(x: windowScene.screen.bounds.width / 2, y: windowScene.screen.bounds.height / 2)
+            return CGPoint(x: midX, y: midY)
         }
     }
 }
-

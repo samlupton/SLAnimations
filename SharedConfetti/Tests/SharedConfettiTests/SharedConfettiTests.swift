@@ -1,7 +1,7 @@
 import XCTest
-@testable import SLAnimations
+@testable import SharedConfetti
 
-final class SLAnimationsTests: XCTestCase {
+final class SharedConfettiTests: XCTestCase {
     func testExample() throws {
         // XCTest Documentation
         // https://developer.apple.com/documentation/xctest

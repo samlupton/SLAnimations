@@ -1,6 +1,6 @@
 //
 //  Helper.swift
-//  ConfettiAnimation
+//  SharedConfetti
 //
 //  Created by Samuel Lupton on 10/12/25.
 //
