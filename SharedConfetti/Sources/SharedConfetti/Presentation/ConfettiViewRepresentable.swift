@@ -20,6 +20,9 @@ import SwiftUI
 ///   This view does not automatically trigger the animation. You are responsible
 ///   for calling `emit()` on the underlying `ConfettiView` when appropriate.
 public struct ConfettiViewRepresentable: UIViewRepresentable {
+
+    public init() {}
+
     /// Creates the underlying `ConfettiView`.
     public func makeUIView(context: Context) -> ConfettiView {
         ConfettiView()

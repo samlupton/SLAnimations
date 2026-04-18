@@ -11,7 +11,7 @@ import UIKit
 
 /// Helper method used to get the top window of the application. The confetti animation can be rendered such that it overlays the entire application view.
 private extension UIWindow {
-    @MainActor static func getTopWindow(
+    static func getTopWindow(
         at level: UIWindow.Level = .normal
     ) -> UIWindow? {
         let windowScenes = UIApplication
@@ -39,13 +39,13 @@ private extension UIWindow {
 ///
 /// - Parameter confettiView: A preconfigured `ConfettiView` instance that will be
 ///   added to the window and animated.
-@MainActor public func emitConfetti(with confettiView: ConfettiView) {
+public func emitConfetti(with confettiView: ConfettiView) {
     guard let window = UIWindow.getTopWindow() else { return }
 
     confettiView.frame = window.bounds
     confettiView.isUserInteractionEnabled = false
-
+    
     window.addSubview(confettiView)
-
-    confettiView.emit(in: window)
+    
+    confettiView.emit()
 }

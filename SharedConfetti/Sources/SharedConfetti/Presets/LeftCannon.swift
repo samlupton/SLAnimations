@@ -12,6 +12,7 @@ import UIKit
 public protocol ConfettiGenerator {
     func makeConfetti(with cells: [CAEmitterCell]) -> CAEmitterLayer
     func makeCells(with image: [UIImage]) -> [CAEmitterCell]
+    func makeAnimation() -> CABasicAnimation
 }
 
 public struct LeftCannon: ConfettiGenerator {
@@ -45,6 +46,16 @@ public struct LeftCannon: ConfettiGenerator {
             
             return cell
         }
+    }
+    
+    public func makeAnimation() -> CABasicAnimation {
+        let animation = CABasicAnimation(keyPath: "birthRate")
+        animation.fromValue = 1
+        animation.toValue = 0
+        animation.duration = 0.1
+        animation.fillMode = .forwards
+        animation.isRemovedOnCompletion = false
+        return animation
     }
 }
 
