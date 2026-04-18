@@ -14,38 +14,63 @@ import UIKit
 /// initialization, it immediately begins emitting particles using the
 /// provided configuration.
 public final class ConfettiView: UIView {
-
-    /// Configuration that defines how the emitter layer behaves,
-    /// including position, shape, and particle properties.
-    private let configuration: EmitterLayerConfiguration
-
-    /// Creates a new `ConfettiView` with the given emitter configuration.
-    ///
-    /// - Parameter configuration: An object conforming to
-    ///   `EmitterLayerConfiguration` that defines how particles are emitted.
-    ///
-    /// The view initializes with a zero frame and immediately starts emitting.
-    public init(configuration: EmitterLayerConfiguration) {
+    
+    private let configuration: Confetti
+    
+    public init(configuration: Confetti = .default) {
         self.configuration = configuration
         super.init(frame: .zero)
     }
-
-    @available(*, unavailable)
+    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    func emit(in window: UIWindow?) {
+        guard window != nil else { return }
+        
+        let images = configuration.images
+        let cells = configuration.generator.makeCells(with: configuration.images)
+        let emitter = configuration.generator.makeConfetti(with: cells)
+        layer.addSublayer(configuration.generator.makeConfetti(with: cells))
+        
+        let id = UUID().uuidString
+        emitter.add(getAnimation(), forKey: id)
+    }
+    
+    private func getAnimation() -> CABasicAnimation {
+        let animation = CABasicAnimation(keyPath: "birthRate")
+        animation.fromValue = 1
+        animation.toValue = 0
+        animation.duration = 0.1
+        animation.fillMode = .forwards
+        animation.isRemovedOnCompletion = false
+        return animation
+    }
+    
+    func getPosition(for position: EmitterPosition, with window: UIWindow?) -> CGPoint {
+        guard let window = window else {
+            return CGPoint(x: 0, y: 0)
+        }
 
-    /// Creates and attaches a `ConfettiLayer` to the view, then begins emission.
-    ///
-    /// This method:
-    /// - Instantiates a `ConfettiLayer` using the current configuration
-    /// - Adds it as a sublayer of the view’s backing layer
-    /// - Triggers particle emission within the current window context
-    ///
-    /// Call this manually if you need to re-trigger the animation.
-    public func emit() {
-        let confettiLayer = ConfettiLayer(configuration: configuration)
-        layer.addSublayer(confettiLayer)
-        confettiLayer.emit(in: window)
+        let bounds = window.bounds
+        let midX = bounds.midX
+        let midY = bounds.midY
+        let maxX = bounds.maxX
+        let maxY = bounds.maxY
+        
+        switch position {
+        case .top:
+            return CGPoint(x: midX, y: bounds.minY)
+        case .leading:
+            return CGPoint(x: bounds.minX, y: midY)
+        case .trailing:
+            return CGPoint(x: maxX, y: midY)
+        case .bottom:
+            return CGPoint(x: midX, y: maxY)
+        case .center:
+            return CGPoint(x: midX, y: midY)
+        }
     }
 }
+

@@ -20,21 +20,9 @@ import SwiftUI
 ///   This view does not automatically trigger the animation. You are responsible
 ///   for calling `emit()` on the underlying `ConfettiView` when appropriate.
 public struct ConfettiViewRepresentable: UIViewRepresentable {
-    
-    /// The configuration used to construct the underlying `ConfettiView`.
-    private let configuration: EmitterLayerConfiguration
-    
-    /// Creates a SwiftUI-compatible confetti view.
-    ///
-    /// - Parameter configuration: The emitter configuration defining how particles
-    ///   are generated and displayed.
-    public init(configuration: EmitterLayerConfiguration) {
-        self.configuration = configuration
-    }
-
     /// Creates the underlying `ConfettiView`.
     public func makeUIView(context: Context) -> ConfettiView {
-        ConfettiView(configuration: configuration)
+        ConfettiView()
     }
     
     /// Updates the underlying view when SwiftUI state changes.

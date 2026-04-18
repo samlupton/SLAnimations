@@ -47,5 +47,5 @@ private extension UIWindow {
 
     window.addSubview(confettiView)
 
-    confettiView.emit()
+    confettiView.emit(in: window)
 }
