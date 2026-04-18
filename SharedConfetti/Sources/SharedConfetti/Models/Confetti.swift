@@ -18,12 +18,12 @@ public struct Confetti {
 public extension Confetti {
     static let `default`: Self = .init(
         images: [
-            .init(resource: .i1),
-            .init(resource: .i2),
-            .init(resource: .i3),
-            .init(resource: .i4),
-            .init(resource: .i5)
+            UIImage(resource: .i1),
+            UIImage(resource: .i2),
+            UIImage(resource: .i3),
+            UIImage(resource: .i4),
+            UIImage(resource: .i5)
         ],
-        generator: LeftCannon()
+        generator: Shower()
     )
 }

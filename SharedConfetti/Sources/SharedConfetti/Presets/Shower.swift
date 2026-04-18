@@ -1,5 +1,5 @@
 //
-//  File.swift
+//  Shower.swift
 //  SharedConfetti
 //
 //  Created by Samuel Lupton on 4/17/26.
@@ -9,16 +9,17 @@
 import QuartzCore
 import UIKit
 
-public struct LeftCannon: ConfettiGenerator {
+public struct Shower: ConfettiGenerator {
     public func makeConfetti(with cells: [CAEmitterCell]) -> CAEmitterLayer {
         let emitter = CAEmitterLayer()
-        emitter.birthRate = 1.0
-        emitter.lifetime = 1.0
-        emitter.emitterSize = .zero
-        emitter.emitterShape = .point
+        emitter.birthRate = 1
+        emitter.lifetime = 1
+        emitter.emitterSize = .init(width: 900, height: .zero)
+        emitter.emitterShape = .line
         emitter.emitterMode = .outline
         emitter.needsDisplayOnBoundsChange = true
         emitter.emitterCells = cells
+        emitter.opacity = 0.5
         return emitter
     }
     
@@ -27,15 +28,17 @@ public struct LeftCannon: ConfettiGenerator {
             let cell = CAEmitterCell()
             cell.beginTime = CACurrentMediaTime()
             cell.birthRate = 10
-            cell.lifetime = 5
-            cell.velocity = 300
-            cell.emissionLongitude = -.pi / 8
-            cell.emissionRange = .pi / 20
+            cell.lifetime = 2
+            cell.lifetimeRange = 1
+            cell.velocity = 100
+            cell.velocityRange = 50
+            cell.emissionLongitude = .zero
+            cell.emissionRange = 2 * .pi
             cell.spin = 0
             cell.spinRange = 2 * .pi
-            cell.yAcceleration = 200
-            cell.scale = 0.25
-            cell.scaleRange = 0.25
+            cell.yAcceleration = 300
+            cell.scale = 0.2
+            cell.scaleRange = 0.2
             cell.contents = image.cgImage
             
             return cell
@@ -43,13 +46,12 @@ public struct LeftCannon: ConfettiGenerator {
     }
     
     public func makeAnimation() -> CABasicAnimation {
-        let animation = CABasicAnimation(keyPath: "birthRate")
-        animation.fromValue = 1
-        animation.toValue = 0
-        animation.duration = 0.1
-        animation.fillMode = .forwards
-        animation.isRemovedOnCompletion = false
-        return animation
+        let rotateAnimation = CABasicAnimation(keyPath: "transform.rotation.z")
+//        rotateAnimation.fromValue = 0
+//        rotateAnimation.toValue = Double.pi * 2
+//        rotateAnimation.duration = 5.0
+//        rotateAnimation.repeatCount = .infinity
+        return rotateAnimation
     }
 }
 
