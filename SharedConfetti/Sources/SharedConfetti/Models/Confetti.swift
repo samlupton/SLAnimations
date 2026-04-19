@@ -10,7 +10,7 @@ import UIKit
 // MARK: - Presets
 
 public enum Confetti {
-    enum Configuration {
+    public enum Configuration {
         case `default`
         case leftCannon
         case fountain

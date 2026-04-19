@@ -43,7 +43,7 @@ public struct Shower: ConfettiGenerator {
             let cell = CAEmitterCell()
             cell.beginTime = CACurrentMediaTime()
             cell.birthRate = 10
-            cell.lifetime = 1
+            cell.lifetime = 2
             cell.lifetimeRange = 1
             cell.velocity = 100
             cell.velocityRange = 50
@@ -52,10 +52,10 @@ public struct Shower: ConfettiGenerator {
             cell.spin = 0
             cell.spinRange = 2 * .pi
             cell.yAcceleration = 300
-            cell.scale = 0.2
-            cell.scaleRange = 0.2
+            cell.scale = 0.3
+            cell.scaleRange = 0.1
             cell.contents = image.cgImage
-            
+            cell.scaleSpeed = -0.1
             return cell
         }
     }
