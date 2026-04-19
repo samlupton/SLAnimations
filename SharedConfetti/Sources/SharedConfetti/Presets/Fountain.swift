@@ -10,14 +10,11 @@ import UIKit
 
 public struct Fountain: ConfettiGenerator {
     public var images: [UIImage]
-    public var intensity: Confetti.Intensity
     
     init(
-        images: [UIImage] = Confetti.Assets.waterImages,
-        intensity: Confetti.Intensity = .highxxx
+        images: [UIImage] = Confetti.Assets.waterImages
     ) {
         self.images = images
-        self.intensity = intensity
     }
     
     public func makeConfetti(
@@ -41,7 +38,7 @@ public struct Fountain: ConfettiGenerator {
         return images.map { image in
             let cell = CAEmitterCell()
             cell.beginTime = CACurrentMediaTime()
-            cell.birthRate = 100 * intensity.multiplier
+            cell.birthRate = 100
             cell.lifetime = 2
             cell.lifetimeRange = 1
             cell.velocity = 200

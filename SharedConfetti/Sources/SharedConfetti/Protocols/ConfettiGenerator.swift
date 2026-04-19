@@ -10,7 +10,6 @@ import UIKit
 
 internal protocol ConfettiGenerator {
     var images: [UIImage] { get set }
-    var intensity: Confetti.Intensity { get set }
     func makeConfetti(with cells: [CAEmitterCell], in rect: CGRect) -> CAEmitterLayer
     func makeCells() -> [CAEmitterCell]
     func makeAnimation() -> CABasicAnimation?

@@ -11,14 +11,11 @@ import UIKit
 
 public struct LeftCannon: ConfettiGenerator {
     public var images: [UIImage]
-    public var intensity: Confetti.Intensity
     
     init(
         images: [UIImage] = Confetti.Assets.allImages,
-        intensity: Confetti.Intensity = .normal
     ) {
         self.images = images
-        self.intensity = intensity
     }
     
     public func makeConfetti(with cells: [CAEmitterCell], in rect: CGRect) -> CAEmitterLayer {
