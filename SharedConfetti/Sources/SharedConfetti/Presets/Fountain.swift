@@ -14,7 +14,7 @@ public struct Fountain: ConfettiGenerator {
     
     init(
         images: [UIImage] = Confetti.Assets.waterImages,
-        intensity: Confetti.Intensity = .extraHigh
+        intensity: Confetti.Intensity = .highxxx
     ) {
         self.images = images
         self.intensity = intensity

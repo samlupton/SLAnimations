@@ -10,34 +10,34 @@ import UIKit
 // MARK: - Presets
 
 public enum Confetti {
-    @MainActor public static let `default`: ConfettiGenerator = Shower()
-    
-    @MainActor public static let leftCannon: ConfettiGenerator = LeftCannon()
-    
-    @MainActor public static let fountain: ConfettiGenerator = Fountain()
-    
-    /// Override properties of a preset `Confetti` instance.
-    @MainActor public static func override(
-        confetti: ConfettiGenerator,
-        images: [UIImage]? = nil,
-        intensity: Confetti.Intensity? = nil
-    ) -> ConfettiGenerator {
-        var _confetti = confetti
-        _confetti.images = images ?? _confetti.images
-        _confetti.intensity = intensity ?? _confetti.intensity
-        return _confetti
+    enum Configuration {
+        case `default`
+        case leftCannon
+        case fountain
+    }
+}
+
+internal extension Confetti.Configuration {
+    func makeConfiguration() -> ConfettiGenerator {
+        switch self {
+        case .default: Shower()
+        case .leftCannon: LeftCannon()
+        case .fountain: Fountain()
+        }
     }
 }
 
 // MARK: - Intensity
 
 public extension Confetti {
-    enum Intensity: Double, Sendable {
-        case extraLow = 0.2
-        case low = 0.3
-        case medium = 0.5
-        case high = 1.0
-        case extraHigh = 1.2
+    enum Intensity: Double {
+        case lowx = 0.7
+        case lowxx = 0.8
+        case lowxxx = 0.9
+        case normal = 1.0
+        case highx = 1.1
+        case highxx = 1.2
+        case highxxx = 1.3
         
         var multiplier: Float {
             Float(rawValue)

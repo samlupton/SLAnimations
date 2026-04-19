@@ -15,7 +15,7 @@ public struct LeftCannon: ConfettiGenerator {
     
     init(
         images: [UIImage] = Confetti.Assets.allImages,
-        intensity: Confetti.Intensity = .medium
+        intensity: Confetti.Intensity = .normal
     ) {
         self.images = images
         self.intensity = intensity
@@ -65,18 +65,3 @@ public struct LeftCannon: ConfettiGenerator {
         return animation
     }
 }
-
-
-//        static let celebration
-//        static let explosion
-//        static let fireworks
-//        static let rain
-//        static let snowfall
-//        static let cannonLeft
-//        static let cannonRight
-//        static let fountain
-//        static let burstPulse
-//        static let sparkle
-//        static let confettiStorm
-//        static let drift
-//        static let gravityFall

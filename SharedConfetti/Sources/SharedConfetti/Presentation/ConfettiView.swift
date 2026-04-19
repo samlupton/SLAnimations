@@ -17,8 +17,8 @@ public final class ConfettiView: UIView {
     
     private let generator: ConfettiGenerator
     
-    public init(generator: ConfettiGenerator = Confetti.default) {
-        self.generator = generator
+    public init(generator: Confetti.Configuration = .default) {
+        self.generator = generator.makeConfiguration()
         super.init(frame: .zero)
     }
     

@@ -15,7 +15,7 @@ public struct Shower: ConfettiGenerator {
     
     init(
         images: [UIImage] = Confetti.Assets.allImages,
-        intensity: Confetti.Intensity = .medium
+        intensity: Confetti.Intensity = .normal
     ) {
         self.images = images
         self.intensity = intensity
