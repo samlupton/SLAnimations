@@ -10,6 +10,6 @@ import CoreGraphics
 public extension Confetti.Cell {
     struct Velocity {
         var base: CGFloat
-        var variation: CGFloat
+        var range: CGFloat
     }
 }

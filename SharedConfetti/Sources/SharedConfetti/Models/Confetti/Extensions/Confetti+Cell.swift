@@ -9,6 +9,7 @@ import CoreGraphics
 
 public extension Confetti {
     struct Cell {
+        let lifetime: Lifetime
         let spin: Spin
         let scale: Scale
         let acceleration: Acceleration

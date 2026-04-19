@@ -12,10 +12,8 @@ import UIKit
 public struct Shower: ConfettiGenerator {
     public var images: [UIImage]
     
-    init(
-        images: [UIImage] = Confetti.Assets.allImages,
-    ) {
-        self.images = images
+    init(customImages: [UIImage]? = nil) {
+        self.images = images ?? Confetti.Assets.allImages
     }
     
     public func makeConfetti(
@@ -40,19 +38,21 @@ public struct Shower: ConfettiGenerator {
             let cell = CAEmitterCell()
             cell.beginTime = CACurrentMediaTime()
             cell.birthRate = 10
-            cell.lifetime = 2
-            cell.lifetimeRange = 1
-            cell.velocity = 100
-            cell.velocityRange = 50
-            cell.emissionLongitude = .zero
-            cell.emissionRange = 2 * .pi
-            cell.spin = 0
-            cell.spinRange = 2 * .pi
-            cell.yAcceleration = 300
-            cell.scale = 0.3
-            cell.scaleRange = 0.1
-            cell.contents = image.cgImage
-            cell.scaleSpeed = -0.1
+            
+            
+//            cell.lifetime = 2
+//            cell.lifetimeRange = 1
+//            cell.velocity = 100
+//            cell.velocityRange = 50
+//            cell.emissionLongitude = .zero
+//            cell.emissionRange = 2 * .pi
+//            cell.spin = 0
+//            cell.spinRange = 2 * .pi
+//            cell.yAcceleration = 300
+//            cell.scale = 0.3
+//            cell.scaleRange = 0.1
+//            cell.contents = image.cgImage
+//            cell.scaleSpeed = -0.1
             return cell
         }
     }

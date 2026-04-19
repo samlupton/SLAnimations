@@ -9,8 +9,8 @@ import CoreGraphics
 
 public extension Confetti.Cell {
     struct Emission {
-        var latitude: CGFloat
-        var longitude: CGFloat
-        var variation: CGFloat
+        var latitude: CGFloat = .zero
+        var longitude: CGFloat = .zero
+        var range: CGFloat = .zero
     }
 }

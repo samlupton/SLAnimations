@@ -9,8 +9,8 @@ import CoreGraphics
 
 public extension Confetti.Cell {
     struct Acceleration {
-        var x: CGFloat
-        var y: CGFloat
-        var z: CGFloat
+        var x: CGFloat = .zero
+        var y: CGFloat = .zero
+        var z: CGFloat = .zero
     }
 }

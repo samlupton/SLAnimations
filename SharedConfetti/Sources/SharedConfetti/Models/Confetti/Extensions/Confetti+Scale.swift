@@ -10,7 +10,7 @@ import CoreGraphics
 public extension Confetti.Cell {
     struct Scale {
         var base: CGFloat
-        var variation: CGFloat
+        var range: CGFloat
         var speed: CGFloat = 0
     }
 }
