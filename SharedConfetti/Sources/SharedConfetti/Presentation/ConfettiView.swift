@@ -17,7 +17,7 @@ public final class ConfettiView: UIView {
     
     private let generator: ConfettiGenerator
     
-    public init(generator: any ConfettiGenerator = Confetti.default) {
+    public init(generator: ConfettiGenerator = Confetti.default) {
         self.generator = generator
         super.init(frame: .zero)
     }
@@ -27,7 +27,6 @@ public final class ConfettiView: UIView {
     }
     
     public func emit() {
-        let images = generator.images
         let cells = generator.makeCells()
         let emitter = generator.makeConfetti(with: cells, in: self.frame)
         
