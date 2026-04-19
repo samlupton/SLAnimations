@@ -21,14 +21,14 @@ public extension Confetti {
 public extension Confetti.Cell {
     struct Spin {
         var base: CGFloat
-        var range: CGFloat
+        var variation: CGFloat
     }
 }
 
 public extension Confetti.Cell {
     struct Scale {
         var base: CGFloat
-        var range: CGFloat
+        var variation: CGFloat
         var speed: CGFloat = 0
     }
 }
@@ -44,7 +44,7 @@ public extension Confetti.Cell {
 public extension Confetti.Cell {
     struct Velocity {
         var base: CGFloat
-        var range: CGFloat
+        var variation: CGFloat
     }
 }
 
@@ -52,7 +52,7 @@ public extension Confetti.Cell {
     struct Emission {
         var latitude: CGFloat
         var longitude: CGFloat
-        var range: CGFloat
+        var variation: CGFloat
     }
 }
 
