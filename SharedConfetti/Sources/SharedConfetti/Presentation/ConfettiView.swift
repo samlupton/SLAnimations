@@ -15,10 +15,10 @@ import UIKit
 /// provided configuration.
 public final class ConfettiView: UIView {
     
-    private let configuration: Confetti
+    private let generator: ConfettiGenerator
     
-    public init(configuration: Confetti = .default) {
-        self.configuration = configuration
+    public init(generator: any ConfettiGenerator = Confetti.default) {
+        self.generator = generator
         super.init(frame: .zero)
     }
     
@@ -27,14 +27,15 @@ public final class ConfettiView: UIView {
     }
     
     public func emit() {
-        let images = configuration.images
-        let cells = configuration.generator.makeCells(with: configuration.images)
-        let emitter = configuration.generator.makeConfetti(with: cells)
-        let animation = configuration.generator.makeAnimation()
+        let images = generator.images
+        let cells = generator.makeCells()
+        let emitter = generator.makeConfetti(with: cells, in: self.frame)
+        
+        layer.addSublayer(emitter)
+        
+        guard let animation = generator.makeAnimation() else { return }
         
         let id = UUID().uuidString
         emitter.add(animation, forKey: id)
-        
-        layer.addSublayer(emitter)
     }
 }

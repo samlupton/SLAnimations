@@ -1,21 +1,20 @@
 //
-//  Shower.swift
+//  Fountain.swift
 //  SharedConfetti
 //
-//  Created by Samuel Lupton on 4/17/26.
+//  Created by Samuel Lupton on 4/18/26.
 //
-
 
 import QuartzCore
 import UIKit
 
-public struct Shower: ConfettiGenerator {
+public struct Fountain: ConfettiGenerator {
     public var images: [UIImage]
     public var intensity: Confetti.Intensity
     
     init(
-        images: [UIImage] = Confetti.Assets.allImages,
-        intensity: Confetti.Intensity = .medium
+        images: [UIImage] = Confetti.Assets.waterImages,
+        intensity: Confetti.Intensity = .extraHigh
     ) {
         self.images = images
         self.intensity = intensity
@@ -28,9 +27,9 @@ public struct Shower: ConfettiGenerator {
         let emitter = CAEmitterLayer()
         emitter.birthRate = 1
         emitter.lifetime = 1
-        emitter.emitterPosition = .init(x: rect.midX, y: .zero)
-        emitter.emitterSize = .init(width: rect.width, height: .zero)
-        emitter.emitterShape = .line
+        emitter.emitterPosition = .init(x: rect.midX, y: rect.maxY)
+        emitter.emitterSize = .init(width: 0, height: 0)
+        emitter.emitterShape = .point
         emitter.emitterMode = .outline
         emitter.needsDisplayOnBoundsChange = true
         emitter.emitterCells = cells
@@ -42,17 +41,17 @@ public struct Shower: ConfettiGenerator {
         return images.map { image in
             let cell = CAEmitterCell()
             cell.beginTime = CACurrentMediaTime()
-            cell.birthRate = 10
-            cell.lifetime = 1
+            cell.birthRate = 100 * intensity.multiplier
+            cell.lifetime = 2
             cell.lifetimeRange = 1
-            cell.velocity = 100
+            cell.velocity = 200
             cell.velocityRange = 50
-            cell.emissionLongitude = .zero
-            cell.emissionRange = 2 * .pi
+            cell.emissionLongitude = -.pi / 2
+            cell.emissionRange = .pi / 4
             cell.spin = 0
             cell.spinRange = 2 * .pi
-            cell.yAcceleration = 300
-            cell.scale = 0.2
+            cell.yAcceleration = 200
+            cell.scale = 0.1
             cell.scaleRange = 0.2
             cell.contents = image.cgImage
             
@@ -64,18 +63,3 @@ public struct Shower: ConfettiGenerator {
         return nil
     }
 }
-
-
-//        static let celebration
-//        static let explosion
-//        static let fireworks
-//        static let rain
-//        static let snowfall
-//        static let cannonLeft
-//        static let cannonRight
-//        static let fountain
-//        static let burstPulse
-//        static let sparkle
-//        static let confettiStorm
-//        static let drift
-//        static let gravityFall

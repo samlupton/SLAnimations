@@ -9,7 +9,9 @@ import QuartzCore
 import UIKit
 
 public protocol ConfettiGenerator {
-    func makeConfetti(with cells: [CAEmitterCell]) -> CAEmitterLayer
-    func makeCells(with image: [UIImage]) -> [CAEmitterCell]
-    func makeAnimation() -> CABasicAnimation
+    var images: [UIImage] { get set }
+    var intensity: Confetti.Intensity { get set }
+    func makeConfetti(with cells: [CAEmitterCell], in rect: CGRect) -> CAEmitterLayer
+    func makeCells() -> [CAEmitterCell]
+    func makeAnimation() -> CABasicAnimation?
 }
