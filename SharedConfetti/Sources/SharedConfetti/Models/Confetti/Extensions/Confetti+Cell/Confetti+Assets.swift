@@ -9,7 +9,7 @@ import UIKit
 
 extension Confetti {
     internal enum Assets: Sendable {
-        static func makeShower() -> [CGImage] {
+        static func makeShowerAssets() -> [CGImage] {
             return [
                 UIImage(resource: .i1),
                 UIImage(resource: .i2),
@@ -22,7 +22,7 @@ extension Confetti {
             ].compactMap { $0.cgImage }
         }
         
-        static func makeFountain() -> [CGImage] {
+        static func makeFountainAssets() -> [CGImage] {
             return [
                 UIImage(resource: .water1),
                 UIImage(resource: .water2),

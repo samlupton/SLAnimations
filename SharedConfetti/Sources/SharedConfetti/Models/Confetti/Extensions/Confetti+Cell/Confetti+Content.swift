@@ -17,14 +17,14 @@ public extension Confetti.Cell {
 
 extension Confetti.Cell.Content {
     internal static func makeShowerContents() -> [Confetti.Cell.Content] {
-        let images = Confetti.Assets.makeShower()
+        let images = Confetti.Assets.makeShowerAssets()
         return images.map {
             Confetti.Cell.Content(image: $0)
         }
     }
     
     internal static func makeFountainContents() -> [Confetti.Cell.Content] {
-        let images = Confetti.Assets.makeFountain()
+        let images = Confetti.Assets.makeFountainAssets()
         return images.map {
             Confetti.Cell.Content(image: $0)
         }
