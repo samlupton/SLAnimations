@@ -8,7 +8,7 @@
 import UIKit
 
 public enum Confetti {
-    public struct Configuration: @unchecked Sendable {
+    public struct Configuration: Sendable {
         let cells: [Cell]
     }
 }
