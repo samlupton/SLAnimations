@@ -40,9 +40,9 @@ extension ConfettiRenderer {
     }
     
     func makeContent(_ cacell: inout CAEmitterCell, cell: Confetti.Cell) {
-        cacell.scale = cell.content.scale
-        cacell.contents = cell.content.image
-        cacell.contentsRect = cell.content.rect
+        cacell.scale = cell.contents.scale
+        cacell.contents = cell.contents.image
+        cacell.contentsRect = cell.contents.rect
     }
     
     func makeEmission(_ cacell: inout CAEmitterCell, cell: Confetti.Cell) {

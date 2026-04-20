@@ -13,13 +13,13 @@ public extension Confetti {
         let acceleration: Acceleration
         let velocity: Velocity
         let emission: Emission
-        let content: Content
+        let contents: Contents
     }
 }
 
 extension Confetti.Cell {
-    internal static func makeShowerCells(with contents: [Confetti.Cell.Content]) -> [Self] {
-        return contents.map { content in
+    internal static func makeShowerCells(with contents: [Confetti.Cell.Contents]) -> [Self] {
+        return contents.map { contents in
             .init(
                 lifetime: .init(birthRate: 10, base: 2, range: 1),
                 spin: .init(base: .zero, range: 2 * .pi),
@@ -27,13 +27,13 @@ extension Confetti.Cell {
                 acceleration: .init(y: 300),
                 velocity: .init(base: 100, range: 50),
                 emission: .init(longitude: .zero, range: 2 * .pi),
-                content: content
+                contents: contents
             )
         }
     }
     
-    internal static func makeFountainCells(with contents: [Confetti.Cell.Content]) -> [Self] {
-        return contents.map { content in
+    internal static func makeFountainCells(with contents: [Confetti.Cell.Contents]) -> [Self] {
+        return contents.map { contents in
                 .init(
                     lifetime: .init(birthRate: 100, base: 2, range: 1),
                     spin: .init(base: 0, range: 2 * .pi),
@@ -41,7 +41,7 @@ extension Confetti.Cell {
                     acceleration: .init(x: 0, y: 200, z: 0),
                     velocity: .init(base: 200, range: 50),
                     emission: .init(latitude: -.pi / 2, range: .pi / 4),
-                    content: content
+                    contents: contents
                 )
         }
     }

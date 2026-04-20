@@ -20,7 +20,7 @@ public extension Confetti.Configuration {
 
 extension Confetti.Configuration {
     internal static func makeShower(
-        with contents: [Confetti.Cell.Content] = Confetti.Cell.Content.makeShowerContents()
+        with contents: [Confetti.Cell.Contents] = Confetti.Cell.Contents.makeShowerContents()
     ) -> Self {
         return Confetti.Configuration(
             cells: Confetti.Cell.makeShowerCells(with: contents)
@@ -28,7 +28,7 @@ extension Confetti.Configuration {
     }
     
     internal static func makeFountain(
-        with contents: [Confetti.Cell.Content] = Confetti.Cell.Content.makeFountainContents()
+        with contents: [Confetti.Cell.Contents] = Confetti.Cell.Contents.makeFountainContents()
     ) -> Self {
         return Confetti.Configuration(
             cells: Confetti.Cell.makeFountainCells(with: contents)
