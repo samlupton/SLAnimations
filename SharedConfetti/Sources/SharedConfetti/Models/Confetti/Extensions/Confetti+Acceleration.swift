@@ -8,7 +8,7 @@
 import CoreGraphics
 
 public extension Confetti.Cell {
-    struct Acceleration {
+    struct Acceleration: Sendable {
         var x: CGFloat = .zero
         var y: CGFloat = .zero
         var z: CGFloat = .zero

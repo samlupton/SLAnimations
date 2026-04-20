@@ -8,13 +8,43 @@
 import CoreGraphics
 
 public extension Confetti {
-    struct Cell {
+    struct Cell: Sendable {
         let lifetime: Lifetime
         let spin: Spin
         let scale: Scale
         let acceleration: Acceleration
         let velocity: Velocity
         let emission: Emission
-        let contents: Contents
+        let content: Content
+    }
+}
+
+extension Confetti.Cell {
+    static func makeShowerCells(with contents: [Confetti.Cell.Content]) -> [Self] {
+        return contents.map { content in
+            .init(
+                lifetime: .init(birthRate: 10, base: 2, range: 1),
+                spin: .init(base: .zero, range: 2 * .pi),
+                scale: .init(base: 0.3, range: 0.1, speed: -0.1),
+                acceleration: .init(y: 300),
+                velocity: .init(base: 100, range: 50),
+                emission: .init(longitude: .zero, range: 2 * .pi),
+                content: content
+            )
+        }
+    }
+    
+    static func makeFountainCells(with contents: [Confetti.Cell.Content]) -> [Self] {
+        return contents.map { content in
+                .init(
+                    lifetime: .init(birthRate: 100, base: 2, range: 1),
+                    spin: .init(base: 0, range: 2 * .pi),
+                    scale: .init(base: 0.1, range: 0.2, speed: 0),
+                    acceleration: .init(x: 0, y: 200, z: 0),
+                    velocity: .init(base: 200, range: 50),
+                    emission: .init(latitude: -.pi / 2, range: .pi / 4),
+                    content: content
+                )
+        }
     }
 }

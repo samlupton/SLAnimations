@@ -9,13 +9,12 @@ import QuartzCore
 import UIKit
 
 internal protocol ConfettiGenerator {
-    var images: [UIImage] { get set }
     func makeConfetti(with cells: [CAEmitterCell], in rect: CGRect) -> CAEmitterLayer
     func makeCells() -> [CAEmitterCell]
     func makeAnimation() -> CABasicAnimation?
     func makeCACell(_ cacell: inout CAEmitterCell, cell: Confetti.Cell)
     func makeAcceleration(_ cacell: inout CAEmitterCell, cell: Confetti.Cell)
-    func makeContents(_ cacell: inout CAEmitterCell, cell: Confetti.Cell)
+    func makeContent(_ cacell: inout CAEmitterCell, cell: Confetti.Cell)
     func makeEmission(_ cacell: inout CAEmitterCell, cell: Confetti.Cell)
     func makeScale(_ cacell: inout CAEmitterCell, cell: Confetti.Cell)
     func makeVelocity(_ cacell: inout CAEmitterCell, cell: Confetti.Cell)
@@ -26,7 +25,7 @@ internal protocol ConfettiGenerator {
 extension ConfettiGenerator {
     func makeCACell(_ cacell: inout CAEmitterCell, cell: Confetti.Cell) {
         makeAcceleration(&cacell, cell: cell)
-        makeContents(&cacell, cell: cell)
+        makeContent(&cacell, cell: cell)
         makeEmission(&cacell, cell: cell)
         makeScale(&cacell, cell: cell)
         makeVelocity(&cacell, cell: cell)
@@ -40,10 +39,10 @@ extension ConfettiGenerator {
         cacell.zAcceleration = cell.acceleration.z
     }
     
-    func makeContents(_ cacell: inout CAEmitterCell, cell: Confetti.Cell) {
-        cacell.scale = cell.contents.scale
-        cacell.contents = cell.contents.image
-        cacell.contentsRect = cell.contents.rect
+    func makeContent(_ cacell: inout CAEmitterCell, cell: Confetti.Cell) {
+        cacell.scale = cell.content.scale
+        cacell.contents = cell.content.image
+        cacell.contentsRect = cell.content.rect
     }
     
     func makeEmission(_ cacell: inout CAEmitterCell, cell: Confetti.Cell) {
