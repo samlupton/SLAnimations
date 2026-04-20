@@ -18,9 +18,10 @@ public extension Confetti.Configuration {
     static let fountain: Self = makeShower()
 }
 
+// MARK: - Factory Methods
 
-internal extension Confetti.Configuration {
-    static func makeShower(
+extension Confetti.Configuration {
+    internal static func makeShower(
         with contents: [Confetti.Cell.Content] = Confetti.Cell.Content.makeShowerContents()
     ) -> Self {
         return Confetti.Configuration(
@@ -28,7 +29,7 @@ internal extension Confetti.Configuration {
         )
     }
     
-    static func makeFountain(
+    internal static func makeFountain(
         with contents: [Confetti.Cell.Content] = Confetti.Cell.Content.makeFountainContents()
     ) -> Self {
         return Confetti.Configuration(
