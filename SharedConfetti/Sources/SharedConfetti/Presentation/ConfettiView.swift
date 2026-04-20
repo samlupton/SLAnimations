@@ -13,7 +13,7 @@ import UIKit
 /// its lifecycle and attaching it to the view’s backing layer. Upon
 /// initialization, it immediately begins emitting particles using the
 /// provided configuration.
-public final class ConfettiView: UIView, @MainActor ConfettiGenerator {
+public final class ConfettiView: UIView, @MainActor ConfettiRenderer {
     
     private let configuration: Confetti.Configuration
     
@@ -28,7 +28,10 @@ public final class ConfettiView: UIView, @MainActor ConfettiGenerator {
     
     public func emit() {
         let cells = makeCells()
-        let emitter = makeConfetti(with: cells, in: self.frame)
+        let emitter = makeConfetti(
+            with: cells,
+            in: self.frame
+        )
         
         layer.addSublayer(emitter)
         

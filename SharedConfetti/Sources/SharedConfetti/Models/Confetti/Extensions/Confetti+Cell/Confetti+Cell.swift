@@ -5,8 +5,6 @@
 //  Created by Samuel Lupton on 4/19/26.
 //
 
-import CoreGraphics
-
 public extension Confetti {
     struct Cell: Sendable {
         let lifetime: Lifetime
@@ -20,7 +18,7 @@ public extension Confetti {
 }
 
 extension Confetti.Cell {
-    static func makeShowerCells(with contents: [Confetti.Cell.Content]) -> [Self] {
+    internal static func makeShowerCells(with contents: [Confetti.Cell.Content]) -> [Self] {
         return contents.map { content in
             .init(
                 lifetime: .init(birthRate: 10, base: 2, range: 1),
@@ -34,7 +32,7 @@ extension Confetti.Cell {
         }
     }
     
-    static func makeFountainCells(with contents: [Confetti.Cell.Content]) -> [Self] {
+    internal static func makeFountainCells(with contents: [Confetti.Cell.Content]) -> [Self] {
         return contents.map { content in
                 .init(
                     lifetime: .init(birthRate: 100, base: 2, range: 1),

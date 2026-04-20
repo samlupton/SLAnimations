@@ -14,19 +14,23 @@ public enum Confetti {
 }
 
 public extension Confetti.Configuration {
-    static let shower: Self = makeShower(with: Confetti.Cell.Content.shower())
-    static let fountain: Self = makeShower(with: Confetti.Cell.Content.fountain())
+    static let shower: Self = makeShower()
+    static let fountain: Self = makeShower()
 }
 
 
 internal extension Confetti.Configuration {
-    static func makeShower(with contents: [Confetti.Cell.Content]) -> Self {
+    static func makeShower(
+        with contents: [Confetti.Cell.Content] = Confetti.Cell.Content.shower()
+    ) -> Self {
         return Confetti.Configuration(
             cells: Confetti.Cell.makeShowerCells(with: contents)
         )
     }
     
-    static func makeFountain(with contents: [Confetti.Cell.Content]) -> Self {
+    static func makeFountain(
+        with contents: [Confetti.Cell.Content] = Confetti.Cell.Content.fountain()
+    ) -> Self {
         return Confetti.Configuration(
             cells: Confetti.Cell.makeFountainCells(with: contents)
         )

@@ -1,5 +1,5 @@
 //
-//  ConfettiGenerator.swift
+//  ConfettiRenderer.swift
 //  SharedConfetti
 //
 //  Created by Samuel Lupton on 4/18/26.
@@ -8,7 +8,7 @@
 import QuartzCore
 import UIKit
 
-internal protocol ConfettiGenerator {
+internal protocol ConfettiRenderer {
     func makeConfetti(with cells: [CAEmitterCell], in rect: CGRect) -> CAEmitterLayer
     func makeCells() -> [CAEmitterCell]
     func makeAnimation() -> CABasicAnimation?
@@ -22,7 +22,7 @@ internal protocol ConfettiGenerator {
     func makeSpin(_ cacell: inout CAEmitterCell, cell: Confetti.Cell)
 }
 
-extension ConfettiGenerator {
+extension ConfettiRenderer {
     func makeCACell(_ cacell: inout CAEmitterCell, cell: Confetti.Cell) {
         makeAcceleration(&cacell, cell: cell)
         makeContent(&cacell, cell: cell)

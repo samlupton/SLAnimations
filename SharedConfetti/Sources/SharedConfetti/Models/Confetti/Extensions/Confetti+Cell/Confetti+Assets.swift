@@ -7,8 +7,8 @@
 
 import UIKit
 
-internal extension Confetti {
-    enum Assets: Sendable {
+extension Confetti {
+    internal enum Assets: Sendable {
         static func makeShower() -> [CGImage] {
             return [
                 UIImage(resource: .i1),
