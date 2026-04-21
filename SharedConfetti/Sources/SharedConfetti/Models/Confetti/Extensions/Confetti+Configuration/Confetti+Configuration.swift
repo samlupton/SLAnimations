@@ -27,19 +27,19 @@ extension Confetti.Configuration {
         }
     }
     
-    private static func makeShower(in rect: CGRect) -> Self {
-        let contents = Confetti.Cell.Contents.makeShowerContents()
-        return Confetti.Configuration(
-            emitter: .fountain(in: rect),
-            cells: Confetti.Cell.makeShowerCells(with: contents),
-        )
-    }
-    
     private static func makeFountain(in rect: CGRect) -> Self {
         let contents = Confetti.Cell.Contents.makeFountainContents()
         return Confetti.Configuration(
             emitter: .fountain(in: rect),
             cells: Confetti.Cell.makeFountainCells(with: contents)
+        )
+    }
+    
+    private static func makeShower(in rect: CGRect) -> Self {
+        let contents = Confetti.Cell.Contents.makeShowerContents()
+        return Confetti.Configuration(
+            emitter: .shower(in: rect),
+            cells: Confetti.Cell.makeShowerCells(with: contents),
         )
     }
 }

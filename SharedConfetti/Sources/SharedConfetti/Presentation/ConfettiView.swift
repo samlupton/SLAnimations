@@ -22,7 +22,7 @@ public final class ConfettiView: UIView, @MainActor ConfettiRenderer, @MainActor
     }
 
     public init(
-        style: Confetti.Style = .fountain,
+        style: Confetti.Style = .shower,
         viewModel: ConfettiViewModel
     ) {
         self.style = style
