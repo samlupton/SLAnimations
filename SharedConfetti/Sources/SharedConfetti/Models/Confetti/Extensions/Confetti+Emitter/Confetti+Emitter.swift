@@ -46,4 +46,19 @@ extension Confetti.Emitter {
             cells: cells
         )
     }
+    
+    internal static func cannons(in rect: CGRect) -> Self {
+        let contents = Confetti.Cell.Contents.makeCannonsContents()
+        let cells = Confetti.Cell.makeCannonsCells(with: contents)
+        let geometry: Geometry = .init(position: .init(x: rect.midX, y: rect.midY), size: rect.size)
+        let shape: Self.Shape = .point
+        let mode: Self.Mode = .points
+
+        return .init(
+            geometry: geometry,
+            shape: shape,
+            mode: mode,
+            cells: cells
+        )
+    }
 }

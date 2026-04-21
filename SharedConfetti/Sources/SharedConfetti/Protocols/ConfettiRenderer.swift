@@ -9,8 +9,8 @@ import QuartzCore
 import UIKit
 
 internal protocol ConfettiRenderer {
-    func makeConfetti(with cells: [CAEmitterCell], in rect: CGRect) -> CAEmitterLayer
-    func makeAnimation() -> CABasicAnimation?
+//    func makeConfetti(with cells: [CAEmitterCell], in rect: CGRect) -> CAEmitterLayer
+//    func makeAnimation() -> CABasicAnimation?
     
     // MARK: - CAEmitterCell Set Up Methods
     

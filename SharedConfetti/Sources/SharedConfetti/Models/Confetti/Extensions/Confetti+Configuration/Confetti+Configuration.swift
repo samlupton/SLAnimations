@@ -24,6 +24,7 @@ extension Confetti.Configuration {
         switch style {
         case .fountain: return .makeFountain(in: rect)
         case .shower: return makeShower(in: rect)
+        case .cannons: return makeCannons(in: rect)
         }
     }
     
@@ -40,6 +41,14 @@ extension Confetti.Configuration {
         return Confetti.Configuration(
             emitter: .shower(in: rect),
             cells: Confetti.Cell.makeShowerCells(with: contents),
+        )
+    }
+    
+    private static func makeCannons(in rect: CGRect) -> Self {
+        let contents = Confetti.Cell.Contents.makeCannonsContents()
+        return Confetti.Configuration(
+            emitter: .cannons(in: rect),
+            cells: Confetti.Cell.makeCannonsCells(with: contents),
         )
     }
 }

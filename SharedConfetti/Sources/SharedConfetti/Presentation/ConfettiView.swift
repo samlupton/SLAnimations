@@ -16,16 +16,28 @@ import UIKit
 public final class ConfettiView: UIView, @MainActor ConfettiRenderer, @MainActor ConfettiEmitterDelegate {
     
     private let viewModel: ConfettiViewModel
-    private let style: Confetti.Style
-    private var configuration: Confetti.Configuration {
-        .makeConfiguration(for: style, in: bounds)
+    private let styles: [Confetti.Style]
+    private var configurations: [Confetti.Configuration] {
+        styles.map { style in
+            .makeConfiguration(for: style, in: bounds)
+        }
     }
 
     public init(
-        style: Confetti.Style = .shower,
+        style: Confetti.Style,
         viewModel: ConfettiViewModel
     ) {
-        self.style = style
+        self.styles = [style]
+        self.viewModel = viewModel
+        super.init(frame: .zero)
+        self.viewModel.delegate = self
+    }
+    
+    init(
+        styles: [Confetti.Style],
+        viewModel: ConfettiViewModel
+    ) {
+        self.styles = styles
         self.viewModel = viewModel
         super.init(frame: .zero)
         self.viewModel.delegate = self
@@ -36,25 +48,31 @@ public final class ConfettiView: UIView, @MainActor ConfettiRenderer, @MainActor
     }
     
     public func emit() {
-        let cells = Array(repeating: CAEmitterCell(), count: configuration.cells.count)
-        let emitter = makeConfetti(with: cells, in: bounds)
-        
-        layer.addSublayer(emitter)
-        
-        guard let animation = makeAnimation() else { return }
-        
-        let id = UUID().uuidString
-        emitter.add(animation, forKey: id)
+        for configuration in configurations {
+            let cells = Array(repeating: CAEmitterCell(), count: configuration.cells.count)
+            let emitters = makeConfetti(with: cells, in: bounds)
+            
+            emitters.map { emitter in
+                layer.addSublayer(emitter)
+                
+                guard let animation = makeAnimation() else { return }
+                
+                let id = UUID().uuidString
+                emitter.add(animation, forKey: id)
+            }
+        }
     }
     
     func makeConfetti(
         with cells: [CAEmitterCell],
         in rect: CGRect
-    ) -> CAEmitterLayer {
-        var caemitter = CAEmitterLayer()
-        let _emitter = configuration.emitter
-        makeCAEmitter(&caemitter, with: _emitter)
-        return caemitter
+    ) -> [CAEmitterLayer] {
+        return configurations.map { configuration in
+            var caemitter = CAEmitterLayer()
+            let _emitter = configuration.emitter
+            makeCAEmitter(&caemitter, with: _emitter)
+            return caemitter
+        }
     }
     
     public func makeAnimation() -> CABasicAnimation? {

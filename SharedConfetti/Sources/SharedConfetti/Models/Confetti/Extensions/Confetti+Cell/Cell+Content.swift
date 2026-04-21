@@ -16,6 +16,13 @@ public extension Confetti.Cell {
 }
 
 extension Confetti.Cell.Contents {
+    internal static func makeFountainContents() -> [Confetti.Cell.Contents] {
+        let images = Confetti.Assets.makeFountainAssets()
+        return images.map {
+            Confetti.Cell.Contents(image: $0)
+        }
+    }
+    
     internal static func makeShowerContents() -> [Confetti.Cell.Contents] {
         let images = Confetti.Assets.makeShowerAssets()
         return images.map {
@@ -23,8 +30,8 @@ extension Confetti.Cell.Contents {
         }
     }
     
-    internal static func makeFountainContents() -> [Confetti.Cell.Contents] {
-        let images = Confetti.Assets.makeFountainAssets()
+    internal static func makeCannonsContents() -> [Confetti.Cell.Contents] {
+        let images = Confetti.Assets.makeCannonsAssets()
         return images.map {
             Confetti.Cell.Contents(image: $0)
         }
