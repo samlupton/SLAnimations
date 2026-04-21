@@ -12,6 +12,9 @@ internal protocol ConfettiRenderer {
     func makeConfetti(with cells: [CAEmitterCell], in rect: CGRect) -> CAEmitterLayer
     func makeCells() -> [CAEmitterCell]
     func makeAnimation() -> CABasicAnimation?
+    
+    // MARK: - CAEmitterCell Set Up Methods
+    
     func makeCACell(_ cacell: inout CAEmitterCell, cell: Confetti.Cell)
     func makeAcceleration(_ cacell: inout CAEmitterCell, cell: Confetti.Cell)
     func makeContent(_ cacell: inout CAEmitterCell, cell: Confetti.Cell)
@@ -20,7 +23,17 @@ internal protocol ConfettiRenderer {
     func makeVelocity(_ cacell: inout CAEmitterCell, cell: Confetti.Cell)
     func makeLifetime(_ cacell: inout CAEmitterCell, cell: Confetti.Cell)
     func makeSpin(_ cacell: inout CAEmitterCell, cell: Confetti.Cell)
+    
+    // MARK: - CAEmitterLayer Set Up Methods
+    
+    func makeCAEmitter(_ caemitter: inout CAEmitterLayer, with emitter: Confetti.Emitter)
+    func makeEmitterCells(_ caemitter: inout CAEmitterLayer, with emitter: Confetti.Emitter)
+    func makeEmitterGeometry(_ caemitter: inout CAEmitterLayer, with emitter: Confetti.Emitter)
+    func makeEmitterMode(_ caemitter: inout CAEmitterLayer, with emitter: Confetti.Emitter)
+    func makeEmitterShape(_ caemitter: inout CAEmitterLayer, with emitter: Confetti.Emitter)
 }
+
+// MARK: - CAEmitterCell Default Implementation
 
 extension ConfettiRenderer {
     func makeCACell(_ cacell: inout CAEmitterCell, cell: Confetti.Cell) {
@@ -71,5 +84,38 @@ extension ConfettiRenderer {
     func makeSpin(_ cacell: inout CAEmitterCell, cell: Confetti.Cell) {
         cacell.spin = cell.spin.base
         cacell.spinRange = cell.spin.range
+    }
+}
+
+// MARK: - CAEmitterLayer Default Implementation
+
+extension ConfettiRenderer {
+    func makeCAEmitter(_ caemitter: inout CAEmitterLayer, with emitter: Confetti.Emitter) {
+        makeEmitterCells(&caemitter, with: emitter)
+        makeEmitterGeometry(&caemitter, with: emitter)
+        makeEmitterMode(&caemitter, with: emitter)
+        makeEmitterShape(&caemitter, with: emitter)
+    }
+    
+    func makeEmitterCells(_ caemitter: inout CAEmitterLayer, with emitter: Confetti.Emitter) {
+        caemitter.beginTime = CACurrentMediaTime()
+        caemitter.emitterCells = emitter.cells.map { cell in
+            var cacell = CAEmitterCell()
+            makeCACell(&cacell, cell: cell)
+            return cacell
+        }
+    }
+
+    func makeEmitterGeometry(_ caemitter: inout CAEmitterLayer, with emitter: Confetti.Emitter) {
+        caemitter.emitterSize = emitter.geometry.size
+        caemitter.emitterPosition = emitter.geometry.position
+    }
+
+    func makeEmitterMode(_ caemitter: inout CAEmitterLayer, with emitter: Confetti.Emitter) {
+        caemitter.emitterMode = Confetti.Emitter.Mode.emitterMode(from: emitter.mode)
+    }
+
+    func makeEmitterShape(_ caemitter: inout CAEmitterLayer, with emitter: Confetti.Emitter) {
+        caemitter.emitterShape = Confetti.Emitter.Shape.emitterShape(from: emitter.shape)
     }
 }

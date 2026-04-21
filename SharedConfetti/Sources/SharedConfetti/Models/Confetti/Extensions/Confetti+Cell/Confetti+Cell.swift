@@ -40,7 +40,7 @@ extension Confetti.Cell {
                     scale: .init(base: 0.1, range: 0.2, speed: 0),
                     acceleration: .init(x: 0, y: 200, z: 0),
                     velocity: .init(base: 200, range: 50),
-                    emission: .init(latitude: -.pi / 2, range: .pi / 4),
+                    emission: .init(longitude: -.pi / 2, range: .pi / 4),
                     contents: contents
                 )
         }

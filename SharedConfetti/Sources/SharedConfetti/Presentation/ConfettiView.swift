@@ -41,24 +41,17 @@ public final class ConfettiView: UIView, @MainActor ConfettiRenderer {
         emitter.add(animation, forKey: id)
     }
     
-    public func makeConfetti(
+    func makeConfetti(
         with cells: [CAEmitterCell],
         in rect: CGRect
     ) -> CAEmitterLayer {
-        let emitter = CAEmitterLayer()
-        emitter.birthRate = 1
-        emitter.lifetime = 1
-        emitter.emitterPosition = .init(x: rect.midX, y: .zero)
-        emitter.emitterSize = .init(width: rect.width, height: .zero)
-        emitter.emitterShape = .line
-        emitter.emitterMode = .outline
-        emitter.needsDisplayOnBoundsChange = true
-        emitter.emitterCells = cells
-        emitter.opacity = 0.5
+        var emitter = CAEmitterLayer()
+        let _emitter = Confetti.Emitter.fountain(in: rect)
+        makeCAEmitter(&emitter, with: _emitter)
         return emitter
     }
     
-    public func makeCells() -> [CAEmitterCell] {
+    func makeCells() -> [CAEmitterCell] {
         return configuration.cells.map { cell in
             var cacell = CAEmitterCell()
             cacell.beginTime = CACurrentMediaTime()
