@@ -36,7 +36,7 @@ public final class ConfettiView: UIView, @MainActor ConfettiRenderer, @MainActor
     }
     
     public func emit() {
-        let cells = makeCells()
+        let cells = Array(repeating: CAEmitterCell(), count: configuration.cells.count)
         let emitter = makeConfetti(with: cells, in: bounds)
         
         layer.addSublayer(emitter)
@@ -55,15 +55,6 @@ public final class ConfettiView: UIView, @MainActor ConfettiRenderer, @MainActor
         let _emitter = configuration.emitter
         makeCAEmitter(&caemitter, with: _emitter)
         return caemitter
-    }
-    
-    func makeCells() -> [CAEmitterCell] {
-        return configuration.cells.map { cell in
-            var cacell = CAEmitterCell()
-            cacell.beginTime = CACurrentMediaTime()
-            makeCACell(&cacell, cell: cell)
-            return cacell
-        }
     }
     
     public func makeAnimation() -> CABasicAnimation? {

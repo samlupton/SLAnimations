@@ -10,7 +10,6 @@ import UIKit
 
 internal protocol ConfettiRenderer {
     func makeConfetti(with cells: [CAEmitterCell], in rect: CGRect) -> CAEmitterLayer
-    func makeCells() -> [CAEmitterCell]
     func makeAnimation() -> CABasicAnimation?
     
     // MARK: - CAEmitterCell Set Up Methods
@@ -37,6 +36,7 @@ internal protocol ConfettiRenderer {
 
 extension ConfettiRenderer {
     func makeCACell(_ cacell: inout CAEmitterCell, cell: Confetti.Cell) {
+        cacell.beginTime = CACurrentMediaTime()
         makeCellAcceleration(&cacell, cell: cell)
         makeCellContent(&cacell, cell: cell)
         makeCellEmission(&cacell, cell: cell)
@@ -98,7 +98,6 @@ extension ConfettiRenderer {
     }
     
     func makeEmitterCells(_ caemitter: inout CAEmitterLayer, with emitter: Confetti.Emitter) {
-        caemitter.beginTime = CACurrentMediaTime()
         caemitter.emitterCells = emitter.cells.map { cell in
             var cacell = CAEmitterCell()
             makeCACell(&cacell, cell: cell)
