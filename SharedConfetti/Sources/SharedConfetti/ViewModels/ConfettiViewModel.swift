@@ -5,12 +5,12 @@
 //  Created by Samuel Lupton on 4/21/26.
 //
 
-public class ConfettiViewModel {
-    public weak var delegate: ConfettiEmitterDelegate?
+public final class ConfettiViewModel {
+    internal weak var delegate: ConfettiEmitterDelegate?
     
     public init() {}
     
-    open func emit() {
+    public func emit() {
         delegate?.emit()
     }
 }
