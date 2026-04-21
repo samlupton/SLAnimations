@@ -7,7 +7,7 @@
 
 import QuartzCore
 
-extension Confetti.Emitter {
+public extension Confetti.Emitter {
     enum Mode {
         case points, outline, surface, volume
     }

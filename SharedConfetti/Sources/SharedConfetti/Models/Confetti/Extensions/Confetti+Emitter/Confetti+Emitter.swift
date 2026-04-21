@@ -5,7 +5,7 @@
 //  Created by Samuel Lupton on 4/20/26.
 //
 
-import QuartzCore
+import CoreFoundation
 
 public extension Confetti {
     struct Emitter: Sendable {
@@ -17,7 +17,7 @@ public extension Confetti {
 }
 
 extension Confetti.Emitter {
-    static func fountain(in rect: CGRect) -> Self {
+    internal static func fountain(in rect: CGRect) -> Self {
         let contents = Confetti.Cell.makeFountainCells(
             with: Confetti.Cell.Contents.makeFountainContents()
         )

@@ -7,7 +7,7 @@
 
 import QuartzCore
 
-extension Confetti.Emitter {
+public extension Confetti.Emitter {
     enum Shape {
         case point, line, rectangle, circle, cuboid, sphere
     }

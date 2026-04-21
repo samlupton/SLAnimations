@@ -5,32 +5,40 @@
 //  Created by Samuel Lupton on 4/15/26.
 //
 
+import CoreFoundation
+
 public extension Confetti {
-    public struct Configuration: Sendable {
+    struct Configuration: Sendable {
+        let emitter: Emitter
         let cells: [Cell]
     }
-}
-
-public extension Confetti.Configuration {
-    static let shower: Self = makeShower()
-    static let fountain: Self = makeFountain()
 }
 
 // MARK: - Factory Methods
 
 extension Confetti.Configuration {
-    internal static func makeShower(
-        with contents: [Confetti.Cell.Contents] = Confetti.Cell.Contents.makeShowerContents()
-    ) -> Self {
+    internal static func makeConfiguration(
+        for style: Confetti.Style,
+        in rect: CGRect
+    ) -> Confetti.Configuration {
+        switch style {
+        case .fountain: return .makeFountain(in: rect)
+        case .shower: return makeShower(in: rect)
+        }
+    }
+    
+    private static func makeShower(in rect: CGRect) -> Self {
+        let contents = Confetti.Cell.Contents.makeShowerContents()
         return Confetti.Configuration(
-            cells: Confetti.Cell.makeShowerCells(with: contents)
+            emitter: .fountain(in: rect),
+            cells: Confetti.Cell.makeShowerCells(with: contents),
         )
     }
     
-    internal static func makeFountain(
-        with contents: [Confetti.Cell.Contents] = Confetti.Cell.Contents.makeFountainContents()
-    ) -> Self {
+    private static func makeFountain(in rect: CGRect) -> Self {
+        let contents = Confetti.Cell.Contents.makeFountainContents()
         return Confetti.Configuration(
+            emitter: .fountain(in: rect),
             cells: Confetti.Cell.makeFountainCells(with: contents)
         )
     }

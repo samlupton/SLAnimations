@@ -7,7 +7,7 @@
 
 import CoreFoundation
 
-extension Confetti.Emitter {
+public extension Confetti.Emitter {
     struct Geometry {
         var position: CGPoint
         var size: CGSize

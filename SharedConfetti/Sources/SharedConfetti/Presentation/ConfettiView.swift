@@ -13,25 +13,31 @@ import UIKit
 /// its lifecycle and attaching it to the view’s backing layer. Upon
 /// initialization, it immediately begins emitting particles using the
 /// provided configuration.
-public final class ConfettiView: UIView, @MainActor ConfettiRenderer {
+public final class ConfettiView: UIView, @MainActor ConfettiRenderer, @MainActor ConfettiEmitterDelegate {
     
-    private let configuration: Confetti.Configuration
-    
-    public init(configuration: Confetti.Configuration = .shower) {
-        self.configuration = configuration
-        super.init(frame: .zero)
+    private let viewModel: ConfettiViewModel
+    private let style: Confetti.Style
+    private var configuration: Confetti.Configuration {
+        .makeConfiguration(for: style, in: bounds)
     }
-    
+
+    public init(
+        style: Confetti.Style = .fountain,
+        viewModel: ConfettiViewModel
+    ) {
+        self.style = style
+        self.viewModel = viewModel
+        super.init(frame: .zero)
+        self.viewModel.delegate = self
+    }
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
     public func emit() {
         let cells = makeCells()
-        let emitter = makeConfetti(
-            with: cells,
-            in: self.frame
-        )
+        let emitter = makeConfetti(with: cells, in: bounds)
         
         layer.addSublayer(emitter)
         
@@ -45,10 +51,10 @@ public final class ConfettiView: UIView, @MainActor ConfettiRenderer {
         with cells: [CAEmitterCell],
         in rect: CGRect
     ) -> CAEmitterLayer {
-        var emitter = CAEmitterLayer()
-        let _emitter = Confetti.Emitter.fountain(in: rect)
-        makeCAEmitter(&emitter, with: _emitter)
-        return emitter
+        var caemitter = CAEmitterLayer()
+        let _emitter = configuration.emitter
+        makeCAEmitter(&caemitter, with: _emitter)
+        return caemitter
     }
     
     func makeCells() -> [CAEmitterCell] {
