@@ -7,6 +7,6 @@
 
 import ObjectiveC
 
-@MainActor public protocol ConfettiEmitterDelegate: NSObject {
+@MainActor internal protocol ConfettiEmitterDelegate: NSObject {
     func emit()
 }
