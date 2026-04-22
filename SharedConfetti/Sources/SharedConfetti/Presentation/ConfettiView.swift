@@ -50,7 +50,9 @@ public final class ConfettiView: UIView, @MainActor ConfettiEmitterDelegate {
     public func emit() {
         for configuration in configurations {
             let cells = Array(repeating: CAEmitterCell(), count: configuration.emitter.cells.count)
-            let emitters = makeConfetti(with: cells, in: bounds)
+            let emitters = configurations.map { configuration in
+                makeCAEmitter(with: configuration.emitter)
+            }
             
             emitters.map { emitter in
                 layer.addSublayer(emitter)
@@ -62,17 +64,8 @@ public final class ConfettiView: UIView, @MainActor ConfettiEmitterDelegate {
             }
         }
     }
-    
-    func makeConfetti(
-        with cells: [CAEmitterCell],
-        in rect: CGRect
-    ) -> [CAEmitterLayer] {
-        return configurations.map { configuration in
-            return makeCAEmitter(with: configuration.emitter)
-        }
-    }
-    
-    func makeCACell(cell: Confetti.Cell) -> CAEmitterCell {
+
+    private func makeCACell(cell: Confetti.Cell) -> CAEmitterCell {
         let cacell = CAEmitterCell()
         cacell.beginTime = CACurrentMediaTime()
         cacell.xAcceleration = cell.acceleration.x
@@ -98,7 +91,7 @@ public final class ConfettiView: UIView, @MainActor ConfettiEmitterDelegate {
         return cacell
     }
     
-    func makeCAEmitter(with emitter: Confetti.Emitter) -> CAEmitterLayer {
+    private func makeCAEmitter(with emitter: Confetti.Emitter) -> CAEmitterLayer {
         let caemitter = CAEmitterLayer()
         caemitter.emitterSize = emitter.geometry.size
         caemitter.emitterPosition = emitter.geometry.position
