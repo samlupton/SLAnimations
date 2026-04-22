@@ -1,5 +1,5 @@
 //
-//  Cell+Extensions.swift
+//  Confetti+Cell+Extensions.swift
 //  ConfettiAnimation
 //
 //  Created by Samuel Lupton on 4/22/26.

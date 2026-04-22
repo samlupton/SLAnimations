@@ -5,6 +5,8 @@
 //  Created by Samuel Lupton on 4/22/26.
 //
 
+import CoreFoundation
+
 extension Confetti.Emitter {
     internal static func makeFountainEmitter(in rect: CGRect) -> Self {
         let contents = Confetti.Cell.Contents.makeFountainContents()

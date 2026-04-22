@@ -1,5 +1,5 @@
 //
-//  Confetti.Cell.Contents.swift
+//  Confetti+Cell+Contents.swift
 //  ConfettiAnimation
 //
 //  Created by Samuel Lupton on 4/22/26.

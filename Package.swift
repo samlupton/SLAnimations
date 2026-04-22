@@ -6,23 +6,23 @@ import PackageDescription
 let package = Package(
     name: "SharedConfetti",
     platforms: [
-        .iOS(.v17)
+        .iOS(.v16)
     ],
     products: [
         .library(
             name: "SharedConfetti",
-            targets: ["SharedConfetti"]
+            targets: ["SharedConfetti"],
         )
     ],
     targets: [
         .target(
-            name: "Sources",
+            name: "SharedConfetti",
             path: "Sources/SharedConfetti"
         ),
         .testTarget(
-            name: "Tests",
+            name: "SharedConfettiTests",
             dependencies: ["SharedConfetti"],
-            path: "Tests"
+            path: "Tests/SharedConfettiTests"
         )
     ]
 )

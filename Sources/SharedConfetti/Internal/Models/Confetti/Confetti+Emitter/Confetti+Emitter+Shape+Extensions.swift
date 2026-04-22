@@ -5,6 +5,8 @@
 //  Created by Samuel Lupton on 4/22/26.
 //
 
+import QuartzCore
+
 extension Confetti.Emitter.Shape {
     internal static func emitterShape(from shape: Confetti.Emitter.Shape) -> CAEmitterLayerEmitterShape {
         switch shape {

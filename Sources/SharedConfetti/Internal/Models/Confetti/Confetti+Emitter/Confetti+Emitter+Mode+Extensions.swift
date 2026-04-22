@@ -5,6 +5,8 @@
 //  Created by Samuel Lupton on 4/22/26.
 //
 
+import QuartzCore
+
 // MARK: - CAEmitterLayer Connector
 
 extension Confetti.Emitter.Mode {
