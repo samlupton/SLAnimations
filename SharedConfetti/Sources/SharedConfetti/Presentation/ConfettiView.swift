@@ -13,16 +13,16 @@ import UIKit
 /// its lifecycle and attaching it to the view’s backing layer. Upon
 /// initialization, it immediately begins emitting particles using the
 /// provided configuration.
-public final class ConfettiView: UIView, @MainActor ConfettiRenderer, @MainActor ConfettiEmitterDelegate {
+public final class ConfettiView: UIView, @MainActor ConfettiEmitterDelegate {
     
     private let viewModel: ConfettiViewModel
     private let styles: [Confetti.Style]
     private var configurations: [Confetti.Configuration] {
         styles.map { style in
-            .makeConfiguration(for: style, in: bounds)
+                .makeConfiguration(for: style, in: bounds)
         }
     }
-
+    
     public init(
         style: Confetti.Style,
         viewModel: ConfettiViewModel
@@ -42,7 +42,7 @@ public final class ConfettiView: UIView, @MainActor ConfettiRenderer, @MainActor
         super.init(frame: .zero)
         self.viewModel.delegate = self
     }
-
+    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -70,6 +70,45 @@ public final class ConfettiView: UIView, @MainActor ConfettiRenderer, @MainActor
         return configurations.map { configuration in
             return makeCAEmitter(with: configuration.emitter)
         }
+    }
+    
+    func makeCACell(cell: Confetti.Cell) -> CAEmitterCell {
+        let cacell = CAEmitterCell()
+        cacell.beginTime = CACurrentMediaTime()
+        cacell.xAcceleration = cell.acceleration.x
+        cacell.yAcceleration = cell.acceleration.y
+        cacell.zAcceleration = cell.acceleration.z
+        cacell.scale = cell.scale.base
+        cacell.contents = cell.contents.image
+        cacell.contentsRect = cell.contents.rect
+        cacell.contentsScale = cell.contents.scale
+        cacell.emissionLongitude = cell.emission.longitude
+        cacell.emissionLatitude = cell.emission.latitude
+        cacell.emissionRange = cell.emission.range
+        cacell.scaleRange = cell.scale.range
+        cacell.scaleSpeed = cell.scale.speed
+        cacell.velocity = cell.velocity.base
+        cacell.velocityRange = cell.velocity.range
+        cacell.lifetime = cell.lifetime.base
+        cacell.lifetimeRange = cell.lifetime.range
+        cacell.birthRate = cell.lifetime.birthRate
+        cacell.spin = cell.spin.base
+        cacell.spinRange = cell.spin.range
+        
+        return cacell
+    }
+    
+    func makeCAEmitter(with emitter: Confetti.Emitter) -> CAEmitterLayer {
+        let caemitter = CAEmitterLayer()
+        caemitter.emitterSize = emitter.geometry.size
+        caemitter.emitterPosition = emitter.geometry.position
+        caemitter.emitterMode = Confetti.Emitter.Mode.emitterMode(from: emitter.mode)
+        caemitter.emitterShape = Confetti.Emitter.Shape.emitterShape(from: emitter.shape)
+        caemitter.emitterCells = emitter.cells.map { cell in
+            return makeCACell(cell: cell)
+        }
+        
+        return caemitter
     }
     
     public func makeAnimation() -> CABasicAnimation? {
