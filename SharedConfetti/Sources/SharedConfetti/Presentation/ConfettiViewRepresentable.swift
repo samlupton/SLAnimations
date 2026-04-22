@@ -29,7 +29,7 @@ public struct ConfettiViewRepresentable: UIViewRepresentable {
 
     /// Creates the underlying `ConfettiView`.
     public func makeUIView(context: Context) -> ConfettiView {
-        ConfettiView(styles: viewModel.styles, viewModel: viewModel)
+        ConfettiView(viewModel: viewModel)
     }
     
     /// Updates the underlying view when SwiftUI state changes.

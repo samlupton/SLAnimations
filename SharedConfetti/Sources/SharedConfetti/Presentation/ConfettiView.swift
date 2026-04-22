@@ -23,21 +23,8 @@ public final class ConfettiView: UIView, ConfettiEmitterDelegate {
         }
     }
     
-    public init(
-        style: Confetti.Style,
-        viewModel: ConfettiViewModel
-    ) {
-        self.styles = [style]
-        self.viewModel = viewModel
-        super.init(frame: .zero)
-        self.viewModel.delegate = self
-    }
-    
-    init(
-        styles: [Confetti.Style],
-        viewModel: ConfettiViewModel
-    ) {
-        self.styles = styles
+    public init(viewModel: ConfettiViewModel) {
+        self.styles = viewModel.styles
         self.viewModel = viewModel
         super.init(frame: .zero)
         self.viewModel.delegate = self

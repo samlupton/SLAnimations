@@ -43,7 +43,7 @@ private extension UIWindow {
     guard let window = UIWindow.getTopWindow() else { return }
 
     let viewModel = ConfettiViewModel(style: style)
-    let confettiView = ConfettiView(style: style, viewModel: viewModel)
+    let confettiView = ConfettiView(viewModel: viewModel)
 
     confettiView.frame = window.bounds
     confettiView.isUserInteractionEnabled = false
