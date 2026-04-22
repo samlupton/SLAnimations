@@ -1,17 +1,9 @@
 //
-//  Emitter+Mode.swift
-//  SharedConfetti
+//  Confetti+Emitter+Mode+Extensions.swift
+//  ConfettiAnimation
 //
-//  Created by Samuel Lupton on 4/20/26.
+//  Created by Samuel Lupton on 4/22/26.
 //
-
-import QuartzCore
-
-public extension Confetti.Emitter {
-    enum Mode: Sendable {
-        case points, outline, surface, volume
-    }
-}
 
 // MARK: - CAEmitterLayer Connector
 

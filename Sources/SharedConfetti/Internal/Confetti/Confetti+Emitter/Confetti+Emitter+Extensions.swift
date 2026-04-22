@@ -1,20 +1,9 @@
 //
-//  Confetti+Emitter.swift
-//  SharedConfetti
+//  Confetti+Emitter+Extensions.swift
+//  ConfettiAnimation
 //
-//  Created by Samuel Lupton on 4/20/26.
+//  Created by Samuel Lupton on 4/22/26.
 //
-
-import CoreFoundation
-
-public extension Confetti {
-    struct Emitter: Sendable {
-        var geometry: Confetti.Emitter.Geometry
-        var shape: Confetti.Emitter.Shape
-        var mode: Confetti.Emitter.Mode
-        var cells: [Cell]
-    }
-}
 
 extension Confetti.Emitter {
     internal static func makeFountainEmitter(in rect: CGRect) -> Self {

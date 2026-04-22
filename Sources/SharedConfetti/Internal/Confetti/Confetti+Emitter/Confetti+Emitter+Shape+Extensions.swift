@@ -1,17 +1,9 @@
 //
-//  Emitter+Shape.swift
-//  SharedConfetti
+//  Confetti+Emitter+Shape+Extensions
+//  ConfettiAnimation
 //
-//  Created by Samuel Lupton on 4/20/26.
+//  Created by Samuel Lupton on 4/22/26.
 //
-
-import QuartzCore
-
-public extension Confetti.Emitter {
-    enum Shape: Sendable {
-        case point, line, rectangle, circle, cuboid, sphere
-    }
-}
 
 extension Confetti.Emitter.Shape {
     internal static func emitterShape(from shape: Confetti.Emitter.Shape) -> CAEmitterLayerEmitterShape {

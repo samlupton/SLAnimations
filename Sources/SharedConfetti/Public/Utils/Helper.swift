@@ -7,25 +7,6 @@
 
 import UIKit
 
-// MARK: - Top Window
-
-/// Helper method used to get the top window of the application. The confetti animation can be rendered such that it overlays the entire application view.
-private extension UIWindow {
-    static func getTopWindow(
-        at level: UIWindow.Level = .normal
-    ) -> UIWindow? {
-        let windowScenes = UIApplication
-            .shared
-            .connectedScenes
-            .compactMap { $0 as? UIWindowScene }
-            .filter { $0.activationState == .foregroundActive }
-        
-        return windowScenes
-            .flatMap { $0.windows }
-            .last { $0.isKeyWindow || $0.windowLevel == level }
-    }
-}
-
 ///
 /// This function finds the top-most active `UIWindow`, attaches the provided
 /// `ConfettiView` to it, and triggers its emission animation.
