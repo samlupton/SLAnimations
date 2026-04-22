@@ -10,7 +10,12 @@ import CoreFoundation
 public extension Confetti {
     struct Configuration: Sendable {
         let emitter: Emitter
-        let cells: [Cell]
+        let opacity: Float
+        
+        init(emitter: Emitter, opacity: Float = 1) {
+            self.emitter = emitter
+            self.opacity = opacity
+        }
     }
 }
 
@@ -24,31 +29,29 @@ extension Confetti.Configuration {
         switch style {
         case .fountain: return .makeFountain(in: rect)
         case .shower: return makeShower(in: rect)
-        case .cannons: return makeCannons(in: rect)
+        case .leftCannon: return makeLeftCannon(in: rect)
         }
     }
     
     private static func makeFountain(in rect: CGRect) -> Self {
         let contents = Confetti.Cell.Contents.makeFountainContents()
         return Confetti.Configuration(
-            emitter: .fountain(in: rect),
-            cells: Confetti.Cell.makeFountainCells(with: contents)
+            emitter: .makeFountainEmitter(in: rect)
         )
     }
     
     private static func makeShower(in rect: CGRect) -> Self {
         let contents = Confetti.Cell.Contents.makeShowerContents()
         return Confetti.Configuration(
-            emitter: .shower(in: rect),
-            cells: Confetti.Cell.makeShowerCells(with: contents),
+            emitter: .makeShowerEmitter(in: rect),
+            opacity: 0.5
         )
     }
     
-    private static func makeCannons(in rect: CGRect) -> Self {
-        let contents = Confetti.Cell.Contents.makeCannonsContents()
+    private static func makeLeftCannon(in rect: CGRect) -> Self {
+        let contents = Confetti.Cell.Contents.makeLeftCannonContents()
         return Confetti.Configuration(
-            emitter: .cannons(in: rect),
-            cells: Confetti.Cell.makeCannonsCells(with: contents),
+            emitter: .makeLeftCannonEmitter(in: rect)
         )
     }
 }

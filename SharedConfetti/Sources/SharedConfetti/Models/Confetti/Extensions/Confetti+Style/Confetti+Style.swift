@@ -9,6 +9,6 @@ public extension Confetti {
     enum Style {
         case fountain
         case shower
-        case cannons
+        case leftCannon
     }
 }

@@ -49,7 +49,7 @@ public final class ConfettiView: UIView, @MainActor ConfettiRenderer, @MainActor
     
     public func emit() {
         for configuration in configurations {
-            let cells = Array(repeating: CAEmitterCell(), count: configuration.cells.count)
+            let cells = Array(repeating: CAEmitterCell(), count: configuration.emitter.cells.count)
             let emitters = makeConfetti(with: cells, in: bounds)
             
             emitters.map { emitter in
@@ -70,12 +70,20 @@ public final class ConfettiView: UIView, @MainActor ConfettiRenderer, @MainActor
         return configurations.map { configuration in
             var caemitter = CAEmitterLayer()
             let _emitter = configuration.emitter
+            // TODO: Implement opacity method
+            caemitter.opacity = configuration.opacity
             makeCAEmitter(&caemitter, with: _emitter)
             return caemitter
         }
     }
     
     public func makeAnimation() -> CABasicAnimation? {
-        return nil
+        let animation = CABasicAnimation(keyPath: "birthRate")
+        animation.fromValue = 1
+        animation.toValue = 0
+        animation.duration = 0.05
+        animation.fillMode = .forwards
+        animation.isRemovedOnCompletion = false
+        return animation
     }
 }

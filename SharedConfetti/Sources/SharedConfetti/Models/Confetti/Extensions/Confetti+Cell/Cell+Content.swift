@@ -30,7 +30,7 @@ extension Confetti.Cell.Contents {
         }
     }
     
-    internal static func makeCannonsContents() -> [Confetti.Cell.Contents] {
+    internal static func makeLeftCannonContents() -> [Confetti.Cell.Contents] {
         let images = Confetti.Assets.makeCannonsAssets()
         return images.map {
             Confetti.Cell.Contents(image: $0)

@@ -46,10 +46,10 @@ extension Confetti.Cell {
         }
     }
     
-    internal static func makeCannonsCells(with contents: [Confetti.Cell.Contents]) -> [Self] {
+    internal static func makeLeftCannonCells(with contents: [Confetti.Cell.Contents]) -> [Self] {
         return contents.map { contents in
                 .init(
-                    lifetime: .init(birthRate: 10, base: 5, range: 0),
+                    lifetime: .init(birthRate: 20, base: 5, range: 0),
                     spin: .init(base: 0, range: 2 * .pi),
                     scale: .init(base: 0.4, range: 0.2, speed: 0),
                     acceleration: .init(x: 0, y: 200, z: 0),
