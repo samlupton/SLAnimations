@@ -16,13 +16,13 @@ let package = Package(
     ],
     targets: [
         .target(
-            name: "SharedConfetti",
-            path: "SharedConfetti/Sources/SharedConfetti"
+            name: "Sources",
+            path: "Sources/SharedConfetti"
         ),
         .testTarget(
-            name: "SharedConfettiTests",
+            name: "Tests",
             dependencies: ["SharedConfetti"],
-            path: "SharedConfetti/Tests"
+            path: "Tests"
         )
     ]
 )
