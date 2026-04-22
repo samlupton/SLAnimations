@@ -30,18 +30,17 @@ extension Confetti.Configuration {
         case .fountain: return .makeFountain(in: rect)
         case .shower: return makeShower(in: rect)
         case .leftCannon: return makeLeftCannon(in: rect)
+        case .rightCannon: return makeRightCannon(in: rect)
         }
     }
     
     private static func makeFountain(in rect: CGRect) -> Self {
-        let contents = Confetti.Cell.Contents.makeFountainContents()
         return Confetti.Configuration(
             emitter: .makeFountainEmitter(in: rect)
         )
     }
     
     private static func makeShower(in rect: CGRect) -> Self {
-        let contents = Confetti.Cell.Contents.makeShowerContents()
         return Confetti.Configuration(
             emitter: .makeShowerEmitter(in: rect),
             opacity: 0.5
@@ -49,9 +48,14 @@ extension Confetti.Configuration {
     }
     
     private static func makeLeftCannon(in rect: CGRect) -> Self {
-        let contents = Confetti.Cell.Contents.makeLeftCannonContents()
         return Confetti.Configuration(
             emitter: .makeLeftCannonEmitter(in: rect)
+        )
+    }
+    
+    private static func makeRightCannon(in rect: CGRect) -> Self {
+        return Confetti.Configuration(
+            emitter: .makeRightCannonEmitter(in: rect)
         )
     }
 }

@@ -50,11 +50,25 @@ extension Confetti.Cell {
         return contents.map { contents in
                 .init(
                     lifetime: .init(birthRate: 20, base: 5, range: 0),
-                    spin: .init(base: 0, range: 2 * .pi),
+                    spin: .init(base: .pi, range: .pi),
                     scale: .init(base: 0.4, range: 0.2, speed: 0),
                     acceleration: .init(x: 0, y: 200, z: 0),
                     velocity: .init(base: 300, range: 0),
-                    emission: .init(latitude: 0, longitude: -.pi / 6, range: .pi / 20),
+                    emission: .init(latitude: 0, longitude: -.pi / 4, range: .pi / 8),
+                    contents: contents
+                )
+        }
+    }
+    
+    internal static func makeRightCannonCells(with contents: [Confetti.Cell.Contents]) -> [Self] {
+        return contents.map { contents in
+                .init(
+                    lifetime: .init(birthRate: 20, base: 5, range: 0),
+                    spin: .init(base: .pi, range: .pi),
+                    scale: .init(base: 0.4, range: 0.2, speed: 0),
+                    acceleration: .init(x: 0, y: 200, z: 0),
+                    velocity: .init(base: 300, range: 0),
+                    emission: .init(latitude: 0, longitude: -.pi + (.pi / 4), range: .pi / 8),
                     contents: contents
                 )
         }

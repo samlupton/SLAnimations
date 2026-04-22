@@ -36,4 +36,11 @@ extension Confetti.Cell.Contents {
             Confetti.Cell.Contents(image: $0)
         }
     }
+    
+    internal static func makeRightCannonContents() -> [Confetti.Cell.Contents] {
+        let images = Confetti.Assets.makeCannonsAssets()
+        return images.map {
+            Confetti.Cell.Contents(image: $0)
+        }
+    }
 }

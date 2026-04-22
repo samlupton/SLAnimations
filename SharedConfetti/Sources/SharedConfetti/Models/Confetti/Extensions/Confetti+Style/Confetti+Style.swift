@@ -10,5 +10,6 @@ public extension Confetti {
         case fountain
         case shower
         case leftCannon
+        case rightCannon
     }
 }
