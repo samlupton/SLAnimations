@@ -1,23 +1,9 @@
 //
-//  ConfettiConfiguration.swift
-//  SharedConfetti
+//  Configuration+Extensions
+//  ConfettiAnimation
 //
-//  Created by Samuel Lupton on 4/15/26.
+//  Created by Samuel Lupton on 4/22/26.
 //
-
-import CoreFoundation
-
-public extension Confetti {
-    struct Configuration: Sendable {
-        let emitter: Emitter
-        let opacity: Float
-        
-        init(emitter: Emitter, opacity: Float = 1) {
-            self.emitter = emitter
-            self.opacity = opacity
-        }
-    }
-}
 
 // MARK: - Factory Methods
 

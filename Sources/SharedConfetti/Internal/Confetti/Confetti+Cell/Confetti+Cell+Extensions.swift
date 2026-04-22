@@ -1,21 +1,9 @@
 //
-//  Confetti+Cell.swift
-//  SharedConfetti
+//  Cell+Extensions.swift
+//  ConfettiAnimation
 //
-//  Created by Samuel Lupton on 4/19/26.
+//  Created by Samuel Lupton on 4/22/26.
 //
-
-public extension Confetti {
-    struct Cell: Sendable {
-        let lifetime: Lifetime
-        let spin: Spin
-        let scale: Scale
-        let acceleration: Acceleration
-        let velocity: Velocity
-        let emission: Emission
-        let contents: Contents
-    }
-}
 
 extension Confetti.Cell {
     internal static func makeFountainCells(with contents: [Confetti.Cell.Contents]) -> [Self] {

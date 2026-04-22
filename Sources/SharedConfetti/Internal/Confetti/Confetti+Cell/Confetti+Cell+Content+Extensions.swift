@@ -1,19 +1,9 @@
 //
-//  Confetti+Content.swift
-//  SharedConfetti
+//  File.swift
+//  ConfettiAnimation
 //
-//  Created by Samuel Lupton on 4/19/26.
+//  Created by Samuel Lupton on 4/22/26.
 //
-
-import CoreGraphics
-
-public extension Confetti.Cell {
-    struct Contents: Sendable {
-        var image: CGImage?
-        var rect: CGRect = .init(x: 0, y: 0, width: 1, height: 1)
-        var scale: CGFloat = 1
-    }
-}
 
 extension Confetti.Cell.Contents {
     internal static func makeFountainContents() -> [Confetti.Cell.Contents] {
