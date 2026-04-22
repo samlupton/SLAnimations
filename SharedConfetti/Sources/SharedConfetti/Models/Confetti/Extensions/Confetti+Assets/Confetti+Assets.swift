@@ -7,9 +7,22 @@
 
 import UIKit
 
-extension Confetti {
-    internal enum Assets: Sendable {
+internal extension Confetti {
+    enum Assets: Sendable {
         static func makeShowerAssets() -> [CGImage] {
+            return [
+                UIImage(resource: .i1),
+                UIImage(resource: .i2),
+                UIImage(resource: .i3),
+                UIImage(resource: .i4),
+                UIImage(resource: .i5),
+                UIImage(resource: .i6),
+                UIImage(resource: .i7),
+                UIImage(resource: .i8)
+            ].compactMap { $0.cgImage }
+        }
+        
+        static func makeCannonsAssets() -> [CGImage] {
             return [
                 UIImage(resource: .i1),
                 UIImage(resource: .i2),

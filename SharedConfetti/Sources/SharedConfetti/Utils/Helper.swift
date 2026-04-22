@@ -39,10 +39,12 @@ private extension UIWindow {
 ///
 /// - Parameter confettiView: A preconfigured `ConfettiView` instance that will be
 ///   added to the window and animated.
-@MainActor public func emitConfetti(configuration: Confetti.Configuration) {
+@MainActor public func emitConfetti(style: Confetti.Style) {
     guard let window = UIWindow.getTopWindow() else { return }
 
-    let confettiView = ConfettiView(configuration: configuration)
+    let viewModel = ConfettiViewModel(style: style)
+    let confettiView = ConfettiView(style: style, viewModel: viewModel)
+
     confettiView.frame = window.bounds
     confettiView.isUserInteractionEnabled = false
     

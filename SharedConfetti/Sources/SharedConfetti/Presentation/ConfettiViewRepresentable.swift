@@ -21,11 +21,15 @@ import SwiftUI
 ///   for calling `emit()` on the underlying `ConfettiView` when appropriate.
 public struct ConfettiViewRepresentable: UIViewRepresentable {
 
-    public init() {}
+    let viewModel: ConfettiViewModel
+    
+    public init(viewModel: ConfettiViewModel) {
+        self.viewModel = viewModel
+    }
 
     /// Creates the underlying `ConfettiView`.
     public func makeUIView(context: Context) -> ConfettiView {
-        ConfettiView()
+        ConfettiView(styles: viewModel.styles, viewModel: viewModel)
     }
     
     /// Updates the underlying view when SwiftUI state changes.
