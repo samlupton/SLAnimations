@@ -68,12 +68,7 @@ public final class ConfettiView: UIView, @MainActor ConfettiRenderer, @MainActor
         in rect: CGRect
     ) -> [CAEmitterLayer] {
         return configurations.map { configuration in
-            var caemitter = CAEmitterLayer()
-            let _emitter = configuration.emitter
-            // TODO: Implement opacity method
-            caemitter.opacity = configuration.opacity
-            makeCAEmitter(&caemitter, with: _emitter)
-            return caemitter
+            return makeCAEmitter(with: configuration.emitter)
         }
     }
     
