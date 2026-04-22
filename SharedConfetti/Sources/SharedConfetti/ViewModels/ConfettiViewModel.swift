@@ -17,7 +17,7 @@ public final class ConfettiViewModel {
         self.styles = styles
     }
 
-    public func emit() {
+    @MainActor public func emit() {
         delegate?.emit()
     }
 }

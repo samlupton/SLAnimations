@@ -13,7 +13,7 @@ import UIKit
 /// its lifecycle and attaching it to the view’s backing layer. Upon
 /// initialization, it immediately begins emitting particles using the
 /// provided configuration.
-public final class ConfettiView: UIView, @MainActor ConfettiEmitterDelegate {
+public final class ConfettiView: UIView, ConfettiEmitterDelegate {
     
     private let viewModel: ConfettiViewModel
     private let styles: [Confetti.Style]
