@@ -7,7 +7,7 @@
 
 import UIKit
 
-extension Confetti {
+internal extension Confetti {
     enum Assets: Sendable {
         private static let confettiImages: [CGImage] = [
             UIImage(resource: .i1),
