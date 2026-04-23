@@ -23,9 +23,7 @@ public extension UIWindow {
     @MainActor static func emitConfetti(style: Confetti.Style) {
         guard let window = UIWindow.getTopWindow() else { return }
         
-        let viewModel = ConfettiViewModel(style: style)
-        let confettiView = ConfettiView(viewModel: viewModel)
-        
+        let confettiView = UIConfettiView(styles: [style])        
         confettiView.frame = window.bounds
         confettiView.isUserInteractionEnabled = false
         

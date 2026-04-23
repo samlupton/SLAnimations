@@ -31,7 +31,6 @@ internal extension Confetti.Configuration {
     private static func makeShower(in rect: CGRect) -> Self {
         return Confetti.Configuration(
             emitter: .makeShowerEmitter(in: rect),
-            opacity: 0.5
         )
     }
     
