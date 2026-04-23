@@ -8,7 +8,7 @@
 import QuartzCore
 
 public extension Confetti.Emitter {
-    enum Mode: Sendable {
+    public enum Mode: Sendable {
         case points, outline, surface, volume
     }
 }

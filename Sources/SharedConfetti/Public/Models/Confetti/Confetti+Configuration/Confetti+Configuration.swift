@@ -8,11 +8,11 @@
 import CoreFoundation
 
 public extension Confetti {
-    struct Configuration: Sendable {
+    public struct Configuration: Sendable {
         let emitter: Emitter
         let opacity: Float
         
-        init(emitter: Emitter, opacity: Float = 1) {
+        public init(emitter: Emitter, opacity: Float = 1) {
             self.emitter = emitter
             self.opacity = opacity
         }

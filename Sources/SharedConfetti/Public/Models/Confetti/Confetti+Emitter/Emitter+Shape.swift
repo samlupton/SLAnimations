@@ -8,7 +8,7 @@
 import QuartzCore
 
 public extension Confetti.Emitter {
-    enum Shape: Sendable {
+    public enum Shape: Sendable {
         case point, line, rectangle, circle, cuboid, sphere
     }
 }

@@ -8,8 +8,13 @@
 import CoreGraphics
 
 public extension Confetti.Cell {
-    struct Spin: Sendable {
+    public struct Spin: Sendable {
         var base: CGFloat
         var range: CGFloat
+        
+        public init(base: CGFloat, range: CGFloat) {
+            self.base = base
+            self.range = range
+        }
     }
 }
