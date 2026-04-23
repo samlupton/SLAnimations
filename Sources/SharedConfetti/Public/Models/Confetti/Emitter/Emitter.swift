@@ -12,18 +12,15 @@ public extension Confetti {
         let geometry: Confetti.Emitter.Geometry
         let shape: Confetti.Emitter.Shape
         let mode: Confetti.Emitter.Mode
-//        let cells: [Cell]
         
         public init(
             geometry: Confetti.Emitter.Geometry,
             shape: Confetti.Emitter.Shape,
-            mode: Confetti.Emitter.Mode,
-//            cells: [Cell]
+            mode: Confetti.Emitter.Mode
         ) {
             self.geometry = geometry
             self.shape = shape
             self.mode = mode
-//            self.cells = cells
         }
     }
 }
