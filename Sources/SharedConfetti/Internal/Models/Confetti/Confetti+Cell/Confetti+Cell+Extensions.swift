@@ -5,8 +5,8 @@
 //  Created by Samuel Lupton on 4/22/26.
 //
 
-extension Confetti.Cell {
-    internal static func makeFountainCells(with contents: [Confetti.Cell.Contents]) -> [Self] {
+internal extension Confetti.Cell {
+    static func makeFountainCells(with contents: [Confetti.Cell.Contents]) -> [Self] {
         return contents.map { contents in
                 .init(
                     lifetime: .init(birthRate: 100, base: 2, range: 1),
@@ -20,7 +20,7 @@ extension Confetti.Cell {
         }
     }
     
-    internal static func makeShowerCells(with contents: [Confetti.Cell.Contents]) -> [Self] {
+    static func makeShowerCells(with contents: [Confetti.Cell.Contents]) -> [Self] {
         return contents.map { contents in
                 .init(
                     lifetime: .init(birthRate: 10, base: 2, range: 1),
@@ -34,7 +34,7 @@ extension Confetti.Cell {
         }
     }
     
-    internal static func makeLeftCannonCells(with contents: [Confetti.Cell.Contents]) -> [Self] {
+    static func makeLeftCannonCells(with contents: [Confetti.Cell.Contents]) -> [Self] {
         return contents.map { contents in
                 .init(
                     lifetime: .init(birthRate: 20, base: 5, range: 0),
@@ -48,7 +48,7 @@ extension Confetti.Cell {
         }
     }
     
-    internal static func makeRightCannonCells(with contents: [Confetti.Cell.Contents]) -> [Self] {
+    static func makeRightCannonCells(with contents: [Confetti.Cell.Contents]) -> [Self] {
         return contents.map { contents in
                 .init(
                     lifetime: .init(birthRate: 20, base: 5, range: 0),

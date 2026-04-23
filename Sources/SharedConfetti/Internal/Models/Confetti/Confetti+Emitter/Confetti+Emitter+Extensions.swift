@@ -7,8 +7,8 @@
 
 import CoreFoundation
 
-extension Confetti.Emitter {
-    internal static func makeFountainEmitter(in rect: CGRect) -> Self {
+internal extension Confetti.Emitter {
+    static func makeFountainEmitter(in rect: CGRect) -> Self {
         let contents = Confetti.Cell.Contents.makeFountainContents()
         let cells = Confetti.Cell.makeFountainCells(with: contents)
         let geometry: Geometry = .init(position: .init(x: rect.midX, y: rect.maxY), size: rect.size)
@@ -23,7 +23,7 @@ extension Confetti.Emitter {
         )
     }
     
-    internal static func makeShowerEmitter(in rect: CGRect) -> Self {
+    static func makeShowerEmitter(in rect: CGRect) -> Self {
         let contents = Confetti.Cell.Contents.makeShowerContents()
         let cells = Confetti.Cell.makeShowerCells(with: contents)
         let geometry: Geometry = .init(position: .init(x: rect.midX, y: rect.minY), size: rect.size)
@@ -38,7 +38,7 @@ extension Confetti.Emitter {
         )
     }
     
-    internal static func makeLeftCannonEmitter(in rect: CGRect) -> Self {
+    static func makeLeftCannonEmitter(in rect: CGRect) -> Self {
         let contents = Confetti.Cell.Contents.makeLeftCannonContents()
         let cells = Confetti.Cell.makeLeftCannonCells(with: contents)
         let geometry: Geometry = .init(
@@ -56,7 +56,7 @@ extension Confetti.Emitter {
         )
     }
     
-    internal static func makeRightCannonEmitter(in rect: CGRect) -> Self {
+    static func makeRightCannonEmitter(in rect: CGRect) -> Self {
         let contents = Confetti.Cell.Contents.makeRightCannonContents()
         let cells = Confetti.Cell.makeRightCannonCells(with: contents)
         let geometry: Geometry = .init(

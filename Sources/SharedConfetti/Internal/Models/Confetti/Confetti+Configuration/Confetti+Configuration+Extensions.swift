@@ -9,8 +9,8 @@ import CoreFoundation
 
 // MARK: - Factory Methods
 
-extension Confetti.Configuration {
-    internal static func makeConfiguration(
+internal extension Confetti.Configuration {
+    static func makeConfiguration(
         for style: Confetti.Style,
         in rect: CGRect
     ) -> Confetti.Configuration {
