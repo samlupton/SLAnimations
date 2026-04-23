@@ -1,5 +1,5 @@
 //
-//  Helper.swift
+//  WindowBasedEmitter.swift
 //  SharedConfetti
 //
 //  Created by Samuel Lupton on 10/12/25.
@@ -20,7 +20,7 @@ public extension UIWindow {
     ///
     /// - Parameter confettiView: A preconfigured `ConfettiView` instance that will be
     ///   added to the window and animated.
-    @MainActor public static func emitConfetti(style: Confetti.Style) {
+    @MainActor static func emitConfetti(style: Confetti.Style) {
         guard let window = UIWindow.getTopWindow() else { return }
         
         let viewModel = ConfettiViewModel(style: style)

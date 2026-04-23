@@ -1,5 +1,5 @@
 //
-//  Helper.swift
+//  WindowLookup.swift
 //  ConfettiAnimation
 //
 //  Created by Samuel Lupton on 4/22/26.
