@@ -20,21 +20,16 @@ import SwiftUI
 ///   This view does not automatically trigger the animation. You are responsible
 ///   for calling `emit()` on the underlying `ConfettiView` when appropriate.
 public struct ConfettiView: UIViewRepresentable {
-    let styles: [Confetti.Style]
+    let configuration: Confetti.Configuration
     let trigger: Int
-
-    public init(styles: [Confetti.Style], trigger: Int) {
-        self.styles = styles
-        self.trigger = trigger
-    }
     
-    public init(style: Confetti.Style, trigger: Int) {
-        self.styles = [style]
+    public init(configuration: Confetti.Configuration, trigger: Int) {
+        self.configuration = configuration
         self.trigger = trigger
     }
 
     public func makeUIView(context: Context) -> UIConfettiView {
-        UIConfettiView(styles: styles)
+        UIConfettiView(configuration: configuration)
     }
 
     public func updateUIView(_ uiView: UIConfettiView, context: Context) {

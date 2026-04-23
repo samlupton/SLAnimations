@@ -15,16 +15,12 @@ import UIKit
 /// provided configuration.
 public final class UIConfettiView: UIView {
     
-    private let styles: [Confetti.Style]
-    private var configurations: [Confetti.Configuration] {
-        styles.map { style in
-                .makeConfiguration(for: style, in: bounds)
-        }
-    }
+    private var configuration: Confetti.Configuration
     
-    public init(styles: [Confetti.Style]) {
-        self.styles = styles
+    public init(configuration: Confetti.Configuration) {
+        self.configuration = configuration
         super.init(frame: .zero)
+        isUserInteractionEnabled = false
     }
     
     required init?(coder: NSCoder) {
@@ -32,21 +28,14 @@ public final class UIConfettiView: UIView {
     }
     
     public func emit() {
-        for configuration in configurations {
-            let cells = Array(repeating: CAEmitterCell(), count: configuration.cells.count)
-            let emitters = configurations.map { configuration in
-                makeCAEmitter(with: configuration)
-            }
-            
-            emitters.map { emitter in
-                layer.addSublayer(emitter)
-                
-                guard let animation = makeAnimation() else { return }
-                
-                let id = UUID().uuidString
-                emitter.add(animation, forKey: id)
-            }
-        }
+        let cells = Array(repeating: CAEmitterCell(), count: configuration.cells.count)
+        let emitter = makeCAEmitter(with: configuration)
+        
+        layer.addSublayer(emitter)
+        guard let animation = makeAnimation() else { return }
+        
+        let id = UUID().uuidString
+        emitter.add(animation, forKey: id)
     }
 
     private func makeCACell(cell: Confetti.Cell) -> CAEmitterCell {
@@ -77,8 +66,8 @@ public final class UIConfettiView: UIView {
     
     private func makeCAEmitter(with configuration: Confetti.Configuration) -> CAEmitterLayer {
         let caemitter = CAEmitterLayer()
-        caemitter.emitterSize = configuration.emitter.geometry.size
-        caemitter.emitterPosition = configuration.emitter.geometry.position
+        caemitter.emitterSize = self.bounds.size
+        caemitter.emitterPosition = resolvePosition(for: configuration.emitter.shape, in: bounds)
         caemitter.emitterMode = Confetti.Emitter.Mode.emitterMode(from: configuration.emitter.mode)
         caemitter.emitterShape = Confetti.Emitter.Shape.emitterShape(from: configuration.emitter.shape)
         caemitter.emitterCells = configuration.cells.map { cell in
@@ -90,11 +79,21 @@ public final class UIConfettiView: UIView {
     
     public func makeAnimation() -> CABasicAnimation? {
         let animation = CABasicAnimation(keyPath: "birthRate")
-        animation.fromValue = 1
-        animation.toValue = 0
-        animation.duration = 0.05
-        animation.fillMode = .forwards
-        animation.isRemovedOnCompletion = false
+//        animation.fromValue = 1
+//        animation.toValue = 0
+//        animation.duration = 0.05
+//        animation.fillMode = .forwards
+//        animation.isRemovedOnCompletion = false
         return animation
+    }
+}
+
+private extension UIConfettiView {
+    func resolvePosition(for shape: Confetti.Emitter.Shape, in rect: CGRect) -> CGPoint {
+        switch shape {
+        case .point: return rect.origin
+        case .line: return CGPoint(x: rect.midX, y: rect.minY)
+        case .rectangle, .circle: return CGPoint(x: rect.midX, y: rect.midY)
+        }
     }
 }

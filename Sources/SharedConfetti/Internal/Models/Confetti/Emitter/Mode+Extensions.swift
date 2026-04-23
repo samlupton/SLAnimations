@@ -15,7 +15,6 @@ internal extension Confetti.Emitter.Mode {
         case .points: return .points
         case .outline: return .outline
         case .surface: return .surface
-        case .volume: return .volume
         }
     }
 }

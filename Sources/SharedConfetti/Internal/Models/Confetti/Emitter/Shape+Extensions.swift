@@ -14,8 +14,6 @@ internal extension Confetti.Emitter.Shape {
         case .line: return .line
         case .rectangle: return .rectangle
         case .circle: return .circle
-        case .cuboid: return .cuboid
-        case .sphere: return .sphere
         }
     }
 }

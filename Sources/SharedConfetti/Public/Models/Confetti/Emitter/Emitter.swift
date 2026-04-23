@@ -9,16 +9,13 @@ import CoreFoundation
 
 public extension Confetti {
     struct Emitter: Sendable {
-        let geometry: Confetti.Emitter.Geometry
         let shape: Confetti.Emitter.Shape
         let mode: Confetti.Emitter.Mode
         
         public init(
-            geometry: Confetti.Emitter.Geometry,
             shape: Confetti.Emitter.Shape,
             mode: Confetti.Emitter.Mode
         ) {
-            self.geometry = geometry
             self.shape = shape
             self.mode = mode
         }
