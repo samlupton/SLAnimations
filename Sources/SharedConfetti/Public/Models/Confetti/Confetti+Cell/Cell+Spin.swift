@@ -9,8 +9,8 @@ import CoreGraphics
 
 public extension Confetti.Cell {
     struct Spin: Sendable {
-        internal let base: CGFloat
-        internal let range: CGFloat
+        let base: CGFloat
+        let range: CGFloat
         
         public init(base: CGFloat, range: CGFloat) {
             self.base = base

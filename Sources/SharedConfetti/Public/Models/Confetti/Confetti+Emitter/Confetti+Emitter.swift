@@ -9,10 +9,10 @@ import CoreFoundation
 
 public extension Confetti {
     struct Emitter: Sendable {
-        internal let geometry: Confetti.Emitter.Geometry
-        internal let shape: Confetti.Emitter.Shape
-        internal let mode: Confetti.Emitter.Mode
-        internal let cells: [Cell]
+        let geometry: Confetti.Emitter.Geometry
+        let shape: Confetti.Emitter.Shape
+        let mode: Confetti.Emitter.Mode
+        let cells: [Cell]
         
         public init(
             geometry: Confetti.Emitter.Geometry,

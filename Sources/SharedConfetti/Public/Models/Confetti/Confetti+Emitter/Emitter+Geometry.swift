@@ -9,8 +9,8 @@ import CoreFoundation
 
 public extension Confetti.Emitter {
     struct Geometry: Sendable {
-        internal let position: CGPoint
-        internal let size: CGSize
+        let position: CGPoint
+        let size: CGSize
         
         public init(position: CGPoint, size: CGSize) {
             self.position = position
