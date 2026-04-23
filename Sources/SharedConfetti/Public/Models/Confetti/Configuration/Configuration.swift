@@ -10,9 +10,11 @@ import CoreFoundation
 public extension Confetti {
     struct Configuration: Sendable {
         let emitter: Emitter
+        let cells: [Cell]
         
-        public init(emitter: Emitter) {
+        public init(emitter: Emitter, cells: [Cell]) {
             self.emitter = emitter
+            self.cells = cells
         }
     }
 }

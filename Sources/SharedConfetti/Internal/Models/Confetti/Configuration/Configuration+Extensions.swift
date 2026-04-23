@@ -24,25 +24,37 @@ internal extension Confetti.Configuration {
     
     private static func makeFountain(in rect: CGRect) -> Self {
         return Confetti.Configuration(
-            emitter: .makeFountainEmitter(in: rect)
+            emitter: .makeFountainEmitter(in: rect),
+            cells: Confetti.Cell.makeFountainCells(
+                with: Confetti.Cell.Contents.makeFountainContents()
+            )
         )
     }
     
     private static func makeShower(in rect: CGRect) -> Self {
         return Confetti.Configuration(
             emitter: .makeShowerEmitter(in: rect),
+            cells: Confetti.Cell.makeShowerCells(
+                with: Confetti.Cell.Contents.makeShowerContents()
+            )
         )
     }
     
     private static func makeLeftCannon(in rect: CGRect) -> Self {
         return Confetti.Configuration(
-            emitter: .makeLeftCannonEmitter(in: rect)
+            emitter: .makeLeftCannonEmitter(in: rect),
+            cells: Confetti.Cell.makeLeftCannonCells(
+                with: Confetti.Cell.Contents.makeLeftCannonContents()
+            )
         )
     }
     
     private static func makeRightCannon(in rect: CGRect) -> Self {
         return Confetti.Configuration(
-            emitter: .makeRightCannonEmitter(in: rect)
+            emitter: .makeRightCannonEmitter(in: rect),
+            cells: Confetti.Cell.makeRightCannonCells(
+                with: Confetti.Cell.Contents.makeRightCannonContents()
+            )
         )
     }
 }

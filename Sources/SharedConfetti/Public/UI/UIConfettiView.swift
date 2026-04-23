@@ -33,9 +33,9 @@ public final class UIConfettiView: UIView {
     
     public func emit() {
         for configuration in configurations {
-            let cells = Array(repeating: CAEmitterCell(), count: configuration.emitter.cells.count)
+            let cells = Array(repeating: CAEmitterCell(), count: configuration.cells.count)
             let emitters = configurations.map { configuration in
-                makeCAEmitter(with: configuration.emitter)
+                makeCAEmitter(with: configuration)
             }
             
             emitters.map { emitter in
@@ -75,13 +75,13 @@ public final class UIConfettiView: UIView {
         return cacell
     }
     
-    private func makeCAEmitter(with emitter: Confetti.Emitter) -> CAEmitterLayer {
+    private func makeCAEmitter(with configuration: Confetti.Configuration) -> CAEmitterLayer {
         let caemitter = CAEmitterLayer()
-        caemitter.emitterSize = emitter.geometry.size
-        caemitter.emitterPosition = emitter.geometry.position
-        caemitter.emitterMode = Confetti.Emitter.Mode.emitterMode(from: emitter.mode)
-        caemitter.emitterShape = Confetti.Emitter.Shape.emitterShape(from: emitter.shape)
-        caemitter.emitterCells = emitter.cells.map { cell in
+        caemitter.emitterSize = configuration.emitter.geometry.size
+        caemitter.emitterPosition = configuration.emitter.geometry.position
+        caemitter.emitterMode = Confetti.Emitter.Mode.emitterMode(from: configuration.emitter.mode)
+        caemitter.emitterShape = Confetti.Emitter.Shape.emitterShape(from: configuration.emitter.shape)
+        caemitter.emitterCells = configuration.cells.map { cell in
             return makeCACell(cell: cell)
         }
         
