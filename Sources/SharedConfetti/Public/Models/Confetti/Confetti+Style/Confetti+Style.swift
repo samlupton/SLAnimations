@@ -6,7 +6,7 @@
 //
 
 public extension Confetti {
-    public enum Style {
+    enum Style {
         case fountain
         case shower
         case leftCannon

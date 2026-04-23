@@ -6,7 +6,7 @@
 //
 
 public extension Confetti.Cell {
-    public struct Lifetime: Sendable {
+    struct Lifetime: Sendable {
         var birthRate: Float
         var base: Float
         var range: Float

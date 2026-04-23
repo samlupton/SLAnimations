@@ -8,7 +8,7 @@
 import CoreFoundation
 
 public extension Confetti.Emitter {
-    public struct Geometry: Sendable {
+    struct Geometry: Sendable {
         var position: CGPoint
         var size: CGSize
         

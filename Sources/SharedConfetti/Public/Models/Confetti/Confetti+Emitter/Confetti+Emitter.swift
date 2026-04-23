@@ -8,7 +8,7 @@
 import CoreFoundation
 
 public extension Confetti {
-    public struct Emitter: Sendable {
+    struct Emitter: Sendable {
         var geometry: Confetti.Emitter.Geometry
         var shape: Confetti.Emitter.Shape
         var mode: Confetti.Emitter.Mode

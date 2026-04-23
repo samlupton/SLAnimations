@@ -8,7 +8,7 @@
 import CoreFoundation
 
 public extension Confetti {
-    public struct Configuration: Sendable {
+    struct Configuration: Sendable {
         let emitter: Emitter
         let opacity: Float
         

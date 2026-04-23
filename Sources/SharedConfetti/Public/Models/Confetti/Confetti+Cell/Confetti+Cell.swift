@@ -6,7 +6,7 @@
 //
 
 public extension Confetti {
-    public struct Cell: Sendable {
+    struct Cell: Sendable {
         let lifetime: Lifetime
         let spin: Spin
         let scale: Scale

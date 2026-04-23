@@ -8,7 +8,7 @@
 import CoreGraphics
 
 public extension Confetti.Cell {
-    public struct Velocity: Sendable {
+    struct Velocity: Sendable {
         var base: CGFloat
         var range: CGFloat
         
