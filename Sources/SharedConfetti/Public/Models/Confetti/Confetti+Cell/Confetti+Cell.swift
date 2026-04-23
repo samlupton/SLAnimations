@@ -7,13 +7,13 @@
 
 public extension Confetti {
     struct Cell: Sendable {
-        let lifetime: Lifetime
-        let spin: Spin
-        let scale: Scale
-        let acceleration: Acceleration
-        let velocity: Velocity
-        let emission: Emission
-        let contents: Contents
+        internal let lifetime: Lifetime
+        internal let spin: Spin
+        internal let scale: Scale
+        internal let acceleration: Acceleration
+        internal let velocity: Velocity
+        internal let emission: Emission
+        internal let contents: Contents
         
         public init(
             lifetime: Lifetime,

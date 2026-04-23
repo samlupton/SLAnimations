@@ -9,9 +9,9 @@ import CoreGraphics
 
 public extension Confetti.Cell {
     struct Emission: Sendable {
-        var latitude: CGFloat
-        var longitude: CGFloat
-        var range: CGFloat
+        internal let latitude: CGFloat
+        internal let longitude: CGFloat
+        internal let range: CGFloat
         
         public init(
             latitude: CGFloat = .zero,

@@ -9,9 +9,9 @@ import CoreGraphics
 
 public extension Confetti.Cell {
     struct Scale: Sendable {
-        var base: CGFloat
-        var range: CGFloat
-        var speed: CGFloat
+        internal let base: CGFloat
+        internal let range: CGFloat
+        internal let speed: CGFloat
         
         public init(base: CGFloat,range: CGFloat, speed: CGFloat = 0) {
             self.base = base

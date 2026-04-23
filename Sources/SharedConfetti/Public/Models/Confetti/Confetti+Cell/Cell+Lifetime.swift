@@ -7,9 +7,9 @@
 
 public extension Confetti.Cell {
     struct Lifetime: Sendable {
-        var birthRate: Float
-        var base: Float
-        var range: Float
+        internal let birthRate: Float
+        internal let base: Float
+        internal let range: Float
         
         public init(birthRate: Float, base: Float, range: Float) {
             self.birthRate = birthRate

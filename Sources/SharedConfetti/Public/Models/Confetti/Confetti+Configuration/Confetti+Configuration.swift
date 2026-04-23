@@ -9,8 +9,8 @@ import CoreFoundation
 
 public extension Confetti {
     struct Configuration: Sendable {
-        let emitter: Emitter
-        let opacity: Float
+        internal let emitter: Emitter
+        internal let opacity: Float
         
         public init(emitter: Emitter, opacity: Float = 1) {
             self.emitter = emitter

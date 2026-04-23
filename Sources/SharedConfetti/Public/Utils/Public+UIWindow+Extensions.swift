@@ -8,7 +8,6 @@
 import UIKit
 
 public extension UIWindow {
-    ///
     /// This function finds the top-most active `UIWindow`, attaches the provided
     /// `ConfettiView` to it, and triggers its emission animation.
     ///
