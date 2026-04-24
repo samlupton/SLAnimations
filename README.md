@@ -1,6 +1,6 @@
-# SharedPlume
+# Plume
 
-`SharedPlume` is a Swift package for rendering configurable plume effects with `CAEmitterLayer`. It gives you a small public model layer for defining emitter behavior and two main integration paths: embed plume directly in SwiftUI with `PlumeView`, or fire a one-shot overlay on the active window with `UIWindow.emitPlume(configuration:)`.
+`Plume` is a Swift package for rendering configurable plume effects with `CAEmitterLayer`. It gives you a small public model layer for defining emitter behavior and two main integration paths: embed plume directly in SwiftUI with `PlumeView`, or fire a one-shot overlay on the active window with `UIWindow.emitPlume(configuration:)`.
 
 ## Requirements
 
@@ -10,10 +10,10 @@
 
 ## Installation
 
-Add `SharedPlume` to your project as a Swift package dependency, then import it where needed:
+Add `Plume` to your project as a Swift package dependency, then import it where needed:
 
 ```swift
-import SharedPlume
+import Plume
 ```
 
 ## Core Concepts
@@ -49,7 +49,7 @@ Plume
 At the center of the package is `Plume.Configuration`, which combines an emitter and one or more cells.
 
 ```swift
-import SharedPlume
+import Plume
 import UIKit
 
 let cell = Plume.Cell(
@@ -74,7 +74,7 @@ Use `PlumeView` when you want plume to live inside a SwiftUI layout. The view us
 
 ```swift
 import SwiftUI
-import SharedPlume
+import Plume
 
 struct CelebrationView: View {
     @State private var trigger = 0
@@ -115,7 +115,7 @@ If you are working in UIKit, create a `UIPlumeView`, size it like any other view
 
 ```swift
 import UIKit
-import SharedPlume
+import Plume
 
 final class CelebrationViewController: UIViewController {
     private lazy var plumeView = UIPlumeView(configuration: configuration)
@@ -154,7 +154,7 @@ final class CelebrationViewController: UIViewController {
 For simple one-shot effects, you can ask the active `UIWindow` to present plume over the entire window.
 
 ```swift
-import SharedPlume
+import Plume
 import UIKit
 
 @MainActor

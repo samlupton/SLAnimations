@@ -1,6 +1,6 @@
 //
 //  Plume.swift
-//  SharedPlume
+//  Plume
 //
 //  Created by Samuel Lupton on 4/15/26.
 //

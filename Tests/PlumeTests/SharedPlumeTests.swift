@@ -1,7 +1,7 @@
 import XCTest
-@testable import SharedPlume
+@testable import Plume
 
-final class SharedPlumeTests: XCTestCase {
+final class PlumeTests: XCTestCase {
     func testExample() throws {
         // XCTest Documentation
         // https://developer.apple.com/documentation/xctest
