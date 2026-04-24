@@ -55,10 +55,10 @@ let cell = Plume.Cell(
     lifetime: .init(birthRate: 24, base: 6, range: 1),
     spin: .init(base: 3, range: 1),
     scale: .init(base: 0.08, range: 0.03),
-    acceleration: .init(x: 0, y: 120, z: 0),
+    acceleration: .init(x: 0, y: 120),
     velocity: .init(base: 180, range: 60),
     emission: .init(latitude: 0, longitude: 0, range: .pi),
-    contents: .init(image: UIImage(systemName: "circle.fill")?.cgImage)
+    contents: .init(uiimage: UIImage(systemName: "circle.fill"))
 )
 
 let configuration = Plume.Configuration(
@@ -85,10 +85,10 @@ struct CelebrationView: View {
                 lifetime: .init(birthRate: 20, base: 5, range: 1),
                 spin: .init(base: 2, range: 1),
                 scale: .init(base: 0.1, range: 0.04),
-                acceleration: .init(x: 0, y: 140, z: 0),
+                acceleration: .init(x: 0, y: 140),
                 velocity: .init(base: 160, range: 40),
                 emission: .init(latitude: 0, longitude: 0, range: .pi),
-                contents: .init(image: UIImage(systemName: "star.fill")?.cgImage)
+                contents: .init(uiimage: UIImage(systemName: "star.fill"))
             )
         ]
     )
@@ -126,10 +126,10 @@ final class CelebrationViewController: UIViewController {
                 lifetime: .init(birthRate: 18, base: 5, range: 1),
                 spin: .init(base: 2, range: 2),
                 scale: .init(base: 0.08, range: 0.03),
-                acceleration: .init(x: 0, y: 100, z: 0),
+                acceleration: .init(x: 0, y: 100),
                 velocity: .init(base: 150, range: 50),
                 emission: .init(latitude: 0, longitude: 0, range: .pi),
-                contents: .init(image: UIImage(systemName: "seal.fill")?.cgImage)
+                contents: .init(uiimage: UIImage(systemName: "seal.fill"))
             )
         ]
     )
