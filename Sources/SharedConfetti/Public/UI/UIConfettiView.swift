@@ -67,7 +67,7 @@ public final class UIConfettiView: UIView {
     private func makeCAEmitter(with configuration: Confetti.Configuration) -> CAEmitterLayer {
         let caemitter = CAEmitterLayer()
         caemitter.emitterSize = resolveSize(for: configuration.emitter.shape, in: bounds)
-        caemitter.emitterPosition = resolvePosition(for: configuration.emitter.shape, in: bounds)
+        caemitter.emitterPosition = CGPoint(x: bounds.midX, y: bounds.midY)
         caemitter.emitterMode = Confetti.Emitter.Mode.emitterMode(from: configuration.emitter.mode)
         caemitter.emitterShape = Confetti.Emitter.Shape.emitterShape(from: configuration.emitter.shape)
         caemitter.emitterCells = configuration.cells.map { cell in
@@ -79,40 +79,17 @@ public final class UIConfettiView: UIView {
     
     public func makeAnimation() -> CABasicAnimation? {
         let animation = CABasicAnimation(keyPath: "birthRate")
-//        animation.fromValue = 1
-//        animation.toValue = 0
-//        animation.duration = 0.05
-//        animation.fillMode = .forwards
-//        animation.isRemovedOnCompletion = false
+        animation.fromValue = 1
+        animation.toValue = 0
+        animation.duration = 0.15
+        animation.fillMode = .forwards
+        animation.isRemovedOnCompletion = false
         return animation
     }
 }
 
 private extension UIConfettiView {
-    func resolvePosition(for shape: Confetti.Emitter.Shape, in rect: CGRect) -> CGPoint {
-        switch shape {
-        case .point:
-            return  CGPoint(x: rect.midX, y: rect.midY)
-        case .line:
-            return CGPoint(x: rect.midX, y: rect.minY)
-        case .rectangle, .circle:
-            return CGPoint(x: rect.midX, y: rect.midY)
-        }
-    }
-    
     func resolveSize(for shape: Confetti.Emitter.Shape, in rect: CGRect) -> CGSize {
-        switch shape {
-        case .point:
-            return .zero
-        case .line:
-            return CGSize(width: rect.width, height: .zero)
-        case .rectangle, .circle:
-            let length = min(rect.width, rect.height)
-            return CGSize(width: length, height: length)
-        }
-    }
-    
-    func resolveAlignment(for shape: Confetti.Emitter.Shape, in rect: CGRect) -> CGSize {
         switch shape {
         case .point:
             return .zero
