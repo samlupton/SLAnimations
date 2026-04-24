@@ -26,7 +26,7 @@ import Plume
 
 ## Type Tree
 
-The type tree shows how the package’s core API is organized around `Plume` as the root namespace, with related configuration and emitter types grouped beneath it. Its purpose is to give you a quick mental model of how the main types fit together before you start building configurations.
+The package’s core API is organized around `Plume` as the root namespace, with related configuration and emitter types grouped beneath it.
 
 ```text
 Plume
