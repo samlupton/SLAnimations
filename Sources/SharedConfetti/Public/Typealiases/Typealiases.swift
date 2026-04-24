@@ -8,7 +8,6 @@
 public typealias ConfettiCell = Confetti.Cell
 public typealias ConfettiConfiguration = Confetti.Configuration
 public typealias ConfettiEmitter = Confetti.Emitter
-public typealias ConfettiStyle = Confetti.Style
 
 public typealias CellAcceleration = Confetti.Cell.Acceleration
 public typealias CellContents = Confetti.Cell.Contents
@@ -18,6 +17,5 @@ public typealias CellScale = Confetti.Cell.Scale
 public typealias CellSpin = Confetti.Cell.Spin
 public typealias CellVelocity = Confetti.Cell.Velocity
 
-public typealias EmitterGeometry = Confetti.Emitter.Geometry
 public typealias EmitterMode = Confetti.Emitter.Mode
 public typealias EmitterShape = Confetti.Emitter.Shape

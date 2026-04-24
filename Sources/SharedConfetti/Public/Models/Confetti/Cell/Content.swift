@@ -8,10 +8,10 @@
 import CoreGraphics
 
 public extension Confetti.Cell {
-    public struct Contents: Sendable {
-        var image: CGImage?
-        var rect: CGRect
-        var scale: CGFloat
+    struct Contents: Sendable {
+        let image: CGImage?
+        let rect: CGRect
+        let scale: CGFloat
         
         public init(
             image: CGImage? = nil,

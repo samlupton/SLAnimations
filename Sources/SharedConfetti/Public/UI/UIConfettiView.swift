@@ -1,5 +1,5 @@
 //
-//  ConfettiView.swift
+//  UIConfettiView.swift
 //  SharedConfetti
 //
 //  Created by Samuel Lupton on 10/7/25.
@@ -13,21 +13,14 @@ import UIKit
 /// its lifecycle and attaching it to the view’s backing layer. Upon
 /// initialization, it immediately begins emitting particles using the
 /// provided configuration.
-public final class ConfettiView: UIView, ConfettiEmitterDelegate {
+public final class UIConfettiView: UIView {
     
-    private let viewModel: ConfettiViewModel
-    private let styles: [Confetti.Style]
-    private var configurations: [Confetti.Configuration] {
-        styles.map { style in
-                .makeConfiguration(for: style, in: bounds)
-        }
-    }
+    private var configuration: Confetti.Configuration
     
-    public init(viewModel: ConfettiViewModel) {
-        self.styles = viewModel.styles
-        self.viewModel = viewModel
+    public init(configuration: Confetti.Configuration) {
+        self.configuration = configuration
         super.init(frame: .zero)
-        self.viewModel.delegate = self
+        isUserInteractionEnabled = false
     }
     
     required init?(coder: NSCoder) {
@@ -35,21 +28,14 @@ public final class ConfettiView: UIView, ConfettiEmitterDelegate {
     }
     
     public func emit() {
-        for configuration in configurations {
-            let cells = Array(repeating: CAEmitterCell(), count: configuration.emitter.cells.count)
-            let emitters = configurations.map { configuration in
-                makeCAEmitter(with: configuration.emitter)
-            }
-            
-            emitters.map { emitter in
-                layer.addSublayer(emitter)
-                
-                guard let animation = makeAnimation() else { return }
-                
-                let id = UUID().uuidString
-                emitter.add(animation, forKey: id)
-            }
-        }
+        let cells = Array(repeating: CAEmitterCell(), count: configuration.cells.count)
+        let emitter = makeCAEmitter(with: configuration)
+        
+        layer.addSublayer(emitter)
+        guard let animation = makeAnimation() else { return }
+        
+        let id = UUID().uuidString
+        emitter.add(animation, forKey: id)
     }
 
     private func makeCACell(cell: Confetti.Cell) -> CAEmitterCell {
@@ -78,13 +64,13 @@ public final class ConfettiView: UIView, ConfettiEmitterDelegate {
         return cacell
     }
     
-    private func makeCAEmitter(with emitter: Confetti.Emitter) -> CAEmitterLayer {
+    private func makeCAEmitter(with configuration: Confetti.Configuration) -> CAEmitterLayer {
         let caemitter = CAEmitterLayer()
-        caemitter.emitterSize = emitter.geometry.size
-        caemitter.emitterPosition = emitter.geometry.position
-        caemitter.emitterMode = Confetti.Emitter.Mode.emitterMode(from: emitter.mode)
-        caemitter.emitterShape = Confetti.Emitter.Shape.emitterShape(from: emitter.shape)
-        caemitter.emitterCells = emitter.cells.map { cell in
+        caemitter.emitterSize = resolveSize(for: configuration.emitter.shape, in: bounds)
+        caemitter.emitterPosition = CGPoint(x: bounds.midX, y: bounds.midY)
+        caemitter.emitterMode = Confetti.Emitter.Mode.emitterMode(from: configuration.emitter.mode)
+        caemitter.emitterShape = Confetti.Emitter.Shape.emitterShape(from: configuration.emitter.shape)
+        caemitter.emitterCells = configuration.cells.map { cell in
             return makeCACell(cell: cell)
         }
         
@@ -95,9 +81,23 @@ public final class ConfettiView: UIView, ConfettiEmitterDelegate {
         let animation = CABasicAnimation(keyPath: "birthRate")
         animation.fromValue = 1
         animation.toValue = 0
-        animation.duration = 0.05
+        animation.duration = 0.15
         animation.fillMode = .forwards
         animation.isRemovedOnCompletion = false
         return animation
+    }
+}
+
+private extension UIConfettiView {
+    func resolveSize(for shape: Confetti.Emitter.Shape, in rect: CGRect) -> CGSize {
+        switch shape {
+        case .point:
+            return .zero
+        case .line:
+            return CGSize(width: rect.width, height: .zero)
+        case .rectangle, .circle:
+            let length = min(rect.width, rect.height)
+            return CGSize(width: length, height: length)
+        }
     }
 }

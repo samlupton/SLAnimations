@@ -1,5 +1,5 @@
 //
-//  Helper.swift
+//  WindowBasedEmitter.swift
 //  SharedConfetti
 //
 //  Created by Samuel Lupton on 10/12/25.
@@ -8,7 +8,6 @@
 import UIKit
 
 public extension UIWindow {
-    ///
     /// This function finds the top-most active `UIWindow`, attaches the provided
     /// `ConfettiView` to it, and triggers its emission animation.
     ///
@@ -21,12 +20,10 @@ public extension UIWindow {
     ///
     /// - Parameter confettiView: A preconfigured `ConfettiView` instance that will be
     ///   added to the window and animated.
-    @MainActor public static func emitConfetti(style: Confetti.Style) {
+    @MainActor static func emitConfetti(configuration: Confetti.Configuration) {
         guard let window = UIWindow.getTopWindow() else { return }
         
-        let viewModel = ConfettiViewModel(style: style)
-        let confettiView = ConfettiView(viewModel: viewModel)
-        
+        let confettiView = UIConfettiView(configuration: configuration)        
         confettiView.frame = window.bounds
         confettiView.isUserInteractionEnabled = false
         

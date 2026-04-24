@@ -7,15 +7,13 @@
 
 import QuartzCore
 
-extension Confetti.Emitter.Shape {
-    internal static func emitterShape(from shape: Confetti.Emitter.Shape) -> CAEmitterLayerEmitterShape {
+internal extension Confetti.Emitter.Shape {
+    static func emitterShape(from shape: Confetti.Emitter.Shape) -> CAEmitterLayerEmitterShape {
         switch shape {
         case .point: return .point
         case .line: return .line
         case .rectangle: return .rectangle
         case .circle: return .circle
-        case .cuboid: return .cuboid
-        case .sphere: return .sphere
         }
     }
 }

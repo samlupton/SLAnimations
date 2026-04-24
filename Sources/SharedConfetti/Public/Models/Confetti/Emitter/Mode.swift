@@ -5,10 +5,8 @@
 //  Created by Samuel Lupton on 4/20/26.
 //
 
-import QuartzCore
-
 public extension Confetti.Emitter {
-    public enum Mode: Sendable {
-        case points, outline, surface, volume
+    enum Mode: Sendable {
+        case points, outline, surface
     }
 }

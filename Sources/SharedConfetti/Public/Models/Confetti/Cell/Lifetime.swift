@@ -6,10 +6,10 @@
 //
 
 public extension Confetti.Cell {
-    public struct Lifetime: Sendable {
-        var birthRate: Float
-        var base: Float
-        var range: Float
+    struct Lifetime: Sendable {
+        let birthRate: Float
+        let base: Float
+        let range: Float
         
         public init(birthRate: Float, base: Float, range: Float) {
             self.birthRate = birthRate

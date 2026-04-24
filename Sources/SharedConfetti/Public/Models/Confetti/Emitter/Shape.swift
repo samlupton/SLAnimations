@@ -5,10 +5,8 @@
 //  Created by Samuel Lupton on 4/20/26.
 //
 
-import QuartzCore
-
 public extension Confetti.Emitter {
-    public enum Shape: Sendable {
-        case point, line, rectangle, circle, cuboid, sphere
+    enum Shape: Sendable {
+        case point, line, rectangle, circle
     }
 }

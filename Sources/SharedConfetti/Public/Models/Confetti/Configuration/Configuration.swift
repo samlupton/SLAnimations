@@ -5,16 +5,14 @@
 //  Created by Samuel Lupton on 4/15/26.
 //
 
-import CoreFoundation
-
 public extension Confetti {
-    public struct Configuration: Sendable {
+    struct Configuration: Sendable {
         let emitter: Emitter
-        let opacity: Float
+        let cells: [Cell]
         
-        public init(emitter: Emitter, opacity: Float = 1) {
+        public init(emitter: Emitter, cells: [Cell]) {
             self.emitter = emitter
-            self.opacity = opacity
+            self.cells = cells
         }
     }
 }
