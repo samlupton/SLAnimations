@@ -9,9 +9,9 @@ import CoreGraphics
 
 public extension Plume.Cell {
     struct Emission: Sendable {
-        let latitude: CGFloat
-        let longitude: CGFloat
-        let range: CGFloat
+        public var latitude: CGFloat
+        public var longitude: CGFloat
+        public var range: CGFloat
         
         public init(
             latitude: CGFloat = .zero,

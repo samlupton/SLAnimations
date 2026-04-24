@@ -42,7 +42,6 @@ public final class UIPlumeView: UIView {
         cacell.beginTime = CACurrentMediaTime()
         cacell.xAcceleration = cell.acceleration.x
         cacell.yAcceleration = cell.acceleration.y
-        cacell.zAcceleration = cell.acceleration.z
         cacell.scale = cell.scale.base
         cacell.contents = cell.contents.image
         cacell.contentsRect = cell.contents.rect
@@ -54,9 +53,9 @@ public final class UIPlumeView: UIView {
         cacell.scaleSpeed = cell.scale.speed
         cacell.velocity = cell.velocity.base
         cacell.velocityRange = cell.velocity.range
-        cacell.lifetime = cell.lifetime.base
-        cacell.lifetimeRange = cell.lifetime.range
-        cacell.birthRate = cell.lifetime.birthRate
+        cacell.lifetime = Float(cell.lifetime.base)
+        cacell.lifetimeRange = Float(cell.lifetime.range)
+        cacell.birthRate = Float(cell.lifetime.birthRate)
         cacell.spin = cell.spin.base
         cacell.spinRange = cell.spin.range
         

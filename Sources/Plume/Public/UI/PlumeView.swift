@@ -7,18 +7,6 @@
 
 import SwiftUI
 
-/// A SwiftUI wrapper for `UIPlumeView` that enables use within SwiftUI layouts.
-///
-/// `PlumeView` bridges the UIKit-based `UIPlumeView` into SwiftUI
-/// using `UIViewRepresentable`. It allows you to embed and configure plume
-/// animations declaratively while still leveraging the underlying UIKit implementation.
-///
-/// Use this when integrating plume effects into SwiftUI views, especially when
-/// you want to trigger animations in response to state changes or user interaction.
-///
-/// - Note:
-///   This view does not automatically trigger the animation. You are responsible
-///   for calling `emit()` on the underlying `PlumeView` when appropriate.
 public struct PlumeView: UIViewRepresentable {
     let configuration: Plume.Configuration
     let trigger: Int

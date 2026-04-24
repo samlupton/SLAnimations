@@ -9,12 +9,12 @@ import CoreGraphics
 
 public extension Plume.Cell {
     struct Contents: Sendable {
-        let image: CGImage?
-        let rect: CGRect
-        let scale: CGFloat
+        public var image: CGImage?
+        public var rect: CGRect
+        public var scale: CGFloat
         
         public init(
-            image: CGImage? = nil,
+            image: CGImage,
             rect: CGRect = .init(x: 0, y: 0, width: 1, height: 1),
             scale: CGFloat = 1
         ) {

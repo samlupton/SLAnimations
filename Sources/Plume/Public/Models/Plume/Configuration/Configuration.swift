@@ -7,8 +7,8 @@
 
 public extension Plume {
     struct Configuration: Sendable {
-        let emitter: Emitter
-        let cells: [Cell]
+        public var emitter: Emitter
+        public var cells: [Cell]
         
         public init(emitter: Emitter, cells: [Cell]) {
             self.emitter = emitter

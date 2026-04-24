@@ -9,8 +9,8 @@ import CoreGraphics
 
 public extension Plume.Cell {
     struct Velocity: Sendable {
-        let base: CGFloat
-        let range: CGFloat
+        public var base: CGFloat
+        public var range: CGFloat
         
         public init(base: CGFloat, range: CGFloat) {
             self.base = base

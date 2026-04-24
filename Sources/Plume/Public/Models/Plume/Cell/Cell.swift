@@ -7,13 +7,13 @@
 
 public extension Plume {
     struct Cell: Sendable {
-        let lifetime: Lifetime
-        let spin: Spin
-        let scale: Scale
-        let acceleration: Acceleration
-        let velocity: Velocity
-        let emission: Emission
-        let contents: Contents
+        public var lifetime: Lifetime
+        public var spin: Spin
+        public var scale: Scale
+        public var acceleration: Acceleration
+        public var velocity: Velocity
+        public var emission: Emission
+        public var contents: Contents
         
         public init(
             lifetime: Lifetime,

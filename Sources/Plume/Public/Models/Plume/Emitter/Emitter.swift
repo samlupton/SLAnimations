@@ -7,8 +7,8 @@
 
 public extension Plume {
     struct Emitter: Sendable {
-        let shape: Plume.Emitter.Shape
-        let mode: Plume.Emitter.Mode
+        public var shape: Plume.Emitter.Shape
+        public var mode: Plume.Emitter.Mode
         
         public init(
             shape: Plume.Emitter.Shape,
