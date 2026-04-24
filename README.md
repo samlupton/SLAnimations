@@ -22,7 +22,7 @@ import Plume
 - `Plume.Emitter` describes the emitter’s shape and mode.
 - `Plume.Cell` describes the particles being emitted.
 - `PlumeView` is the SwiftUI entry point.
-- `UIPlumeView` is the UIKit entry point.
+- `PlumeUIView` is the UIKit entry point.
 
 ## Type Tree
 
@@ -110,14 +110,14 @@ Use this approach when the plume effect should be part of a specific screen or v
 
 ## UIKit Usage
 
-If you are working in UIKit, create a `UIPlumeView`, size it like any other view, add it to your hierarchy, and call `emit()`.
+If you are working in UIKit, create a `PlumeUIView`, size it like any other view, add it to your hierarchy, and call `emit()`.
 
 ```swift
 import UIKit
 import Plume
 
 final class CelebrationViewController: UIViewController {
-    private lazy var plumeView = UIPlumeView(configuration: configuration)
+    private lazy var plumeView = PlumeUIView(configuration: configuration)
 
     private let configuration = Plume.Configuration(
         emitter: .init(shape: .circle, mode: .outline),
@@ -163,11 +163,11 @@ typealias EmitterShape = Plume.Emitter.Shape
 ## Choosing an API
 
 - Use `PlumeView` for SwiftUI screens.
-- Use `UIPlumeView` for UIKit screens and reusable view hierarchies.
+- Use `PlumeUIView` for UIKit screens and reusable view hierarchies.
 
 ## Notes
 
 - The package is currently centered around manually building `Plume.Configuration` values.
 - `PlumeView` is trigger-driven, so the effect emits when the `trigger` input changes.
-- `UIPlumeView` is non-interactive and intended to sit on top of other content.
+- `PlumeUIView` is non-interactive and intended to sit on top of other content.
 
