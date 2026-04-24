@@ -28,7 +28,6 @@ public final class UIPlumeView: UIView {
     }
     
     public func emit() {
-        let cells = Array(repeating: CAEmitterCell(), count: configuration.cells.count)
         let emitter = makeCAEmitter(with: configuration)
         
         layer.addSublayer(emitter)

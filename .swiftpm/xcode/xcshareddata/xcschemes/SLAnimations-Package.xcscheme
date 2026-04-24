@@ -15,9 +15,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "SharedPlume"
-               BuildableName = "SharedPlume"
-               BlueprintName = "SharedPlume"
+               BlueprintIdentifier = "Plume"
+               BuildableName = "Plume"
+               BlueprintName = "Plume"
                ReferencedContainer = "container:">
             </BuildableReference>
          </BuildActionEntry>
@@ -29,9 +29,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "SharedPlume"
-               BuildableName = "SharedPlume"
-               BlueprintName = "SharedPlume"
+               BlueprintIdentifier = "Plume"
+               BuildableName = "Plume"
+               BlueprintName = "Plume"
                ReferencedContainer = "container:">
             </BuildableReference>
          </BuildActionEntry>
@@ -62,9 +62,9 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "SharedPlumeTests"
-               BuildableName = "SharedPlumeTests"
-               BlueprintName = "SharedPlumeTests"
+               BlueprintIdentifier = "PlumeTests"
+               BuildableName = "PlumeTests"
+               BlueprintName = "PlumeTests"
                ReferencedContainer = "container:">
             </BuildableReference>
          </TestableReference>

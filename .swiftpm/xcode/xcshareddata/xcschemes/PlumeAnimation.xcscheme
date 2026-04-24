@@ -24,9 +24,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "SharedPlume"
-               BuildableName = "SharedPlume"
-               BlueprintName = "SharedPlume"
+               BlueprintIdentifier = "Plume"
+               BuildableName = "Plume"
+               BlueprintName = "Plume"
                ReferencedContainer = "container:">
             </BuildableReference>
          </BuildActionEntry>
@@ -59,9 +59,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "SharedPlume"
-            BuildableName = "SharedPlume"
-            BlueprintName = "SharedPlume"
+            BlueprintIdentifier = "Plume"
+            BuildableName = "Plume"
+            BlueprintName = "Plume"
             ReferencedContainer = "container:">
          </BuildableReference>
       </MacroExpansion>
