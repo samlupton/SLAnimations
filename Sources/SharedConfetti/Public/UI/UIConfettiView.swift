@@ -66,7 +66,7 @@ public final class UIConfettiView: UIView {
     
     private func makeCAEmitter(with configuration: Confetti.Configuration) -> CAEmitterLayer {
         let caemitter = CAEmitterLayer()
-        caemitter.emitterSize = self.bounds.size
+        caemitter.emitterSize = resolveSize(for: configuration.emitter.shape, in: bounds)
         caemitter.emitterPosition = resolvePosition(for: configuration.emitter.shape, in: bounds)
         caemitter.emitterMode = Confetti.Emitter.Mode.emitterMode(from: configuration.emitter.mode)
         caemitter.emitterShape = Confetti.Emitter.Shape.emitterShape(from: configuration.emitter.shape)
@@ -91,9 +91,36 @@ public final class UIConfettiView: UIView {
 private extension UIConfettiView {
     func resolvePosition(for shape: Confetti.Emitter.Shape, in rect: CGRect) -> CGPoint {
         switch shape {
-        case .point: return rect.origin
-        case .line: return CGPoint(x: rect.midX, y: rect.minY)
-        case .rectangle, .circle: return CGPoint(x: rect.midX, y: rect.midY)
+        case .point:
+            return  CGPoint(x: rect.midX, y: rect.midY)
+        case .line:
+            return CGPoint(x: rect.midX, y: rect.minY)
+        case .rectangle, .circle:
+            return CGPoint(x: rect.midX, y: rect.midY)
+        }
+    }
+    
+    func resolveSize(for shape: Confetti.Emitter.Shape, in rect: CGRect) -> CGSize {
+        switch shape {
+        case .point:
+            return .zero
+        case .line:
+            return CGSize(width: rect.width, height: .zero)
+        case .rectangle, .circle:
+            let length = min(rect.width, rect.height)
+            return CGSize(width: length, height: length)
+        }
+    }
+    
+    func resolveAlignment(for shape: Confetti.Emitter.Shape, in rect: CGRect) -> CGSize {
+        switch shape {
+        case .point:
+            return .zero
+        case .line:
+            return CGSize(width: rect.width, height: .zero)
+        case .rectangle, .circle:
+            let length = min(rect.width, rect.height)
+            return CGSize(width: length, height: length)
         }
     }
 }

@@ -5,8 +5,6 @@
 //  Created by Samuel Lupton on 4/20/26.
 //
 
-import CoreFoundation
-
 public extension Confetti {
     struct Emitter: Sendable {
         let shape: Confetti.Emitter.Shape
