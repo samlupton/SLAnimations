@@ -1,10 +1,10 @@
 # Plume
 
-`Plume` is a Swift package for rendering configurable plume effects with `CAEmitterLayer`. It gives you a small public model layer for defining emitter behavior and two main integration paths: embed plume directly in SwiftUI with `PlumeView`, or fire a one-shot overlay on the active window with `UIWindow.emitPlume(configuration:)`.
+`Plume` is a Swift package for rendering configurable plume effects with `CAEmitterLayer`. It gives you a small public model layer for defining emitter behavior and two main integration paths: embed plume directly in SwiftUI with `PlumeView`.
 
 ## Requirements
 
-- iOS 13+
+- iOS 12+
 - Swift Package Manager
 - UIKit or SwiftUI
 
@@ -23,7 +23,6 @@ import Plume
 - `Plume.Cell` describes the particles being emitted.
 - `PlumeView` is the SwiftUI entry point.
 - `UIPlumeView` is the UIKit entry point.
-- `UIWindow.emitPlume(configuration:)` is a convenience API for full-screen, window-based emission.
 
 ## Type Tree
 
@@ -149,22 +148,6 @@ final class CelebrationViewController: UIViewController {
 }
 ```
 
-## Window-Based Emission
-
-For simple one-shot effects, you can ask the active `UIWindow` to present plume over the entire window.
-
-```swift
-import Plume
-import UIKit
-
-@MainActor
-func celebrate() {
-    UIWindow.emitPlume(configuration: configuration)
-}
-```
-
-This is the quickest API to use, but it is also the most global. Prefer `PlumeView` or `UIPlumeView` when the effect belongs to a specific screen or container.
-
 ## Public Typealiases
 
 The package also exposes convenience aliases if you prefer flatter names:
@@ -181,7 +164,6 @@ typealias EmitterShape = Plume.Emitter.Shape
 
 - Use `PlumeView` for SwiftUI screens.
 - Use `UIPlumeView` for UIKit screens and reusable view hierarchies.
-- Use `UIWindow.emitPlume(configuration:)` for quick full-screen celebration effects.
 
 ## Notes
 
