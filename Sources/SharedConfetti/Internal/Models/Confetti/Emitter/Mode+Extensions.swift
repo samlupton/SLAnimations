@@ -7,8 +7,6 @@
 
 import QuartzCore
 
-// MARK: - CAEmitterLayer Connector
-
 internal extension Confetti.Emitter.Mode {
     static func emitterMode(from mode: Confetti.Emitter.Mode) -> CAEmitterLayerEmitterMode {
         switch mode {
