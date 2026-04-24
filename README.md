@@ -1,14 +1,8 @@
-<a href="./t.mov">
-  <img src="./thumbnail.png" width="200" />
-</a>
-
-# ConfettiAnimation
-
-This repository contains the `SharedConfetti` Swift package, an iOS 17+ library for rendering high performance particle-based confetti effects with `CAEmitterLayer`.
-
-Comprehensive project documentation lives in [PROJECT_DOCUMENTATION.md](./PROJECT_DOCUMENTATION.md).
+# SharedConfetti
 
 ## Type Tree
+
+The type tree shows how the package’s core API is organized around Confetti as the root namespace, with related configuration and emitter types grouped beneath it. Its purpose is to give readers a quick mental model of the package structure so they can understand how the main types relate before diving into implementation details or usage examples.
 
 ```text
 Confetti
