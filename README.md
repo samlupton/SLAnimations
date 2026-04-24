@@ -1,6 +1,6 @@
-# SharedConfetti
+# Plume
 
-`SharedConfetti` is a Swift package for rendering configurable confetti effects with `CAEmitterLayer`. It gives you a small public model layer for defining emitter behavior and two main integration paths: embed confetti directly in SwiftUI with `ConfettiView`, or fire a one-shot overlay on the active window with `UIWindow.emitConfetti(configuration:)`.
+`Plume` is a Swift package for rendering configurable plume effects with `CAEmitterLayer`. It gives you a small public model layer for defining emitter behavior and two main integration paths: embed plume directly in SwiftUI with `PlumeView`, or fire a one-shot overlay on the active window with `UIWindow.emitPlume(configuration:)`.
 
 ## Requirements
 
@@ -10,27 +10,27 @@
 
 ## Installation
 
-Add `SharedConfetti` to your project as a Swift package dependency, then import it where needed:
+Add `Plume` to your project as a Swift package dependency, then import it where needed:
 
 ```swift
-import SharedConfetti
+import Plume
 ```
 
 ## Core Concepts
 
-- `Confetti.Configuration` describes a complete effect.
-- `Confetti.Emitter` describes the emitter’s shape and mode.
-- `Confetti.Cell` describes the particles being emitted.
-- `ConfettiView` is the SwiftUI entry point.
-- `UIConfettiView` is the UIKit entry point.
-- `UIWindow.emitConfetti(configuration:)` is a convenience API for full-screen, window-based emission.
+- `Plume.Configuration` describes a complete effect.
+- `Plume.Emitter` describes the emitter’s shape and mode.
+- `Plume.Cell` describes the particles being emitted.
+- `PlumeView` is the SwiftUI entry point.
+- `UIPlumeView` is the UIKit entry point.
+- `UIWindow.emitPlume(configuration:)` is a convenience API for full-screen, window-based emission.
 
 ## Type Tree
 
-The type tree shows how the package’s core API is organized around `Confetti` as the root namespace, with related configuration and emitter types grouped beneath it. Its purpose is to give you a quick mental model of how the main types fit together before you start building configurations.
+The type tree shows how the package’s core API is organized around `Plume` as the root namespace, with related configuration and emitter types grouped beneath it. Its purpose is to give you a quick mental model of how the main types fit together before you start building configurations.
 
 ```text
-Confetti
+Plume
 |_ Configuration
 |_ Cell
 |  |_ Acceleration
@@ -46,13 +46,13 @@ Confetti
 ```
 ## Creating a Configuration
 
-At the center of the package is `Confetti.Configuration`, which combines an emitter and one or more cells.
+At the center of the package is `Plume.Configuration`, which combines an emitter and one or more cells.
 
 ```swift
-import SharedConfetti
+import Plume
 import UIKit
 
-let cell = Confetti.Cell(
+let cell = Plume.Cell(
     lifetime: .init(birthRate: 24, base: 6, range: 1),
     spin: .init(base: 3, range: 1),
     scale: .init(base: 0.08, range: 0.03),
@@ -62,7 +62,7 @@ let cell = Confetti.Cell(
     contents: .init(image: UIImage(systemName: "circle.fill")?.cgImage)
 )
 
-let configuration = Confetti.Configuration(
+let configuration = Plume.Configuration(
     emitter: .init(shape: .line, mode: .surface),
     cells: [cell]
 )
@@ -70,16 +70,16 @@ let configuration = Confetti.Configuration(
 
 ## SwiftUI Usage
 
-Use `ConfettiView` when you want confetti to live inside a SwiftUI layout. The view uses a trigger-based API: each time the `trigger` value changes, the underlying UIKit view emits again.
+Use `PlumeView` when you want plume to live inside a SwiftUI layout. The view uses a trigger-based API: each time the `trigger` value changes, the underlying UIKit view emits again.
 
 ```swift
 import SwiftUI
-import SharedConfetti
+import Plume
 
 struct CelebrationView: View {
     @State private var trigger = 0
 
-    private let configuration = Confetti.Configuration(
+    private let configuration = Plume.Configuration(
         emitter: .init(shape: .line, mode: .surface),
         cells: [
             .init(
@@ -100,27 +100,27 @@ struct CelebrationView: View {
                 trigger += 1
             }
 
-            ConfettiView(configuration: configuration, trigger: trigger)
+            PlumeView(configuration: configuration, trigger: trigger)
                 .allowsHitTesting(false)
         }
     }
 }
 ```
 
-Use this approach when the confetti effect should be part of a specific screen or view hierarchy.
+Use this approach when the plume effect should be part of a specific screen or view hierarchy.
 
 ## UIKit Usage
 
-If you are working in UIKit, create a `UIConfettiView`, size it like any other view, add it to your hierarchy, and call `emit()`.
+If you are working in UIKit, create a `UIPlumeView`, size it like any other view, add it to your hierarchy, and call `emit()`.
 
 ```swift
 import UIKit
-import SharedConfetti
+import Plume
 
 final class CelebrationViewController: UIViewController {
-    private lazy var confettiView = UIConfettiView(configuration: configuration)
+    private lazy var plumeView = UIPlumeView(configuration: configuration)
 
-    private let configuration = Confetti.Configuration(
+    private let configuration = Plume.Configuration(
         emitter: .init(shape: .circle, mode: .outline),
         cells: [
             .init(
@@ -138,54 +138,54 @@ final class CelebrationViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        confettiView.frame = view.bounds
-        confettiView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        view.addSubview(confettiView)
+        plumeView.frame = view.bounds
+        plumeView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        view.addSubview(plumeView)
     }
 
     func celebrate() {
-        confettiView.emit()
+        plumeView.emit()
     }
 }
 ```
 
 ## Window-Based Emission
 
-For simple one-shot effects, you can ask the active `UIWindow` to present confetti over the entire window.
+For simple one-shot effects, you can ask the active `UIWindow` to present plume over the entire window.
 
 ```swift
-import SharedConfetti
+import Plume
 import UIKit
 
 @MainActor
 func celebrate() {
-    UIWindow.emitConfetti(configuration: configuration)
+    UIWindow.emitPlume(configuration: configuration)
 }
 ```
 
-This is the quickest API to use, but it is also the most global. Prefer `ConfettiView` or `UIConfettiView` when the effect belongs to a specific screen or container.
+This is the quickest API to use, but it is also the most global. Prefer `PlumeView` or `UIPlumeView` when the effect belongs to a specific screen or container.
 
 ## Public Typealiases
 
 The package also exposes convenience aliases if you prefer flatter names:
 
 ```swift
-typealias ConfettiConfiguration = Confetti.Configuration
-typealias ConfettiCell = Confetti.Cell
-typealias ConfettiEmitter = Confetti.Emitter
-typealias CellVelocity = Confetti.Cell.Velocity
-typealias EmitterShape = Confetti.Emitter.Shape
+typealias PlumeConfiguration = Plume.Configuration
+typealias PlumeCell = Plume.Cell
+typealias PlumeEmitter = Plume.Emitter
+typealias CellVelocity = Plume.Cell.Velocity
+typealias EmitterShape = Plume.Emitter.Shape
 ```
 
 ## Choosing an API
 
-- Use `ConfettiView` for SwiftUI screens.
-- Use `UIConfettiView` for UIKit screens and reusable view hierarchies.
-- Use `UIWindow.emitConfetti(configuration:)` for quick full-screen celebration effects.
+- Use `PlumeView` for SwiftUI screens.
+- Use `UIPlumeView` for UIKit screens and reusable view hierarchies.
+- Use `UIWindow.emitPlume(configuration:)` for quick full-screen celebration effects.
 
 ## Notes
 
-- The package is currently centered around manually building `Confetti.Configuration` values.
-- `ConfettiView` is trigger-driven, so the effect emits when the `trigger` input changes.
-- `UIConfettiView` is non-interactive and intended to sit on top of other content.
+- The package is currently centered around manually building `Plume.Configuration` values.
+- `PlumeView` is trigger-driven, so the effect emits when the `trigger` input changes.
+- `UIPlumeView` is non-interactive and intended to sit on top of other content.
 

@@ -15,9 +15,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "SharedConfetti"
-               BuildableName = "SharedConfetti"
-               BlueprintName = "SharedConfetti"
+               BlueprintIdentifier = "Plume"
+               BuildableName = "Plume"
+               BlueprintName = "Plume"
                ReferencedContainer = "container:">
             </BuildableReference>
          </BuildActionEntry>
@@ -29,9 +29,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "SharedConfetti"
-               BuildableName = "SharedConfetti"
-               BlueprintName = "SharedConfetti"
+               BlueprintIdentifier = "Plume"
+               BuildableName = "Plume"
+               BlueprintName = "Plume"
                ReferencedContainer = "container:">
             </BuildableReference>
          </BuildActionEntry>
@@ -62,9 +62,9 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "SharedConfettiTests"
-               BuildableName = "SharedConfettiTests"
-               BlueprintName = "SharedConfettiTests"
+               BlueprintIdentifier = "PlumeTests"
+               BuildableName = "PlumeTests"
+               BlueprintName = "PlumeTests"
                ReferencedContainer = "container:">
             </BuildableReference>
          </TestableReference>

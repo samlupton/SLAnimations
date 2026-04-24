@@ -4,25 +4,25 @@
 import PackageDescription
 
 let package = Package(
-    name: "SharedConfetti",
+    name: "Plume",
     platforms: [
         .iOS(.v13)
     ],
     products: [
         .library(
-            name: "SharedConfetti",
-            targets: ["SharedConfetti"],
+            name: "Plume",
+            targets: ["Plume"],
         )
     ],
     targets: [
         .target(
-            name: "SharedConfetti",
-            path: "Sources/SharedConfetti"
+            name: "Plume",
+            path: "Sources/Plume"
         ),
         .testTarget(
-            name: "SharedConfettiTests",
-            dependencies: ["SharedConfetti"],
-            path: "Tests/SharedConfettiTests"
+            name: "PlumeTests",
+            dependencies: ["Plume"],
+            path: "Tests/PlumeTests"
         )
     ]
 )
