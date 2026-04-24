@@ -4,7 +4,7 @@
 
 ## Requirements
 
-- iOS 16+
+- iOS 13+
 - Swift Package Manager
 - UIKit or SwiftUI
 

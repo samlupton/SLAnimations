@@ -58,6 +58,16 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>SharedConfetti</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>SharedConfettiTests</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 	</dict>
 </dict>
 </plist>
