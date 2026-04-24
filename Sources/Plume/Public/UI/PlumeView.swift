@@ -16,11 +16,11 @@ public struct PlumeView: UIViewRepresentable {
         self.trigger = trigger
     }
 
-    public func makeUIView(context: Context) -> UIPlumeView {
-        UIPlumeView(configuration: configuration)
+    public func makeUIView(context: Context) -> PlumeUIView {
+        PlumeUIView(configuration: configuration)
     }
 
-    public func updateUIView(_ uiView: UIPlumeView, context: Context) {
+    public func updateUIView(_ uiView: PlumeUIView, context: Context) {
         if context.coordinator.lastTrigger != trigger {
             context.coordinator.lastTrigger = trigger
             uiView.emit()

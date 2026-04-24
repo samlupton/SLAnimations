@@ -1,5 +1,5 @@
 //
-//  UIPlumeView.swift
+//  PlumeUIView.swift
 //  Plume
 //
 //  Created by Samuel Lupton on 10/7/25.
@@ -13,7 +13,7 @@ import UIKit
 /// its lifecycle and attaching it to the view’s backing layer. Upon
 /// initialization, it immediately begins emitting particles using the
 /// provided configuration.
-public final class UIPlumeView: UIView {
+public final class PlumeUIView: UIView {
     
     private var configuration: Plume.Configuration
     
@@ -86,7 +86,7 @@ public final class UIPlumeView: UIView {
     }
 }
 
-private extension UIPlumeView {
+private extension PlumeUIView {
     func resolveSize(for shape: Plume.Emitter.Shape, in rect: CGRect) -> CGSize {
         switch shape {
         case .point:
