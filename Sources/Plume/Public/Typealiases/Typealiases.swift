@@ -11,11 +11,8 @@ public typealias PlumeEmitter = Plume.Emitter
 
 public typealias CellAcceleration = Plume.Cell.Acceleration
 public typealias CellContents = Plume.Cell.Contents
-public typealias CellEmission = Plume.Cell.Emission
+public typealias CellAngle = Plume.Cell.Angle
 public typealias CellLifetime = Plume.Cell.Lifetime
 public typealias CellScale = Plume.Cell.Scale
 public typealias CellSpin = Plume.Cell.Spin
 public typealias CellVelocity = Plume.Cell.Velocity
-
-public typealias EmitterMode = Plume.Emitter.Mode
-public typealias EmitterShape = Plume.Emitter.Shape

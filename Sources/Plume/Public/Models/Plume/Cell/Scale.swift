@@ -13,7 +13,7 @@ public extension Plume.Cell {
         public var range: CGFloat
         public var speed: CGFloat
         
-        public init(base: CGFloat, range: CGFloat, speed: CGFloat = 0) {
+        public init(base: CGFloat, range: CGFloat = .zero, speed: CGFloat = .zero) {
             self.base = base
             self.range = range
             self.speed = speed

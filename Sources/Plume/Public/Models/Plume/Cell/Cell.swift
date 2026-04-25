@@ -7,30 +7,30 @@
 
 public extension Plume {
     struct Cell: Sendable {
+        public var contents: Contents
         public var lifetime: Lifetime
         public var spin: Spin
         public var scale: Scale
         public var acceleration: Acceleration
         public var velocity: Velocity
-        public var emission: Emission
-        public var contents: Contents
+        public var angle: Angle
         
         public init(
+            contents: Contents,
             lifetime: Lifetime,
             spin: Spin,
             scale: Scale,
             acceleration: Acceleration,
             velocity: Velocity,
-            emission: Emission,
-            contents: Contents
+            angle: Angle
         ) {
+            self.contents = contents
             self.lifetime = lifetime
             self.spin = spin
             self.scale = scale
             self.acceleration = acceleration
             self.velocity = velocity
-            self.emission = emission
-            self.contents = contents
+            self.angle = angle
         }
     }
 }

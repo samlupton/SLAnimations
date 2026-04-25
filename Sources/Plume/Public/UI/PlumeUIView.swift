@@ -20,6 +20,8 @@ public final class PlumeUIView: UIView {
     public init(configuration: Plume.Configuration) {
         self.configuration = configuration
         super.init(frame: .zero)
+        
+        // By default, this view will not steal taps.
         isUserInteractionEnabled = false
     }
     
@@ -42,28 +44,29 @@ public final class PlumeUIView: UIView {
         cacell.beginTime = CACurrentMediaTime()
         cacell.xAcceleration = cell.acceleration.x
         cacell.yAcceleration = cell.acceleration.y
-        cacell.scale = cell.scale.base
         cacell.contents = cell.contents.image
-        cacell.contentsRect = cell.contents.rect
         cacell.contentsScale = cell.contents.scale
-        cacell.emissionLongitude = cell.emission.longitude
-        cacell.emissionLatitude = cell.emission.latitude
-        cacell.emissionRange = cell.emission.range
+        cacell.emissionLongitude = cell.angle.base
+        cacell.emissionRange = cell.angle.range
+        cacell.scale = cell.scale.base
         cacell.scaleRange = cell.scale.range
         cacell.scaleSpeed = cell.scale.speed
         cacell.velocity = cell.velocity.base
         cacell.velocityRange = cell.velocity.range
         cacell.lifetime = Float(cell.lifetime.base)
         cacell.lifetimeRange = Float(cell.lifetime.range)
-        cacell.birthRate = Float(cell.lifetime.birthRate)
         cacell.spin = cell.spin.base
         cacell.spinRange = cell.spin.range
+        
+        // Birth rate will not be handled in CAEmitterCell.
+        cacell.birthRate = 1
         
         return cacell
     }
     
     private func makeCAEmitter(with configuration: Plume.Configuration) -> CAEmitterLayer {
         let caemitter = CAEmitterLayer()
+        caemitter.birthRate = Float(configuration.emitter.birthRate)
         caemitter.emitterSize = resolveSize(for: configuration.emitter.shape, in: bounds)
         caemitter.emitterPosition = CGPoint(x: bounds.midX, y: bounds.midY)
         caemitter.emitterMode = Plume.Emitter.Mode.emitterMode(from: configuration.emitter.mode)
@@ -77,11 +80,11 @@ public final class PlumeUIView: UIView {
     
     public func makeAnimation() -> CABasicAnimation? {
         let animation = CABasicAnimation(keyPath: "birthRate")
-        animation.fromValue = 1
-        animation.toValue = 0
-        animation.duration = 0.15
-        animation.fillMode = .forwards
-        animation.isRemovedOnCompletion = false
+//        animation.fromValue = 1
+//        animation.toValue = 0
+//        animation.duration = 0.15
+//        animation.fillMode = .forwards
+//        animation.isRemovedOnCompletion = false
         return animation
     }
 }

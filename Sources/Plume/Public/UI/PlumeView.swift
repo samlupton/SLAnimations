@@ -8,7 +8,7 @@
 import SwiftUI
 
 public struct PlumeView: UIViewRepresentable {
-    let configuration: Plume.Configuration
+    var configuration: Plume.Configuration
     let trigger: Int
     
     public init(configuration: Plume.Configuration, trigger: Int) {
