@@ -12,7 +12,7 @@ public extension Plume.Cell {
         public var base: CGFloat
         public var range: CGFloat
         
-        public init(base: CGFloat = .zero, range: CGFloat = .zero) {
+        internal init(base: CGFloat, range: CGFloat) {
             self.base = base
             self.range = range
         }
