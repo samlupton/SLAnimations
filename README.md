@@ -1,6 +1,6 @@
 # Plume
 
-`Plume` is a Swift package for rendering configurable plume effects with `CAEmitterLayer`. It gives you a small public model layer for defining emitter behavior and two main integration paths: embed plume directly in SwiftUI with `PlumeView`.
+`Plume` is a Swift package for building particle effects with `CAEmitterLayer` and using them from SwiftUI or UIKit. The public API is centered around a single `Plume` value that combines an emitter and one or more particle cells.
 
 ## Requirements
 
@@ -10,87 +10,103 @@
 
 ## Installation
 
-Add `Plume` to your project as a Swift package dependency, then import it where needed:
+Add `Plume` as a Swift package dependency, then import it where needed:
 
 ```swift
 import Plume
 ```
 
-## Core Concepts
+## Overview
 
-- `Plume.Configuration` describes a complete effect.
-- `Plume.Emitter` describes the emitter’s shape and mode.
-- `Plume.Cell` describes the particles being emitted.
-- `PlumeView` is the SwiftUI entry point.
-- `PlumeUIView` is the UIKit entry point.
+The package has three main pieces:
+
+- `Plume`, the top-level effect model
+- `PlumeView` and `PlumeUIView`, the SwiftUI and UIKit renderers
+- a set of convenience extensions for quickly building emitters, cells, angles, and accelerations
 
 ## Type Tree
 
-The package’s core API is organized around `Plume` as the root namespace, with related configuration and emitter types grouped beneath it.
+The public API is organized around `Plume` as the root type. Its purpose is to show the main model pieces you compose when building an effect.
 
 ```text
 Plume
-|_ Configuration
-|_ Cell
-|  |_ Acceleration
-|  |_ Contents
-|  |_ Angle
-|  |_ Lifetime
-|  |_ Scale
-|  |_ Spin
-|  |_ Velocity
 |_ Emitter
-|  |_ Mode
-|  |_ Shape
+|_ Cell
+|  |_ Contents
+|  |_ Lifetime
+|  |_ Spin
+|  |_ Scale
+|  |_ Acceleration
+|  |_ Velocity
+|  |_ Angle
 ```
-## Creating a Configuration
 
-At the center of the package is `Plume.Configuration`, which combines an emitter and one or more cells.
+## Building a Plume
+
+At the center of the package is `Plume`, which combines:
+
+- one `Plume.Emitter`
+- one or more `Plume.Cell` values
+
+The easiest way to create an emitter is with the built-in factory methods:
+
+- `Plume.Emitter.point(birthRate:)`
+- `Plume.Emitter.line(birthRate:)`
+- `Plume.Emitter.circle(birthRate:)`
+- `Plume.Emitter.rectangle(birthRate:)`
+
+Here is a small example that builds a plume from SF Symbols-backed images:
 
 ```swift
-import Plume
 import UIKit
+import Plume
 
-let cell = Plume.Cell(
-    lifetime: .init(birthRate: 24, base: 6, range: 1),
-    spin: .init(base: 3, range: 1),
-    scale: .init(base: 0.08, range: 0.03),
-    acceleration: .init(x: 0, y: 120),
-    velocity: .init(base: 180, range: 60),
-    angle: .init(angle, range: .pi),
-    contents: .init(uiimage: UIImage(systemName: "circle.fill"))
-)
+let images = [
+    UIImage(systemName: "star.fill")!,
+    UIImage(systemName: "circle.fill")!,
+    UIImage(systemName: "seal.fill")!
+]
 
-let configuration = Plume.Configuration(
-    emitter: .init(shape: .line, mode: .surface),
-    cells: [cell]
+let plume = Plume(
+    emitter: .circle(birthRate: 24),
+    cells: .cells(
+        uiimages: images,
+        lifetime: .init(base: 5, range: 1),
+        spin: .init(base: 2, range: 1),
+        scale: .init(base: 0.08, range: 0.03),
+        acceleration: .gravity,
+        velocity: .normal,
+        angle: .radial
+    )
 )
 ```
 
 ## SwiftUI Usage
 
-Use `PlumeView` when you want plume to live inside a SwiftUI layout. The view uses a trigger-based API: each time the `trigger` value changes, the underlying UIKit view emits again.
+Use `PlumeView` when the effect belongs inside a SwiftUI hierarchy. The view is trigger-based: when the `trigger` value changes, the underlying `PlumeUIView` emits again.
 
 ```swift
 import SwiftUI
+import UIKit
 import Plume
 
 struct CelebrationView: View {
     @State private var trigger = 0
 
-    private let configuration = Plume.Configuration(
-        emitter: .init(shape: .line, mode: .surface),
-        cells: [
-            .init(
-                lifetime: .init(birthRate: 20, base: 5, range: 1),
-                spin: .init(base: 2, range: 1),
-                scale: .init(base: 0.1, range: 0.04),
-                acceleration: .init(x: 0, y: 140),
-                velocity: .init(base: 160, range: 40),
-                angle: .init(angle: 0, range: .pi),
-                contents: .init(uiimage: UIImage(systemName: "star.fill"))
-            )
-        ]
+    private let plume = Plume(
+        emitter: .line(birthRate: 18),
+        cells: .cells(
+            uiimages: [
+                UIImage(systemName: "star.fill")!,
+                UIImage(systemName: "triangle.fill")!
+            ],
+            lifetime: .init(base: 4),
+            spin: .init(base: 2, range: 1),
+            scale: .init(base: 0.09, range: 0.03),
+            acceleration: .gravityLight,
+            velocity: .fast,
+            angle: .topHemisphere
+        )
     )
 
     var body: some View {
@@ -99,40 +115,41 @@ struct CelebrationView: View {
                 trigger += 1
             }
 
-            PlumeView(configuration: configuration, trigger: trigger)
+            PlumeView(plume: plume, trigger: trigger)
                 .allowsHitTesting(false)
         }
     }
 }
 ```
 
-Use this approach when the plume effect should be part of a specific screen or view hierarchy.
+Use this approach when the plume effect should be attached to a specific screen or view tree.
 
 ## UIKit Usage
 
-If you are working in UIKit, create a `PlumeUIView`, size it like any other view, add it to your hierarchy, and call `emit()`.
+Use `PlumeUIView` when you want direct UIKit control. Create the view, size it to your container, add it to the hierarchy, and call `emit()`.
 
 ```swift
 import UIKit
 import Plume
 
 final class CelebrationViewController: UIViewController {
-    private lazy var plumeView = PlumeUIView(configuration: configuration)
-
-    private let configuration = Plume.Configuration(
-        emitter: .init(shape: .circle, mode: .outline),
-        cells: [
-            .init(
-                lifetime: .init(birthRate: 18, base: 5, range: 1),
-                spin: .init(base: 2, range: 2),
-                scale: .init(base: 0.08, range: 0.03),
-                acceleration: .init(x: 0, y: 100),
-                velocity: .init(base: 150, range: 50),
-                angle: .init(angle: 0, range: .pi),
-                contents: .init(uiimage: UIImage(systemName: "seal.fill"))
-            )
-        ]
+    private let plume = Plume(
+        emitter: .rectangle(birthRate: 20),
+        cells: .cells(
+            uiimages: [
+                UIImage(systemName: "sparkle")!,
+                UIImage(systemName: "circle.fill")!
+            ],
+            lifetime: .init(base: 4),
+            spin: .init(base: 1.5, range: 1),
+            scale: .init(base: 0.08, range: 0.02),
+            acceleration: .gravity,
+            velocity: .normal,
+            angle: .bottomHemisphere
+        )
     )
+
+    private lazy var plumeView = PlumeUIView(plume: plume)
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -148,26 +165,63 @@ final class CelebrationViewController: UIViewController {
 }
 ```
 
-## Public Typealiases
+## Manual Cell Construction
 
-The package also exposes convenience aliases if you prefer flatter names:
+If you need full control, you can build cells directly instead of using `.cells(...)` helpers:
 
 ```swift
-typealias PlumeConfiguration = Plume.Configuration
+import UIKit
+import Plume
+
+let cell = Plume.Cell(
+    contents: .init(uiimage: UIImage(systemName: "diamond.fill")!),
+    lifetime: .init(base: 5, range: 1),
+    spin: .init(base: 2, range: 1),
+    scale: .init(base: 0.1, range: 0.04),
+    acceleration: .upRight,
+    velocity: .burst,
+    angle: .up
+)
+
+let plume = Plume(
+    emitter: .point(birthRate: 12),
+    cells: [cell]
+)
+```
+
+## Convenience Helpers
+
+The package includes a few helpers to make common effects easier to express:
+
+- `Array.cells(...)` for turning arrays of `UIImage`, `CGImage`, or `ImageResource` into `[Plume.Cell]`
+- `Plume.Cell.Acceleration` presets such as `.gravity`, `.gravityLight`, `.lift`, `.upLeft`, and `.downRight`
+- `Plume.Cell.Angle` presets such as `.up`, `.down`, `.topHemisphere`, and `.radial`
+- `Plume.Cell.Velocity` presets such as `.slow`, `.normal`, `.fast`, and `.burst`
+
+## Public Typealiases
+
+If you prefer flatter names, the package exposes typealiases for the most common nested types:
+
+```swift
 typealias PlumeCell = Plume.Cell
 typealias PlumeEmitter = Plume.Emitter
+typealias CellAcceleration = Plume.Cell.Acceleration
+typealias CellContents = Plume.Cell.Contents
+typealias CellAngle = Plume.Cell.Angle
+typealias CellLifetime = Plume.Cell.Lifetime
+typealias CellScale = Plume.Cell.Scale
+typealias CellSpin = Plume.Cell.Spin
 typealias CellVelocity = Plume.Cell.Velocity
-typealias EmitterShape = Plume.Emitter.Shape
 ```
 
 ## Choosing an API
 
 - Use `PlumeView` for SwiftUI screens.
-- Use `PlumeUIView` for UIKit screens and reusable view hierarchies.
+- Use `PlumeUIView` for UIKit screens and custom view hierarchies.
+- Use direct `Plume` and `Plume.Cell` construction when you want precise control over emitter behavior.
 
 ## Notes
 
-- The package is currently centered around manually building `Plume.Configuration` values.
-- `PlumeView` is trigger-driven, so the effect emits when the `trigger` input changes.
-- `PlumeUIView` is non-interactive and intended to sit on top of other content.
-
+- `PlumeView` is trigger-driven and emits when the `trigger` input changes.
+- `PlumeUIView` is non-interactive by default and is intended to sit on top of other content.
+- `Plume.Emitter.Mode` and `Plume.Emitter.Shape` are implementation details; the public entry point is the emitter factory API.

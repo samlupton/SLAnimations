@@ -8,16 +8,16 @@
 import SwiftUI
 
 public struct PlumeView: UIViewRepresentable {
-    var configuration: Plume.Configuration
+    var plume: Plume
     let trigger: Int
     
-    public init(configuration: Plume.Configuration, trigger: Int) {
-        self.configuration = configuration
+    public init(plume: Plume, trigger: Int) {
+        self.plume = plume
         self.trigger = trigger
     }
 
     public func makeUIView(context: Context) -> PlumeUIView {
-        PlumeUIView(configuration: configuration)
+        PlumeUIView(plume: plume)
     }
 
     public func updateUIView(_ uiView: PlumeUIView, context: Context) {

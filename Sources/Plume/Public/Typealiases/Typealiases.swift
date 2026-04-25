@@ -6,7 +6,6 @@
 //
 
 public typealias PlumeCell = Plume.Cell
-public typealias PlumeConfiguration = Plume.Configuration
 public typealias PlumeEmitter = Plume.Emitter
 
 public typealias CellAcceleration = Plume.Cell.Acceleration
