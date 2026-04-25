@@ -34,7 +34,7 @@ Plume
 |_ Cell
 |  |_ Acceleration
 |  |_ Contents
-|  |_ Emission
+|  |_ Angle
 |  |_ Lifetime
 |  |_ Scale
 |  |_ Spin
@@ -57,7 +57,7 @@ let cell = Plume.Cell(
     scale: .init(base: 0.08, range: 0.03),
     acceleration: .init(x: 0, y: 120),
     velocity: .init(base: 180, range: 60),
-    emission: .init(latitude: 0, longitude: 0, range: .pi),
+    angle: .init(angle, range: .pi),
     contents: .init(uiimage: UIImage(systemName: "circle.fill"))
 )
 
@@ -87,7 +87,7 @@ struct CelebrationView: View {
                 scale: .init(base: 0.1, range: 0.04),
                 acceleration: .init(x: 0, y: 140),
                 velocity: .init(base: 160, range: 40),
-                emission: .init(latitude: 0, longitude: 0, range: .pi),
+                angle: .init(angle: 0, range: .pi),
                 contents: .init(uiimage: UIImage(systemName: "star.fill"))
             )
         ]
@@ -128,7 +128,7 @@ final class CelebrationViewController: UIViewController {
                 scale: .init(base: 0.08, range: 0.03),
                 acceleration: .init(x: 0, y: 100),
                 velocity: .init(base: 150, range: 50),
-                emission: .init(latitude: 0, longitude: 0, range: .pi),
+                angle: .init(angle: 0, range: .pi),
                 contents: .init(uiimage: UIImage(systemName: "seal.fill"))
             )
         ]
