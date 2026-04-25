@@ -12,13 +12,13 @@ import UIKit
 /// `PlumeView` acts as a thin wrapper around `PlumeLayer`, handling
 /// its lifecycle and attaching it to the view’s backing layer. Upon
 /// initialization, it immediately begins emitting particles using the
-/// provided configuration.
+/// provided plume.
 public final class PlumeUIView: UIView {
     
-    private var configuration: Plume.Configuration
+    private var plume: Plume
     
-    public init(configuration: Plume.Configuration) {
-        self.configuration = configuration
+    public init(plume: Plume) {
+        self.plume = plume
         super.init(frame: .zero)
         
         // By default, this view will not steal taps.
@@ -30,7 +30,7 @@ public final class PlumeUIView: UIView {
     }
     
     public func emit() {
-        let emitter = makeCAEmitter(with: configuration)
+        let emitter = makeCAEmitter(with: plume)
         
         layer.addSublayer(emitter)
         guard let animation = makeBirthRateAnimation() else { return }
@@ -64,14 +64,14 @@ public final class PlumeUIView: UIView {
         return cacell
     }
     
-    private func makeCAEmitter(with configuration: Plume.Configuration) -> CAEmitterLayer {
+    private func makeCAEmitter(with plume: Plume) -> CAEmitterLayer {
         let caemitter = CAEmitterLayer()
-        caemitter.birthRate = Float(configuration.emitter.birthRate)
-        caemitter.emitterSize = resolveSize(for: configuration.emitter.shape, in: bounds)
+        caemitter.birthRate = Float(plume.emitter.birthRate)
+        caemitter.emitterSize = resolveSize(for: plume.emitter.shape, in: bounds)
         caemitter.emitterPosition = CGPoint(x: bounds.midX, y: bounds.midY)
-        caemitter.emitterMode = Plume.Emitter.Mode.emitterMode(from: configuration.emitter.mode)
-        caemitter.emitterShape = Plume.Emitter.Shape.emitterShape(from: configuration.emitter.shape)
-        caemitter.emitterCells = configuration.cells.map { cell in
+        caemitter.emitterMode = Plume.Emitter.Mode.emitterMode(from: plume.emitter.mode)
+        caemitter.emitterShape = Plume.Emitter.Shape.emitterShape(from: plume.emitter.shape)
+        caemitter.emitterCells = plume.cells.map { cell in
             return makeCACell(cell: cell)
         }
         
@@ -80,7 +80,7 @@ public final class PlumeUIView: UIView {
     
     public func makeBirthRateAnimation() -> CABasicAnimation? {
         let animation = CABasicAnimation(keyPath: "birthRate")
-        animation.fromValue = configuration.emitter.birthRate
+        animation.fromValue = plume.emitter.birthRate
         animation.toValue = 0
         animation.duration = 0.5
         animation.fillMode = .forwards
