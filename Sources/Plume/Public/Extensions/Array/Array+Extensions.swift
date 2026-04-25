@@ -7,7 +7,7 @@
 
 import UIKit
 
-public extension Array where Element == Plume.Cell {
+extension Array where Element == Plume.Cell {
     public static func cells(
         uiimages: [UIImage],
         lifetime: Plume.Cell.Lifetime,
