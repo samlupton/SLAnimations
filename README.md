@@ -22,7 +22,7 @@ The package has three main pieces:
 
 - `Plume`, the top-level effect model
 - `PlumeView` and `PlumeUIView`, the SwiftUI and UIKit renderers
-- a set of convenience extensions for quickly building emitters, cells, angles, and accelerations
+- a set of convenience extensions for quickly building emitters, cells, angles, accelerations, and velocities
 
 ## Type Tree
 
@@ -75,7 +75,7 @@ let plume = Plume(
         spin: .init(base: 2, range: 1),
         scale: .init(base: 0.08, range: 0.03),
         acceleration: .gravity,
-        velocity: .normal,
+        velocity: .standard,
         angle: .radial
     )
 )
@@ -104,7 +104,7 @@ struct CelebrationView: View {
             spin: .init(base: 2, range: 1),
             scale: .init(base: 0.09, range: 0.03),
             acceleration: .gravityLight,
-            velocity: .fast,
+            velocity: .lively,
             angle: .topHemisphere
         )
     )
@@ -144,7 +144,7 @@ final class CelebrationViewController: UIViewController {
             spin: .init(base: 1.5, range: 1),
             scale: .init(base: 0.08, range: 0.02),
             acceleration: .gravity,
-            velocity: .normal,
+            velocity: .standard,
             angle: .bottomHemisphere
         )
     )
@@ -179,7 +179,7 @@ let cell = Plume.Cell(
     spin: .init(base: 2, range: 1),
     scale: .init(base: 0.1, range: 0.04),
     acceleration: .upRight,
-    velocity: .burst,
+    velocity: .explosive,
     angle: .up
 )
 
@@ -196,7 +196,7 @@ The package includes a few helpers to make common effects easier to express:
 - `Array.cells(...)` for turning arrays of `UIImage`, `CGImage`, or `ImageResource` into `[Plume.Cell]`
 - `Plume.Cell.Acceleration` presets such as `.gravity`, `.gravityLight`, `.lift`, `.upLeft`, and `.downRight`
 - `Plume.Cell.Angle` presets such as `.up`, `.down`, `.topHemisphere`, and `.radial`
-- `Plume.Cell.Velocity` presets such as `.slow`, `.normal`, `.fast`, and `.burst`
+- `Plume.Cell.Velocity` presets such as `.none`, `.gentle`, `.standard`, `.lively`, and `.explosive`
 
 ## Public Typealiases
 
@@ -225,3 +225,4 @@ typealias CellVelocity = Plume.Cell.Velocity
 - `PlumeView` is trigger-driven and emits when the `trigger` input changes.
 - `PlumeUIView` is non-interactive by default and is intended to sit on top of other content.
 - `Plume.Emitter.Mode` and `Plume.Emitter.Shape` are implementation details; the public entry point is the emitter factory API.
+- `Plume.Cell.Velocity` currently uses preset constants as its primary public construction path.
