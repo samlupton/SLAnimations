@@ -1,5 +1,5 @@
 //
-//  PlumeConfiguration.swift
+//  Plume+Configuration.swift
 //  Plume
 //
 //  Created by Samuel Lupton on 4/15/26.
