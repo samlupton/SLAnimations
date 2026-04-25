@@ -33,7 +33,7 @@ public final class PlumeUIView: UIView {
         let emitter = makeCAEmitter(with: configuration)
         
         layer.addSublayer(emitter)
-        guard let animation = makeAnimation() else { return }
+        guard let animation = makeBirthRateAnimation() else { return }
         
         let id = UUID().uuidString
         emitter.add(animation, forKey: id)
@@ -78,13 +78,13 @@ public final class PlumeUIView: UIView {
         return caemitter
     }
     
-    public func makeAnimation() -> CABasicAnimation? {
+    public func makeBirthRateAnimation() -> CABasicAnimation? {
         let animation = CABasicAnimation(keyPath: "birthRate")
-//        animation.fromValue = 1
-//        animation.toValue = 0
-//        animation.duration = 0.15
-//        animation.fillMode = .forwards
-//        animation.isRemovedOnCompletion = false
+        animation.fromValue = configuration.emitter.birthRate
+        animation.toValue = 0
+        animation.duration = 0.5
+        animation.fillMode = .forwards
+        animation.isRemovedOnCompletion = false
         return animation
     }
 }
@@ -96,9 +96,11 @@ private extension PlumeUIView {
             return .zero
         case .line:
             return CGSize(width: rect.width, height: .zero)
-        case .rectangle, .circle:
+        case .circle:
             let length = min(rect.width, rect.height)
             return CGSize(width: length, height: length)
+        case .rectangle:
+            return rect.size
         }
     }
 }
