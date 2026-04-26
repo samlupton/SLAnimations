@@ -18,7 +18,7 @@ extension Array where Element == Plume.Cell {
         angle: Plume.Cell.Angle
     ) -> [Plume.Cell] {
         return uiimages.map { uiimage in
-            PlumeCell(
+            Plume.Cell(
                 contents: CellContents(uiimage: uiimage),
                 lifetime: lifetime,
                 spin: spin,
@@ -40,7 +40,7 @@ extension Array where Element == Plume.Cell {
         angle: Plume.Cell.Angle
     ) -> [Plume.Cell] {
         return cgimages.map { cgimage in
-            PlumeCell(
+            Plume.Cell(
                 contents: CellContents(cgimage: cgimage),
                 lifetime: lifetime,
                 spin: spin,
@@ -63,7 +63,7 @@ extension Array where Element == Plume.Cell {
         angle: Plume.Cell.Angle
     ) -> [Plume.Cell] {
         return resources.map { resource in
-            PlumeCell(
+            Plume.Cell(
                 contents: CellContents(resource: resource),
                 lifetime: lifetime,
                 spin: spin,

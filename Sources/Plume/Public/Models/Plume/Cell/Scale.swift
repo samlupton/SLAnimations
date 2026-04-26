@@ -9,14 +9,12 @@ import CoreGraphics
 
 public extension Plume.Cell {
     struct Scale: Sendable {
-        public var base: CGFloat
-        public var range: CGFloat
-        public var speed: CGFloat
+        let base: CGFloat
+        let range: CGFloat
         
-        public init(base: CGFloat, range: CGFloat = .zero, speed: CGFloat = .zero) {
+        internal init(base: CGFloat, range: CGFloat) {
             self.base = base
             self.range = range
-            self.speed = speed
         }
     }
 }
