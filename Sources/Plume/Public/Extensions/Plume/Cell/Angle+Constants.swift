@@ -5,9 +5,11 @@
 //  Created by Samuel Lupton on 4/25/26.
 //
 
-// MARK: - Cardinal Angle
+// MARK: - Static Presets
 
 extension Plume.Cell.Angle {
+    // MARK: - Cardinal Angle
+
     /// Rightward emission with slight angular variance for natural spread.
     public static let right: Self = Plume.Cell.Angle(base: 0, range: .pi / 8)
 
@@ -19,11 +21,9 @@ extension Plume.Cell.Angle {
 
     /// Downward emission with slight angular variance.
     public static let down: Self = Plume.Cell.Angle(base: .pi / 2, range: .pi / 8)
-}
 
-// MARK: - Diagonal Angles
+    // MARK: - Diagonal Angles
 
-extension Plume.Cell.Angle {
     /// Up-right emission with directional spread.
     public static let upRight: Self = Plume.Cell.Angle(base: -(.pi / 4), range: .pi / 8)
 
@@ -35,11 +35,9 @@ extension Plume.Cell.Angle {
 
     /// Down-left emission with directional spread.
     public static let downLeft: Self = Plume.Cell.Angle(base: .pi * 3 / 4, range: .pi / 8)
-}
 
-// MARK: - Hemispheres
+    // MARK: - Hemispheres
 
-extension Plume.Cell.Angle {
     /// Broad upward emission covering a wide arc (top half-space).
     public static let topHemisphere: Self = Plume.Cell.Angle(base: -(.pi / 2), range: .pi / 2)
 
@@ -51,11 +49,9 @@ extension Plume.Cell.Angle {
 
     /// Broad rightward emission covering a wide arc.
     public static let rightHemisphere: Self = Plume.Cell.Angle(base: 0, range: .pi / 2)
-}
 
-// MARK: - Full Distribution
+    // MARK: - Full Distribution
 
-extension Plume.Cell.Angle {
     /// Full circular emission with no directional bias.
     public static let radial: Self = Plume.Cell.Angle(base: 0, range: .pi)
 }

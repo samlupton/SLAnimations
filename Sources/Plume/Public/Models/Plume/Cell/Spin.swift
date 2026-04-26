@@ -9,10 +9,10 @@ import CoreGraphics
 
 public extension Plume.Cell {
     struct Spin: Sendable {
-        public var base: CGFloat
-        public var range: CGFloat
+        let base: CGFloat
+        let range: CGFloat
         
-        public init(base: CGFloat, range: CGFloat = .zero) {
+        internal init(base: CGFloat, range: CGFloat) {
             self.base = base
             self.range = range
         }

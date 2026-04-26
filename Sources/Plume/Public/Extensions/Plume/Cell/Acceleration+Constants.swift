@@ -5,16 +5,16 @@
 //  Created by Samuel Lupton on 4/19/26.
 //
 
-// MARK: - Base
+// MARK: - Static Presets
 
 extension Plume.Cell.Acceleration {
+    // MARK: - Base
+
     /// No acceleration applied. Particles move only by initial velocity.
     public static let none: Self = Plume.Cell.Acceleration(x: 0, y: 0)
-}
 
-// MARK: - Gravity (downward)
+    // MARK: - Gravity (downward)
 
-extension Plume.Cell.Acceleration {
     /// Subtle downward pull, suitable for light drift effects.
     public static let gravityLight: Self = Plume.Cell.Acceleration(x: 0, y: 100)
 
@@ -23,11 +23,9 @@ extension Plume.Cell.Acceleration {
 
     /// Strong downward force for fast falling or heavy particle behavior.
     public static let gravityHeavy: Self = Plume.Cell.Acceleration(x: 0, y: 800)
-}
 
-// MARK: - Lift (upward)
+    // MARK: - Lift (upward)
 
-extension Plume.Cell.Acceleration {
     /// Gentle upward force that slightly counteracts gravity.
     public static let liftLight: Self = Plume.Cell.Acceleration(x: 0, y: -80)
 
@@ -36,21 +34,17 @@ extension Plume.Cell.Acceleration {
 
     /// Strong upward force for pronounced lift or inverse gravity effects.
     public static let liftStrong: Self = Plume.Cell.Acceleration(x: 0, y: -500)
-}
 
-// MARK: - Drift (horizontal)
+    // MARK: - Drift (horizontal)
 
-extension Plume.Cell.Acceleration {
     /// Gentle leftward drift, no vertical influence.
     public static let driftLeft: Self = Plume.Cell.Acceleration(x: -50, y: 0)
 
     /// Gentle rightward drift, no vertical influence.
     public static let driftRight: Self = Plume.Cell.Acceleration(x: 50, y: 0)
-}
 
-// MARK: - Diagonal Forces
+    // MARK: - Diagonal Forces
 
-extension Plume.Cell.Acceleration {
     /// Downward-left diagonal force combining gravity and lateral drift.
     public static let downLeft: Self = Plume.Cell.Acceleration(x: -120, y: 300)
 
