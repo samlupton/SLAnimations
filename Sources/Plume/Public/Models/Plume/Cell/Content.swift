@@ -11,22 +11,18 @@ import UIKit
 extension Plume.Cell {
     public struct Contents: Sendable {
         public var image: CGImage?
-        public var scale: CGFloat
         
-        public init(cgimage: CGImage, scale: CGFloat = 1) {
+        public init(cgimage: CGImage) {
             self.image = cgimage
-            self.scale = scale
         }
         
-        public init(uiimage: UIImage, scale: CGFloat = 1) {
+        public init(uiimage: UIImage) {
             self.image = uiimage.cgImage
-            self.scale = scale
         }
         
         @available(iOS 17.0, *)
-        public init(resource: ImageResource, scale: CGFloat = 1) {
+        public init(resource: ImageResource) {
             self.image = UIImage(resource: resource).cgImage
-            self.scale = scale
         }
     }
 }

@@ -48,7 +48,6 @@ public final class PlumeUIView: UIView {
         cacell.xAcceleration = cell.acceleration.x
         cacell.yAcceleration = cell.acceleration.y
         cacell.contents = cell.contents.image
-        cacell.contentsScale = cell.contents.scale
         cacell.emissionLongitude = cell.angle.base
         cacell.emissionRange = cell.angle.range
         cacell.scale = cell.scale.base
@@ -65,6 +64,9 @@ public final class PlumeUIView: UIView {
         
         // TODO: Add support for scaleSpeed property.
         cacell.scaleSpeed = .zero
+        
+        // TODO: Add support for contentsScale property.
+        cacell.contentsScale = 1
         
         return cacell
     }
