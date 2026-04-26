@@ -7,8 +7,8 @@
 
 import CoreGraphics
 
-public extension Plume.Cell {
-    struct Velocity: Sendable {
+extension Plume.Cell {
+    public struct Velocity: Sendable {
         let base: CGFloat
         let range: CGFloat
         

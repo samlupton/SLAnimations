@@ -2,14 +2,30 @@
 //  Array+Extensions.swift
 //  Plume
 //
-//  Created by Samuel Lupton on 4/24/26.
+//  Created by Samuel Lupton on 4/26/26.
 //
 
 import UIKit
 
 extension Array where Element == Plume.Cell {
-    public static func cells(
-        uiimages: [UIImage],
+
+    /// Creates an array of `Plume.Cell` from a collection of `UIImage` values.
+    ///
+    /// Each image is converted into a particle while sharing a common set of
+    /// behavioral properties such as lifetime, velocity, and spin. This provides
+    /// a concise way to generate multiple cells with consistent behavior.
+    ///
+    /// - Parameters:
+    ///   - uiimages: The images used as the visual contents of each cell.
+    ///   - lifetime: The lifetime configuration applied to all cells.
+    ///   - spin: The rotational behavior applied to all cells.
+    ///   - scale: The size configuration applied to all cells.
+    ///   - acceleration: The acceleration applied to all cells.
+    ///   - velocity: The velocity applied to all cells.
+    ///   - angle: The emission angle applied to all cells.
+    /// - Returns: An array of configured `Plume.Cell` instances.
+    public static func make(
+        from uiimages: [UIImage],
         lifetime: Plume.Cell.Lifetime,
         spin: Plume.Cell.Spin,
         scale: Plume.Cell.Scale,
@@ -17,9 +33,9 @@ extension Array where Element == Plume.Cell {
         velocity: Plume.Cell.Velocity,
         angle: Plume.Cell.Angle
     ) -> [Plume.Cell] {
-        return uiimages.map { uiimage in
-            PlumeCell(
-                contents: CellContents(uiimage: uiimage),
+        uiimages.map { uiimage in
+            Plume.Cell(
+                contents: Plume.Cell.Contents(uiimage: uiimage),
                 lifetime: lifetime,
                 spin: spin,
                 scale: scale,
@@ -29,9 +45,23 @@ extension Array where Element == Plume.Cell {
             )
         }
     }
-    
-    public static func cells(
-        cgimages: [CGImage],
+
+    /// Creates an array of `Plume.Cell` from a collection of `CGImage` values.
+    ///
+    /// This behaves identically to the `UIImage` variant, but accepts lower-level
+    /// image types for greater flexibility or performance-sensitive scenarios.
+    ///
+    /// - Parameters:
+    ///   - cgimages: The images used as the visual contents of each cell.
+    ///   - lifetime: The lifetime configuration applied to all cells.
+    ///   - spin: The rotational behavior applied to all cells.
+    ///   - scale: The size configuration applied to all cells.
+    ///   - acceleration: The acceleration applied to all cells.
+    ///   - velocity: The velocity applied to all cells.
+    ///   - angle: The emission angle applied to all cells.
+    /// - Returns: An array of configured `Plume.Cell` instances.
+    public static func make(
+        from cgimages: [CGImage],
         lifetime: Plume.Cell.Lifetime,
         spin: Plume.Cell.Spin,
         scale: Plume.Cell.Scale,
@@ -39,9 +69,9 @@ extension Array where Element == Plume.Cell {
         velocity: Plume.Cell.Velocity,
         angle: Plume.Cell.Angle
     ) -> [Plume.Cell] {
-        return cgimages.map { cgimage in
-            PlumeCell(
-                contents: CellContents(cgimage: cgimage),
+        cgimages.map { cgimage in
+            Plume.Cell(
+                contents: Plume.Cell.Contents(cgimage: cgimage),
                 lifetime: lifetime,
                 spin: spin,
                 scale: scale,
@@ -51,10 +81,24 @@ extension Array where Element == Plume.Cell {
             )
         }
     }
-    
+
+    /// Creates an array of `Plume.Cell` from a collection of `ImageResource` values.
+    ///
+    /// This variant integrates with Swift’s resource system (iOS 17+),
+    /// allowing asset-based particle creation with the same shared behavior.
+    ///
+    /// - Parameters:
+    ///   - resources: The image resources used as the visual contents of each cell.
+    ///   - lifetime: The lifetime configuration applied to all cells.
+    ///   - spin: The rotational behavior applied to all cells.
+    ///   - scale: The size configuration applied to all cells.
+    ///   - acceleration: The acceleration applied to all cells.
+    ///   - velocity: The velocity applied to all cells.
+    ///   - angle: The emission angle applied to all cells.
+    /// - Returns: An array of configured `Plume.Cell` instances.
     @available(iOS 17.0, *)
-    public static func cells(
-        resources: [ImageResource],
+    public static func make(
+        from resources: [ImageResource],
         lifetime: Plume.Cell.Lifetime,
         spin: Plume.Cell.Spin,
         scale: Plume.Cell.Scale,
@@ -62,9 +106,9 @@ extension Array where Element == Plume.Cell {
         velocity: Plume.Cell.Velocity,
         angle: Plume.Cell.Angle
     ) -> [Plume.Cell] {
-        return resources.map { resource in
-            PlumeCell(
-                contents: CellContents(resource: resource),
+        resources.map { resource in
+            Plume.Cell(
+                contents: Plume.Cell.Contents(resource: resource),
                 lifetime: lifetime,
                 spin: spin,
                 scale: scale,

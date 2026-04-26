@@ -7,6 +7,9 @@
 
 import UIKit
 
+// TODO: Add support for haptics.
+// TODO: Add support for audio.
+
 /// A `UIView` responsible for rendering and emitting plume particles.
 ///
 /// `PlumeView` acts as a thin wrapper around `PlumeLayer`, handling
@@ -15,7 +18,7 @@ import UIKit
 /// provided plume.
 public final class PlumeUIView: UIView {
     
-    private var plume: Plume
+    private let plume: Plume
     
     public init(plume: Plume) {
         self.plume = plume
@@ -50,7 +53,6 @@ public final class PlumeUIView: UIView {
         cacell.emissionRange = cell.angle.range
         cacell.scale = cell.scale.base
         cacell.scaleRange = cell.scale.range
-        cacell.scaleSpeed = cell.scale.speed
         cacell.velocity = cell.velocity.base
         cacell.velocityRange = cell.velocity.range
         cacell.lifetime = Float(cell.lifetime.base)
@@ -58,8 +60,11 @@ public final class PlumeUIView: UIView {
         cacell.spin = cell.spin.base
         cacell.spinRange = cell.spin.range
         
-        // Birth rate will not be handled in CAEmitterCell.
+        // TODO: Add support for birthRate (of CAEmitterCell) property.
         cacell.birthRate = 1
+        
+        // TODO: Add support for scaleSpeed property.
+        cacell.scaleSpeed = .zero
         
         return cacell
     }
@@ -78,7 +83,8 @@ public final class PlumeUIView: UIView {
         return caemitter
     }
     
-    public func makeBirthRateAnimation() -> CABasicAnimation? {
+    // TODO: Add support for animations.
+    private func makeBirthRateAnimation() -> CABasicAnimation? {
         let animation = CABasicAnimation(keyPath: "birthRate")
         animation.fromValue = plume.emitter.birthRate
         animation.toValue = 0
@@ -89,8 +95,8 @@ public final class PlumeUIView: UIView {
     }
 }
 
-private extension PlumeUIView {
-    func resolveSize(for shape: Plume.Emitter.Shape, in rect: CGRect) -> CGSize {
+extension PlumeUIView {
+    private func resolveSize(for shape: Plume.Emitter.Shape, in rect: CGRect) -> CGSize {
         switch shape {
         case .point:
             return .zero

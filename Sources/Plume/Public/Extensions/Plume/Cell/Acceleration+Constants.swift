@@ -8,10 +8,11 @@
 // MARK: - Static Presets
 
 extension Plume.Cell.Acceleration {
+
     // MARK: - Base
 
     /// No acceleration applied. Particles move only by initial velocity.
-    public static let none: Self = Plume.Cell.Acceleration(x: 0, y: 0)
+    public static let zero: Self = Plume.Cell.Acceleration(x: 0, y: 0)
 
     // MARK: - Gravity (downward)
 

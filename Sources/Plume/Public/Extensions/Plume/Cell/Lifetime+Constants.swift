@@ -8,6 +8,7 @@
 // MARK: - Static Presets
 
 extension Plume.Cell.Lifetime {
+
     // MARK: - Immediate / Feedback
 
     /// Near-instant feedback (tap, impact, micro-response).

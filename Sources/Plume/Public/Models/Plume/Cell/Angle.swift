@@ -7,8 +7,8 @@
 
 import CoreGraphics
 
-public extension Plume.Cell {
-    struct Angle: Sendable {
+extension Plume.Cell {
+    public struct Angle: Sendable {
         let base: CGFloat
         let range: CGFloat
         
