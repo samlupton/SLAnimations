@@ -1,5 +1,5 @@
 //
-//  Shape+ Helper.swift
+//  Shape+Helper.swift
 //  PlumeAnimation
 //
 //  Created by Samuel Lupton on 4/22/26.
