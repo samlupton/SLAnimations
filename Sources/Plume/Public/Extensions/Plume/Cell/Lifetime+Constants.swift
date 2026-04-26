@@ -7,6 +7,7 @@
 
 // MARK: - Static Presets
 
+/// Preset lifetime values for short, extended, and ambient plume behaviors.
 extension Plume.Cell.Lifetime {
 
     // MARK: - Immediate / Feedback

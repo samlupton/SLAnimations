@@ -1,5 +1,5 @@
 //
-//  Plume+Angle.swift
+//  Angle.swift
 //  Plume
 //
 //  Created by Samuel Lupton on 4/19/26.
@@ -8,8 +8,12 @@
 import CoreGraphics
 
 extension Plume.Cell {
+    /// Defines the emission direction and spread for a particle.
     public struct Angle: Sendable {
+        /// The base emission angle in radians.
         let base: CGFloat
+
+        /// The amount of angular variation around the base angle.
         let range: CGFloat
         
         internal init(base: CGFloat, range: CGFloat) {

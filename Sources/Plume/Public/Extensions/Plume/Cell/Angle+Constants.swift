@@ -7,6 +7,7 @@
 
 // MARK: - Static Presets
 
+/// Preset emission angles for common directional and radial effects.
 extension Plume.Cell.Angle {
 
     // MARK: - Cardinal Angle

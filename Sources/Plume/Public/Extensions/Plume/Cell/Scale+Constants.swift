@@ -7,6 +7,7 @@
 
 // MARK: - Static Presets
 
+/// Preset scale values for small, standard, and oversized particle appearances.
 extension Plume.Cell.Scale {
 
     // MARK: - Subtle

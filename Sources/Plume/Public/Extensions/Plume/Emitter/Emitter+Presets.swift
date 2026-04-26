@@ -1,5 +1,5 @@
 //
-//  Plume+Emitter+Extensions.swift
+//  Emitter+Presets.swift
 //  PlumeAnimation
 //
 //  Created by Samuel Lupton on 4/22/26.
@@ -9,6 +9,7 @@ import CoreFoundation
 
 // MARK: - Presets
 
+/// Preset emitter constructors that expose the supported public plume emission styles.
 extension Plume.Emitter {
 
     /// Creates a point-based emitter.

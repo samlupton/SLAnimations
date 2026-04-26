@@ -22,7 +22,7 @@ The package has three main pieces:
 
 - `Plume`, the top-level effect model
 - `PlumeView` and `PlumeUIView`, the SwiftUI and UIKit renderers
-- a set of convenience extensions for quickly building emitters, cells, angles, accelerations, and velocities
+- a set of convenience extensions for quickly building emitters, cells, and preset motion values
 
 ## Type Tree
 
@@ -69,11 +69,11 @@ let images = [
 
 let plume = Plume(
     emitter: .circle(birthRate: 24),
-    cells: .cells(
-        uiimages: images,
-        lifetime: .init(base: 5, range: 1),
-        spin: .init(base: 2, range: 1),
-        scale: .init(base: 0.08, range: 0.03),
+    cells: .make(
+        from: images,
+        lifetime: .normal,
+        spin: .normal,
+        scale: .small,
         acceleration: .gravity,
         velocity: .standard,
         angle: .radial
@@ -95,14 +95,14 @@ struct CelebrationView: View {
 
     private let plume = Plume(
         emitter: .line(birthRate: 18),
-        cells: .cells(
-            uiimages: [
+        cells: .make(
+            from: [
                 UIImage(systemName: "star.fill")!,
                 UIImage(systemName: "triangle.fill")!
             ],
-            lifetime: .init(base: 4),
-            spin: .init(base: 2, range: 1),
-            scale: .init(base: 0.09, range: 0.03),
+            lifetime: .normal,
+            spin: .lively,
+            scale: .small,
             acceleration: .gravityLight,
             velocity: .lively,
             angle: .topHemisphere
@@ -135,14 +135,14 @@ import Plume
 final class CelebrationViewController: UIViewController {
     private let plume = Plume(
         emitter: .rectangle(birthRate: 20),
-        cells: .cells(
-            uiimages: [
+        cells: .make(
+            from: [
                 UIImage(systemName: "sparkle")!,
                 UIImage(systemName: "circle.fill")!
             ],
-            lifetime: .init(base: 4),
-            spin: .init(base: 1.5, range: 1),
-            scale: .init(base: 0.08, range: 0.02),
+            lifetime: .normal,
+            spin: .normal,
+            scale: .small,
             acceleration: .gravity,
             velocity: .standard,
             angle: .bottomHemisphere
@@ -167,7 +167,7 @@ final class CelebrationViewController: UIViewController {
 
 ## Manual Cell Construction
 
-If you need full control, you can build cells directly instead of using `.cells(...)` helpers:
+If you need more control over which particle images are used, you can still build cells directly and combine them into a `Plume`:
 
 ```swift
 import UIKit
@@ -175,9 +175,9 @@ import Plume
 
 let cell = Plume.Cell(
     contents: .init(uiimage: UIImage(systemName: "diamond.fill")!),
-    lifetime: .init(base: 5, range: 1),
-    spin: .init(base: 2, range: 1),
-    scale: .init(base: 0.1, range: 0.04),
+    lifetime: .long,
+    spin: .lively,
+    scale: .normal,
     acceleration: .upRight,
     velocity: .explosive,
     angle: .up
@@ -193,10 +193,14 @@ let plume = Plume(
 
 The package includes a few helpers to make common effects easier to express:
 
-- `Array.cells(...)` for turning arrays of `UIImage`, `CGImage`, or `ImageResource` into `[Plume.Cell]`
-- `Plume.Cell.Acceleration` presets such as `.gravity`, `.gravityLight`, `.lift`, `.upLeft`, and `.downRight`
+- `Array.make(from:)` for turning arrays of `UIImage`, `CGImage`, or `ImageResource` into `[Plume.Cell]`
+- `Plume.Emitter` presets such as `.point(birthRate:)`, `.line(birthRate:)`, `.circle(birthRate:)`, and `.rectangle(birthRate:)`
+- `Plume.Cell.Acceleration` presets such as `.zero`, `.gravity`, `.gravityLight`, `.lift`, `.upLeft`, and `.downRight`
 - `Plume.Cell.Angle` presets such as `.up`, `.down`, `.topHemisphere`, and `.radial`
-- `Plume.Cell.Velocity` presets such as `.none`, `.gentle`, `.standard`, `.lively`, and `.explosive`
+- `Plume.Cell.Lifetime` presets such as `.instant`, `.normal`, `.long`, and `.continuous`
+- `Plume.Cell.Scale` presets such as `.tiny`, `.small`, `.normal`, `.large`, and `.massive`
+- `Plume.Cell.Spin` presets such as `.none`, `.gentle`, `.normal`, `.lively`, and `.chaotic`
+- `Plume.Cell.Velocity` presets such as `.zero`, `.gentle`, `.standard`, `.lively`, and `.explosive`
 
 ## Public Typealiases
 
@@ -225,4 +229,4 @@ typealias CellVelocity = Plume.Cell.Velocity
 - `PlumeView` is trigger-driven and emits when the `trigger` input changes.
 - `PlumeUIView` is non-interactive by default and is intended to sit on top of other content.
 - `Plume.Emitter.Mode` and `Plume.Emitter.Shape` are implementation details; the public entry point is the emitter factory API.
-- `Plume.Cell.Velocity` currently uses preset constants as its primary public construction path.
+- Most motion/value types are currently intended to be used through their preset constants rather than direct initialization.

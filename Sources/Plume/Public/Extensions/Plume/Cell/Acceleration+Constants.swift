@@ -7,6 +7,7 @@
 
 // MARK: - Static Presets
 
+/// Preset acceleration values for common plume motion styles.
 extension Plume.Cell.Acceleration {
 
     // MARK: - Base
