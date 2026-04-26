@@ -9,8 +9,8 @@ import CoreGraphics
 
 public extension Plume.Cell {
     struct Acceleration: Sendable {
-        public var x: CGFloat
-        public var y: CGFloat
+        let x: CGFloat
+        let y: CGFloat
         
         internal init(x: CGFloat, y: CGFloat) {
             self.x = x

@@ -9,8 +9,8 @@ import CoreGraphics
 
 public extension Plume.Cell {
     struct Angle: Sendable {
-        public var base: CGFloat
-        public var range: CGFloat
+        let base: CGFloat
+        let range: CGFloat
         
         internal init(base: CGFloat, range: CGFloat) {
             self.base = base
