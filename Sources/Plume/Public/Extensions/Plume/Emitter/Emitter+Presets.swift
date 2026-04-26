@@ -1,5 +1,5 @@
 //
-//  Plume+Emitter+Extensions.swift
+//  Emitter+Presets.swift
 //  PlumeAnimation
 //
 //  Created by Samuel Lupton on 4/22/26.
