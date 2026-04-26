@@ -7,7 +7,6 @@
 
 import CoreGraphics
 import UIKit
-import SwiftUI
 
 extension Plume.Cell {
     public struct Contents: Sendable {
