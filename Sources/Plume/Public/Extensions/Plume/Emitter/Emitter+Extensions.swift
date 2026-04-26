@@ -20,7 +20,7 @@ extension Plume.Emitter {
     /// - Parameter birthRate: The number of particles emitted per second.
     /// - Returns: A point-based emitter configuration.
     public static func point(birthRate: CGFloat) -> Plume.Emitter {
-        Plume.Emitter(shape: .point, mode: .points, birthRate: birthRate)
+        return Plume.Emitter(shape: .point, mode: .points, birthRate: birthRate)
     }
 
     /// Creates a line-based emitter.
@@ -32,7 +32,7 @@ extension Plume.Emitter {
     /// - Parameter birthRate: The number of particles emitted per second.
     /// - Returns: A line-based emitter configuration.
     public static func line(birthRate: CGFloat) -> Plume.Emitter {
-        Plume.Emitter(shape: .line, mode: .outline, birthRate: birthRate)
+        return Plume.Emitter(shape: .line, mode: .outline, birthRate: birthRate)
     }
 
     /// Creates a circular emitter.
@@ -43,7 +43,7 @@ extension Plume.Emitter {
     /// - Parameter birthRate: The number of particles emitted per second.
     /// - Returns: A circular emitter configuration.
     public static func circle(birthRate: CGFloat) -> Plume.Emitter {
-        Plume.Emitter(shape: .circle, mode: .surface, birthRate: birthRate)
+        return Plume.Emitter(shape: .circle, mode: .surface, birthRate: birthRate)
     }
 
     /// Creates a rectangular emitter.
@@ -55,6 +55,6 @@ extension Plume.Emitter {
     /// - Parameter birthRate: The number of particles emitted per second.
     /// - Returns: A rectangular emitter configuration.
     public static func rectangle(birthRate: CGFloat) -> Plume.Emitter {
-        Plume.Emitter(shape: .rectangle, mode: .surface, birthRate: birthRate)
+        return Plume.Emitter(shape: .rectangle, mode: .surface, birthRate: birthRate)
     }
 }
