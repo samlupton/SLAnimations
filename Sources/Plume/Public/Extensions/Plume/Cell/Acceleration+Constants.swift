@@ -8,6 +8,7 @@
 // MARK: - Static Presets
 
 extension Plume.Cell.Acceleration {
+
     // MARK: - Base
 
     /// No acceleration applied. Particles move only by initial velocity.

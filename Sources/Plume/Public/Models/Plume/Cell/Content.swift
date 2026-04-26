@@ -9,8 +9,8 @@ import CoreGraphics
 import UIKit
 import SwiftUI
 
-public extension Plume.Cell {
-    struct Contents: Sendable {
+extension Plume.Cell {
+    public struct Contents: Sendable {
         public var image: CGImage?
         public var scale: CGFloat
         

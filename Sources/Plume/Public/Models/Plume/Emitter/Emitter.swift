@@ -7,8 +7,8 @@
 
 import CoreGraphics
 
-public extension Plume {
-    struct Emitter: Sendable {
+extension Plume {
+    public struct Emitter: Sendable {
         let shape: Plume.Emitter.Shape
         let mode: Plume.Emitter.Mode
         let birthRate: CGFloat

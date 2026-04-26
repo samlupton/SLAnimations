@@ -5,7 +5,10 @@
 //  Created by Samuel Lupton on 4/25/26.
 //
 
+// MARK: - Static Presets
+
 extension Plume.Cell.Scale {
+
     // MARK: - Subtle
 
     /// Very small, minimal visual presence.

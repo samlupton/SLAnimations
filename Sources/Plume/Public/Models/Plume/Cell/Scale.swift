@@ -7,8 +7,8 @@
 
 import CoreGraphics
 
-public extension Plume.Cell {
-    struct Scale: Sendable {
+extension Plume.Cell {
+    public struct Scale: Sendable {
         let base: CGFloat
         let range: CGFloat
         

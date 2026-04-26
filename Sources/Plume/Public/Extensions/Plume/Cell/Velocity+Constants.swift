@@ -8,6 +8,7 @@
 // MARK: - Static Presets
 
 extension Plume.Cell.Velocity {
+
     // MARK: - Inactive
 
     /// No movement. Particles remain stationary aside from other forces.

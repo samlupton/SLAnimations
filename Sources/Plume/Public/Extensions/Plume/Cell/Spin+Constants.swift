@@ -8,6 +8,9 @@
 // MARK: - Static Presets
 
 extension Plume.Cell.Spin {
+
+    // MARK: - Inactive
+
     /// No rotational motion.
     public static let none = Plume.Cell.Spin(base: 0, range: 0)
 
@@ -35,5 +38,5 @@ extension Plume.Cell.Spin {
     // MARK: - High Variance Motion
 
     /// Highly energetic, unstable but intentional motion.
-    public static let frenetic = Plume.Cell.Spin(base: 8.0, range: 4.0)
+    public static let chaotic = Plume.Cell.Spin(base: 8.0, range: 4.0)
 }

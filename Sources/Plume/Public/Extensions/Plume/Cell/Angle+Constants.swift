@@ -8,6 +8,7 @@
 // MARK: - Static Presets
 
 extension Plume.Cell.Angle {
+
     // MARK: - Cardinal Angle
 
     /// Rightward emission with slight angular variance for natural spread.

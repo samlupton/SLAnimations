@@ -5,8 +5,8 @@
 //  Created by Samuel Lupton on 4/19/26.
 //
 
-public extension Plume {
-    struct Cell: Sendable {
+extension Plume {
+    public struct Cell: Sendable {
         public var contents: Contents
         public var lifetime: Lifetime
         public var spin: Spin
