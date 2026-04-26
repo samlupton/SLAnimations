@@ -9,25 +9,25 @@ extension Plume {
     /// Describes a single particle style within a plume.
     public struct Cell: Sendable {
         /// The visual contents used for the particle.
-        public var contents: Plume.Cell.Contents
+        let contents: Plume.Cell.Contents
 
         /// The time span for which the particle remains visible.
-        public var lifetime: Plume.Cell.Lifetime
+        let lifetime: Plume.Cell.Lifetime
 
         /// The rotational behavior applied to the particle.
-        public var spin: Plume.Cell.Spin
+        let spin: Plume.Cell.Spin
 
         /// The base scale and scale variance for the particle.
-        public var scale: Plume.Cell.Scale
+        let scale: Plume.Cell.Scale
 
         /// The acceleration applied to the particle after emission.
-        public var acceleration: Plume.Cell.Acceleration
+        let acceleration: Plume.Cell.Acceleration
 
         /// The initial speed and speed variance for the particle.
-        public var velocity: Plume.Cell.Velocity
+        let velocity: Plume.Cell.Velocity
 
         /// The emission direction and spread for the particle.
-        public var angle: Plume.Cell.Angle
+        let angle: Plume.Cell.Angle
         
         /// Creates a particle cell from its visual and motion components.
         ///
@@ -39,7 +39,7 @@ extension Plume {
         ///   - acceleration: The acceleration applied over time.
         ///   - velocity: The particle's initial speed characteristics.
         ///   - angle: The particle's emission direction and spread.
-        public init(
+        internal init(
             contents: Plume.Cell.Contents,
             lifetime: Plume.Cell.Lifetime,
             spin: Plume.Cell.Spin,

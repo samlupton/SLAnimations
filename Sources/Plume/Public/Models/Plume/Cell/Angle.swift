@@ -16,6 +16,11 @@ extension Plume.Cell {
         /// The amount of angular variation around the base angle.
         let range: CGFloat
         
+        /// Creates an emission angle configuration.
+        ///
+        /// - Parameters:
+        ///   - base: Central emission angle in radians.
+        ///   - range: Maximum deviation from the base angle in radians.
         internal init(base: CGFloat, range: CGFloat) {
             self.base = base
             self.range = range

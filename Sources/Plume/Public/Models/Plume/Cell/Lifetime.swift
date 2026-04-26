@@ -16,6 +16,11 @@ extension Plume.Cell {
         /// The amount of lifetime variance applied to each particle.
         let range: CGFloat
         
+        /// Creates a lifetime configuration for a particle.
+        ///
+        /// - Parameters:
+        ///   - base: Default lifespan in seconds.
+        ///   - range: Variation in seconds applied per particle.
         internal init(base: CGFloat, range: CGFloat) {
             self.base = base
             self.range = range

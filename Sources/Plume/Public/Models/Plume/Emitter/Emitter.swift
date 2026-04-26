@@ -22,11 +22,13 @@ extension Plume {
         /// The number of particles emitted over time.
         let birthRate: CGFloat
         
-        internal init(
-            shape: Plume.Emitter.Shape,
-            mode: Plume.Emitter.Mode,
-            birthRate: CGFloat
-        ) {
+        /// Creates a custom emitter configuration.
+        ///
+        /// - Parameters:
+        ///   - shape: Geometric emission shape.
+        ///   - mode: Emission distribution mode.
+        ///   - birthRate: Number of particles emitted per second.
+        internal init(shape: Plume.Emitter.Shape, mode: Plume.Emitter.Mode, birthRate: CGFloat) {
             self.shape = shape
             self.mode = mode
             self.birthRate = birthRate

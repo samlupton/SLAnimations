@@ -16,6 +16,11 @@ extension Plume.Cell {
         /// Vertical acceleration.
         let y: CGFloat
         
+        /// Creates a custom acceleration vector.
+        ///
+        /// - Parameters:
+        ///   - x: Horizontal acceleration in points per second squared.
+        ///   - y: Vertical acceleration in points per second squared.
         internal init(x: CGFloat, y: CGFloat) {
             self.x = x
             self.y = y

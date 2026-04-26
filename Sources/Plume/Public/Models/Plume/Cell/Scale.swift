@@ -16,6 +16,11 @@ extension Plume.Cell {
         /// The amount of scale variance applied to each particle.
         let range: CGFloat
         
+        /// Creates a scale configuration for particle rendering.
+        ///
+        /// - Parameters:
+        ///   - base: Default size multiplier.
+        ///   - range: Variation applied per particle.
         internal init(base: CGFloat, range: CGFloat) {
             self.base = base
             self.range = range

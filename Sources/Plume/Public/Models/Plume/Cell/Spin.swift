@@ -16,6 +16,11 @@ extension Plume.Cell {
         /// The amount of spin variance applied to each particle.
         let range: CGFloat
         
+        /// Creates a spin configuration for particle rotation.
+        ///
+        /// - Parameters:
+        ///   - base: Default angular velocity.
+        ///   - range: Variation applied per particle.
         internal init(base: CGFloat, range: CGFloat) {
             self.base = base
             self.range = range

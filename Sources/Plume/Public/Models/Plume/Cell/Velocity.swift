@@ -16,6 +16,11 @@ extension Plume.Cell {
         /// The amount of velocity variance applied to each particle.
         let range: CGFloat
         
+        /// Creates a velocity configuration for particle emission.
+        ///
+        /// - Parameters:
+        ///   - base: Default emission speed.
+        ///   - range: Variation applied per particle.
         internal init(base: CGFloat, range: CGFloat) {
             self.base = base
             self.range = range

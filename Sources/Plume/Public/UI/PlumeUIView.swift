@@ -7,6 +7,7 @@
 
 import UIKit
 
+// TODO: Consider if this should be a public facing component.
 // TODO: Add support for haptics.
 // TODO: Add support for audio.
 
