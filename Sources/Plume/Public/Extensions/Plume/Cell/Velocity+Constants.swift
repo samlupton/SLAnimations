@@ -7,35 +7,35 @@
 
 // MARK: - Inactive
 
-public extension Plume.Cell.Velocity {
+extension Plume.Cell.Velocity {
     /// No movement. Particles remain stationary aside from other forces.
-    static let none: Self = .init(base: .zero, range: .zero)
+    public static let none: Self = Plume.Cell.Velocity(base: .zero, range: .zero)
 }
 
 // MARK: - Subtle Motion
 
-public extension Plume.Cell.Velocity {
+extension Plume.Cell.Velocity {
     /// Barely perceptible movement, suitable for ambient effects.
-    static let gentle: Self = .init(base: 30, range: 8)
+    public static let gentle: Self = Plume.Cell.Velocity(base: 30, range: 8)
 }
 
 // MARK: - Standard Motion
 
-public extension Plume.Cell.Velocity {
+extension Plume.Cell.Velocity {
     /// Balanced default motion for most effects.
-    static let standard: Self = .init(base: 100, range: 25)
+    public static let standard: Self = Plume.Cell.Velocity(base: 100, range: 25)
 }
 
 // MARK: - Energetic Motion
 
-public extension Plume.Cell.Velocity {
+extension Plume.Cell.Velocity {
     /// Clearly visible motion with strong presence.
-    static let lively: Self = .init(base: 200, range: 60)
+    public static let lively: Self = Plume.Cell.Velocity(base: 200, range: 60)
 }
 
 // MARK: - High-Intensity Motion
 
-public extension Plume.Cell.Velocity {
+extension Plume.Cell.Velocity {
     /// Fast, forceful movement for dramatic or high-impact effects.
-    static let explosive: Self = .init(base: 400, range: 150)
+    public static let explosive: Self = Plume.Cell.Velocity(base: 400, range: 150)
 }
