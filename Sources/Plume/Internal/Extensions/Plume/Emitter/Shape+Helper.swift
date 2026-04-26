@@ -10,6 +10,10 @@ import QuartzCore
 // MARK: - Helper Methods
 
 internal extension Plume.Emitter.Shape {
+    /// Converts the internal plume emitter shape to the matching Core Animation shape.
+    ///
+    /// - Parameter shape: The plume emitter shape to convert.
+    /// - Returns: The equivalent `CAEmitterLayerEmitterShape` value.
     static func emitterShape(from shape: Plume.Emitter.Shape) -> CAEmitterLayerEmitterShape {
         switch shape {
         case .point: return .point

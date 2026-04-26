@@ -9,6 +9,7 @@ import CoreFoundation
 
 // MARK: - Presets
 
+/// Preset emitter constructors that expose the supported public plume emission styles.
 extension Plume.Emitter {
 
     /// Creates a point-based emitter.

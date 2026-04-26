@@ -7,6 +7,7 @@
 
 // MARK: - Static Presets
 
+/// Preset spin values for inactive, subtle, and high-energy rotational motion.
 extension Plume.Cell.Spin {
 
     // MARK: - Inactive

@@ -18,8 +18,12 @@ import UIKit
 /// provided plume.
 public final class PlumeUIView: UIView {
     
+    /// The plume definition rendered by this view.
     private let plume: Plume
     
+    /// Creates a UIKit plume view from a plume definition.
+    ///
+    /// - Parameter plume: The plume rendered and emitted by the view.
     public init(plume: Plume) {
         self.plume = plume
         super.init(frame: .zero)
@@ -32,6 +36,9 @@ public final class PlumeUIView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: - Public Actions
+
+    /// Emits the plume using the current view bounds as the emitter container.
     public func emit() {
         let emitter = makeCAEmitter(with: plume)
         
@@ -41,6 +48,8 @@ public final class PlumeUIView: UIView {
         let id = UUID().uuidString
         emitter.add(animation, forKey: id)
     }
+
+    // MARK: - Internal Builders
 
     private func makeCACell(cell: Plume.Cell) -> CAEmitterCell {
         let cacell = CAEmitterCell()
@@ -86,6 +95,7 @@ public final class PlumeUIView: UIView {
     }
     
     // TODO: Add support for animations.
+    /// Builds the birth-rate animation used to ramp the emitter down after firing.
     private func makeBirthRateAnimation() -> CABasicAnimation? {
         let animation = CABasicAnimation(keyPath: "birthRate")
         animation.fromValue = plume.emitter.birthRate
@@ -97,7 +107,15 @@ public final class PlumeUIView: UIView {
     }
 }
 
+// MARK: - Layout Helpers
+
 extension PlumeUIView {
+    /// Resolves the Core Animation emitter size for a plume shape within a given rectangle.
+    ///
+    /// - Parameters:
+    ///   - shape: The plume emitter shape.
+    ///   - rect: The bounds used to size the emitter.
+    /// - Returns: The emitter size appropriate for the provided shape.
     private func resolveSize(for shape: Plume.Emitter.Shape, in rect: CGRect) -> CGSize {
         switch shape {
         case .point:
