@@ -11,7 +11,7 @@ extension Plume.Cell.Velocity {
     // MARK: - Inactive
 
     /// No movement. Particles remain stationary aside from other forces.
-    public static let none: Self = Plume.Cell.Velocity(base: .zero, range: .zero)
+    public static let zero: Self = Plume.Cell.Velocity(base: .zero, range: .zero)
 
     // MARK: - Subtle Motion
 
