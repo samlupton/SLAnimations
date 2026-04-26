@@ -81,6 +81,7 @@ public final class PlumeUIView: UIView {
         return cacell
     }
     
+    // TODO: Improve support for animations.
     private func makeCAEmitter(with plume: Plume) -> CAEmitterLayer {
         let caemitter = CAEmitterLayer()
         caemitter.birthRate = Float(plume.emitter.birthRate)

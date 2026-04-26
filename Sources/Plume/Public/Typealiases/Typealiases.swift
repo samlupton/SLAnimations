@@ -21,8 +21,6 @@ public typealias PlumeEmitter = Plume.Emitter
 
 /// Convenience alias for `Plume.Cell.Acceleration`.
 public typealias CellAcceleration = Plume.Cell.Acceleration
-/// Convenience alias for `Plume.Cell.Contents`.
-public typealias CellContents = Plume.Cell.Contents
 /// Convenience alias for `Plume.Cell.Angle`.
 public typealias CellAngle = Plume.Cell.Angle
 /// Convenience alias for `Plume.Cell.Lifetime`.

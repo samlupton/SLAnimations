@@ -48,7 +48,7 @@ At the center of the package is `Plume`, which combines:
 - one `Plume.Emitter`
 - one or more `Plume.Cell` values
 
-The easiest way to create an emitter is with the built-in factory methods:
+To create an emitter, use the built-in factory methods:
 
 - `Plume.Emitter.point(birthRate:)`
 - `Plume.Emitter.line(birthRate:)`
@@ -165,30 +165,6 @@ final class CelebrationViewController: UIViewController {
 }
 ```
 
-## Manual Cell Construction
-
-If you need more control over which particle images are used, you can still build cells directly and combine them into a `Plume`:
-
-```swift
-import UIKit
-import Plume
-
-let cell = Plume.Cell(
-    contents: .init(uiimage: UIImage(systemName: "diamond.fill")!),
-    lifetime: .long,
-    spin: .lively,
-    scale: .normal,
-    acceleration: .upRight,
-    velocity: .explosive,
-    angle: .up
-)
-
-let plume = Plume(
-    emitter: .point(birthRate: 12),
-    cells: [cell]
-)
-```
-
 ## Convenience Helpers
 
 The package includes a few helpers to make common effects easier to express:
@@ -222,7 +198,7 @@ typealias CellVelocity = Plume.Cell.Velocity
 
 - Use `PlumeView` for SwiftUI screens.
 - Use `PlumeUIView` for UIKit screens and custom view hierarchies.
-- Use direct `Plume` and `Plume.Cell` construction when you want precise control over emitter behavior.
+- Use direct `Plume` construction when you want precise control over emitter behavior.
 
 ## Notes
 

@@ -9,7 +9,7 @@ import UIKit
 
 extension Plume.Cell {
     /// Encapsulates the image used to render a particle.
-    public struct Contents: Sendable {
+    internal struct Contents: Sendable {
         /// The backing Core Graphics image used by the emitter cell.
         let image: CGImage?
         
