@@ -1,5 +1,5 @@
 //
-//  Scale+Constants.swift
+//  Scale+Presets.swift
 //  Plume
 //
 //  Created by Samuel Lupton on 4/25/26.
