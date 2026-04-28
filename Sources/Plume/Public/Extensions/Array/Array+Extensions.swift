@@ -5,6 +5,7 @@
 //  Created by Samuel Lupton on 4/26/26.
 //
 
+#if canImport(UIKit)
 import UIKit
 
 // MARK: - Plume Cell Array Factories
@@ -122,3 +123,4 @@ extension Array where Element == Plume.Cell {
         }
     }
 }
+#endif
