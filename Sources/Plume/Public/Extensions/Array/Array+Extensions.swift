@@ -7,6 +7,8 @@
 
 #if canImport(UIKit)
 import UIKit
+#else
+import Foundation
 #endif
 
 // MARK: - Plume Cell Array Factories
