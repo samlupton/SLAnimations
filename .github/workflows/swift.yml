@@ -11,18 +11,26 @@ jobs:
     runs-on: macos-latest
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      # Optional: helpful for debugging CI environments
+      - name: Show Xcode version
+        run: xcodebuild -version
+
+      - name: Resolve Swift Package Dependencies
+        run: xcodebuild -resolvePackageDependencies -scheme Plume
 
       - name: Build (iOS Simulator)
         run: |
           xcodebuild build \
             -scheme Plume \
-            -destination 'platform=iOS Simulator,name=iPhone 15' \
+            -destination 'generic/platform=iOS Simulator' \
             CODE_SIGNING_ALLOWED=NO
 
       - name: Test (iOS Simulator)
         run: |
           xcodebuild test \
             -scheme Plume \
-            -destination 'platform=iOS Simulator,name=iPhone 15' \
+            -destination 'generic/platform=iOS Simulator' \
             CODE_SIGNING_ALLOWED=NO
