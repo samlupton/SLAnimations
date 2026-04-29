@@ -5,7 +5,11 @@
 //  Created by Samuel Lupton on 4/19/26.
 //
 
-import CoreGraphics
+#if canImport(UIKit)
+import UIKit
+#else
+import Foundation
+#endif
 
 extension Plume.Cell {
     /// Encapsulates the image used to render a particle.
@@ -20,5 +24,21 @@ extension Plume.Cell {
             self.image = cgimage
         }
         
+        #if canImport(UIKit)
+        /// Creates particle contents from a UIKit image.
+        ///
+        /// - Parameter uiimage: The image used to render the particle.
+        internal init(uiimage: UIImage) {
+            self.image = uiimage.cgImage
+        }
+        #endif
+    
+        @available(iOS 17.0, *)
+        /// Creates particle contents from an asset catalog image resource.
+        ///
+        /// - Parameter resource: The image resource used to render the particle.
+        internal init(resource: ImageResource) {
+            self.image = UIImage(resource: resource).cgImage
+        }
     }
 }

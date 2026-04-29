@@ -5,7 +5,6 @@
 //  Created by Samuel Lupton on 10/9/25.
 //
 
-#if canImport(UIKit)
 import SwiftUI
 
 /// A SwiftUI wrapper around `PlumeUIView`.
@@ -52,4 +51,3 @@ public struct PlumeView: UIViewRepresentable {
         var lastTrigger: Int = 0
     }
 }
-#endif
