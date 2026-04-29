@@ -126,4 +126,3 @@ extension Array where Element == Plume.Cell {
         }
     }
 }
-#endif
