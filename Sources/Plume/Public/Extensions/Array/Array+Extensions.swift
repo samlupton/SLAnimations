@@ -5,18 +5,12 @@
 //  Created by Samuel Lupton on 4/26/26.
 //
 
-#if canImport(UIKit)
 import UIKit
-#else
-import Foundation
-#endif
 
 // MARK: - Plume Cell Array Factories
 
 /// Convenience factories for building arrays of `Plume.Cell` from image collections.
 extension Array where Element == Plume.Cell {
-
-    #if canImport(UIKit)
     /// Creates an array of `Plume.Cell` from a collection of `UIImage` values.
     ///
     /// Each image is converted into a particle while sharing a common set of
@@ -53,7 +47,6 @@ extension Array where Element == Plume.Cell {
             )
         }
     }
-    #endif
 
     /// Creates an array of `Plume.Cell` from a collection of `CGImage` values.
     ///
