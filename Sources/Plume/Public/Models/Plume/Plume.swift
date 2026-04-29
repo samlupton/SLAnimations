@@ -5,8 +5,6 @@
 //  Created by Samuel Lupton on 4/15/26.
 //
 
-import UIKit
-
 /// A complete particle effect definition composed of one emitter and one or more cells.
 public struct Plume {
     /// The emitter that defines how particles are spawned into the scene.
