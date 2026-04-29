@@ -5,7 +5,11 @@
 //  Created by Samuel Lupton on 10/7/25.
 //
 
+#if canImport(UIKit)
 import UIKit
+#else
+import Foundation
+#endif
 
 // TODO: Consider if this should be a public facing component.
 // TODO: Add support for haptics.
