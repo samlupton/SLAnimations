@@ -20,9 +20,10 @@ jobs:
             -destination 'generic/platform=iOS Simulator' \
             CODE_SIGNING_ALLOWED=NO
 
-      - name: Test (real simulator)
+      - name: Test (iOS Simulator)
         run: |
           xcodebuild test \
             -scheme Plume \
-            -destination 'platform=iOS Simulator,name=iPhone 14' \
+            -destination 'platform=iOS Simulator' \
+            -destination-timeout 60 \
             CODE_SIGNING_ALLOWED=NO
