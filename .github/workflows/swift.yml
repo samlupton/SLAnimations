@@ -1,4 +1,4 @@
-name: iOS CI
+name: CI
 
 on:
   push:
@@ -7,35 +7,14 @@ on:
     branches: ["main"]
 
 jobs:
-  build-and-test:
+  test:
     runs-on: macos-latest
 
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-      - name: Select Xcode
-        run: sudo xcode-select -s /Applications/Xcode_16.4.app
-
-      # Ensures iOS runtime exists (prevents "no simulator found" errors)
-      - name: Ensure iOS platform is available
-        run: xcodebuild -downloadPlatform iOS || true
-
-      - name: Show available simulators (debug)
-        run: xcrun simctl list devices iOS || true
-
-      # Build only (no fragile device binding)
       - name: Build
-        run: |
-          xcodebuild build \
-            -scheme Plume \
-            -destination 'generic/platform=iOS Simulator' \
-            CODE_SIGNING_ALLOWED=NO
+        run: swift build
 
-      # Test using OS-based resolution (not device names)
       - name: Test
-        run: |
-          xcodebuild test \
-            -scheme Plume \
-            -destination 'platform=iOS Simulator,OS=latest' \
-            CODE_SIGNING_ALLOWED=NO
+        run: swift test
