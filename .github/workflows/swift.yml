@@ -15,12 +15,44 @@ jobs:
       - name: Select Xcode
         run: sudo xcode-select -s /Applications/Xcode_16.4.app
 
-      - name: List simulators
-        run: xcrun simctl list devices
+      - name: Resolve package
+        run: swift package resolve
+
+      - name: Boot latest available iOS Simulator
+        run: |
+          set -e
+
+          echo "Finding latest iOS runtime..."
+
+          RUNTIME=$(xcrun simctl list runtimes | \
+            grep "iOS" | grep -v unavailable | \
+            tail -n 1 | awk -F '[()]' '{print $2}')
+
+          echo "Using runtime: $RUNTIME"
+
+          DEVICE_TYPE="com.apple.CoreSimulator.SimDeviceType.iPhone-15"
+
+          echo "Creating simulator..."
+          SIM_ID=$(xcrun simctl create "CI-iPhone" $DEVICE_TYPE $RUNTIME)
+
+          echo "Booting simulator..."
+          xcrun simctl boot $SIM_ID || true
+
+          echo "Listing devices..."
+          xcrun simctl list devices
 
       - name: Run Tests
         run: |
+          set -e
+
+          DEVICE=$(xcrun simctl list devices | \
+            grep "CI-iPhone" | \
+            head -n 1 | \
+            awk -F '[()]' '{print $2}')
+
+          echo "Using device: $DEVICE"
+
           xcodebuild test \
             -scheme Plume \
-            -destination "platform=iOS Simulator,name=iPhone 15" \
+            -destination "id=$DEVICE" \
             CODE_SIGNING_ALLOWED=NO
