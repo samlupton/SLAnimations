@@ -1,6 +1,10 @@
-![Platform](https://img.shields.io/badge/platform-iOS-blue)
-![License](https://img.shields.io/badge/license-MIT-green)
-[![CI](https://github.com/samlupton/Plume/actions/workflows/swift.yml/badge.svg)](https://github.com/samlupton/Plume/actions)
+<p align="center">
+  <img src="https://img.shields.io/badge/platform-iOS-blue?style=flat-square" />
+  <img src="https://img.shields.io/badge/license-MIT-green?style=flat-square" />
+  <a href="https://github.com/samlupton/Plume/actions">
+    <img src="https://github.com/samlupton/Plume/actions/workflows/swift.yml/badge.svg" />
+  </a>
+</p>
 
 # Plume
 
