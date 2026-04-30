@@ -10,33 +10,38 @@ jobs:
     runs-on: macos-latest
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout
+        uses: actions/checkout@v4
 
       - name: Select Xcode
         run: sudo xcode-select -s /Applications/Xcode_16.4.app
 
-      - name: Resolve package
+      - name: Resolve Swift Package
         run: swift package resolve
 
       - name: Boot latest available iOS Simulator
         run: |
           set -e
 
-          echo "Finding latest iOS runtime..."
+          echo "Finding latest available iOS runtime..."
 
-          RUNTIME=$(xcrun simctl list runtimes | \
-            grep "iOS" | grep -v unavailable | \
-            tail -n 1 | awk -F '[()]' '{print $2}')
+          RUNTIME=$(
+            xcrun simctl list runtimes iOS available \
+            | grep "com.apple.CoreSimulator.SimRuntime.iOS" \
+            | tail -n 1 \
+            | awk '{print $NF}' \
+            | tr -d '()'
+          )
 
           echo "Using runtime: $RUNTIME"
 
           DEVICE_TYPE="com.apple.CoreSimulator.SimDeviceType.iPhone-15"
 
           echo "Creating simulator..."
-          SIM_ID=$(xcrun simctl create "CI-iPhone" $DEVICE_TYPE $RUNTIME)
+          SIM_ID=$(xcrun simctl create "CI-iPhone" "$DEVICE_TYPE" "$RUNTIME")
 
           echo "Booting simulator..."
-          xcrun simctl boot $SIM_ID || true
+          xcrun simctl boot "$SIM_ID" || true
 
           echo "Listing devices..."
           xcrun simctl list devices
