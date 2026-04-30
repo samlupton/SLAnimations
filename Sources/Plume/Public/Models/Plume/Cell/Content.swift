@@ -26,7 +26,7 @@ extension Plume.Cell {
         internal init(uiimage: UIImage) {
             self.image = uiimage.cgImage
         }
-        
+    
         @available(iOS 17.0, *)
         /// Creates particle contents from an asset catalog image resource.
         ///

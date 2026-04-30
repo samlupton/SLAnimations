@@ -11,7 +11,6 @@ import UIKit
 
 /// Convenience factories for building arrays of `Plume.Cell` from image collections.
 extension Array where Element == Plume.Cell {
-
     /// Creates an array of `Plume.Cell` from a collection of `UIImage` values.
     ///
     /// Each image is converted into a particle while sharing a common set of
