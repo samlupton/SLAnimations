@@ -2,14 +2,8 @@ import XCTest
 @testable import Plume
 
 final class PlumeTests: XCTestCase {
-    var plume: Plume!
-    
-    override func setUp() {
-        self.plume = Plume(emitter: .circle(birthRate: .zero), cells: [])
-    }
-    
-    func test_plume_init() {
-        plume = Plume(emitter: .circle(birthRate: 10), cells: cells(count: .zero))
+    func test_plume() {
+        var plume = Plume(emitter: .circle(birthRate: 10), cells: cells(count: .zero))
         XCTAssertEqual(plume.emitter.mode, .surface)
         XCTAssertEqual(plume.emitter.shape, .circle)
         XCTAssertEqual(plume.emitter.birthRate, 10)
