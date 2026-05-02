@@ -1,3 +1,5 @@
+# Plume
+
 <p align="center">
   <img src="https://img.shields.io/badge/platform-iOS-blue?style=flat-square" />
   <img src="https://img.shields.io/badge/license-MIT-green?style=flat-square" />
@@ -11,8 +13,6 @@
   <img src="demo-videos/cannons.gif" alt="Cannons plume demo" width="32%" />
   <img src="demo-videos/shower.gif" alt="Shower plume demo" width="32%" />
 </p>
-
-# Plume
 
 `Plume` is a Swift package for building particle effects with `CAEmitterLayer` and using them from SwiftUI or UIKit. The public API is centered around a single `Plume` value that combines an emitter and one or more particle cells.
 
